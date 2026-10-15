@@ -601,9 +601,8 @@
     .pcv2-price-block { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 4px; }
     .pcv2-amount { font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
     .pcv2-period { font-size: 0.85rem; color: var(--muted); padding-bottom: 6px; }
-    .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 2px; display: none; }
+    .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; display: none; }
     .pcv2-billed.visible { display: block; }
-    .pcv2-savings { font-size: 0.82rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
     .pcv2-iva { font-size: 0.7rem; color: rgba(145,168,205,0.5); margin-bottom: 14px; }
     .founder-price-chip {
       display: none; font-size: 0.75rem; font-weight: 600; padding: 5px 10px; border-radius: 8px;
@@ -1445,7 +1444,6 @@
           </button>
           <button class="toggle-opt active" id="btn-annual" aria-pressed="true" onclick="setPeriod('annual')">
             Anual
-            <span class="save-badge" id="save-badge-label">Ahorra hasta $789 al año</span>
           </button>
         </div>
         <p class="iva-note fade-up d2">Precios en MXN, IVA incluido</p>
@@ -1490,7 +1488,6 @@
               <span class="pcv2-period">/ mes</span>
             </div>
             <p class="pcv2-billed" id="plus-billed">$799 cobrado una vez al año</p>
-            <p class="pcv2-savings" id="plus-savings">Ahorras $389 al año</p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
             <div class="founder-price-chip" id="founder-plus-chip">
               ⚡ Precio de fundador activo
@@ -1517,7 +1514,6 @@
               <span class="pcv2-period">/ mes</span>
             </div>
             <p class="pcv2-billed" id="pro-billed">$1,599 cobrado una vez al año</p>
-            <p class="pcv2-savings" id="pro-savings">Ahorras $789 al año</p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
             <div class="founder-price-chip founder-price-chip-green" id="founder-pro-chip">
               ⚡ Precio de fundador activo
@@ -1745,84 +1741,34 @@
     const FOUNDER_LIMIT = 50
     const FOUNDER_AVAILABLE = FOUNDER_SLOTS_REMAINING > 0 && FOUNDER_SLOTS_REMAINING <= FOUNDER_LIMIT
 
-    // Ahorro anual en MXN (calculado automáticamente desde PRICING)
-    const SAVINGS = {
-      plusRegular:  PRICING.plus.monthly  * 12 - PRICING.plus.annual,       // 389
-      proRegular:   PRICING.pro.monthly   * 12 - PRICING.pro.annual,         // 789
-      plusFounder:  PRICING.plus.founderMonthly * 12 - PRICING.plus.founderAnnual,  // 279
-      proFounder:   PRICING.pro.founderMonthly  * 12 - PRICING.pro.founderAnnual,   // 589
-    }
-    const MAX_ANNUAL_SAVINGS = SAVINGS.proRegular  // 789, para la etiqueta del toggle
-
     let currentPeriod = 'annual'
 
     function formatMXN(n) { return '$' + n.toLocaleString('es-MX') }
 
-    function setSavingsRow(id, amount) {
-      const el = document.getElementById(id)
-      if (!el) return
-      if (amount > 0) {
-        el.textContent = 'Ahorras ' + formatMXN(amount) + ' al año'
-        el.style.display = ''
-      } else {
-        el.style.display = 'none'
-      }
-    }
-
     function updatePrices() {
       const isAnnual = currentPeriod === 'annual'
 
-      // ── Plus ──────────────────────────────────────────────────────
-      let plusDisplay, plusBilledText, plusSavings = 0
-      if (FOUNDER_AVAILABLE) {
-        if (isAnnual) {
-          plusDisplay  = PRICING.plus.founderAnnualMo
-          plusBilledText = formatMXN(PRICING.plus.founderAnnual) + ' cobrado una vez al año'
-          plusSavings  = SAVINGS.plusFounder
-        } else {
-          plusDisplay  = PRICING.plus.founderMonthly
-          plusBilledText = 'cobrado mensualmente'
-        }
-      } else if (isAnnual) {
-        plusDisplay  = PRICING.plus.annualMo
-        plusBilledText = formatMXN(PRICING.plus.annual) + ' cobrado una vez al año'
-        plusSavings  = SAVINGS.plusRegular
-      } else {
-        plusDisplay  = PRICING.plus.monthly
-        plusBilledText = 'cobrado mensualmente'
-      }
-      document.getElementById('plus-price').textContent = formatMXN(plusDisplay)
+      // Precios fijos: $99 Plus, $199 Pro (no cambian con el toggle)
+      document.getElementById('plus-price').textContent = formatMXN(PRICING.plus.monthly)
+      document.getElementById('pro-price').textContent  = formatMXN(PRICING.pro.monthly)
+
+      // Billed total (solo en anual)
       const plusBilled = document.getElementById('plus-billed')
-      plusBilled.textContent = plusBilledText
-      plusBilled.classList.toggle('visible', isAnnual || FOUNDER_AVAILABLE)
-      setSavingsRow('plus-savings', plusSavings)
-
-      // ── Pro ───────────────────────────────────────────────────────
-      let proDisplay, proBilledText, proSavings = 0
-      if (FOUNDER_AVAILABLE) {
-        if (isAnnual) {
-          proDisplay  = PRICING.pro.founderAnnualMo
-          proBilledText = formatMXN(PRICING.pro.founderAnnual) + ' cobrado una vez al año'
-          proSavings  = SAVINGS.proFounder
-        } else {
-          proDisplay  = PRICING.pro.founderMonthly
-          proBilledText = 'cobrado mensualmente'
-        }
-      } else if (isAnnual) {
-        proDisplay  = PRICING.pro.annualMo
-        proBilledText = formatMXN(PRICING.pro.annual) + ' cobrado una vez al año'
-        proSavings  = SAVINGS.proRegular
+      if (isAnnual) {
+        plusBilled.textContent = formatMXN(PRICING.plus.annual) + ' cobrado una vez al año'
+        plusBilled.classList.add('visible')
       } else {
-        proDisplay  = PRICING.pro.monthly
-        proBilledText = 'cobrado mensualmente'
+        plusBilled.classList.remove('visible')
       }
-      document.getElementById('pro-price').textContent = formatMXN(proDisplay)
       const proBilled = document.getElementById('pro-billed')
-      proBilled.textContent = proBilledText
-      proBilled.classList.toggle('visible', isAnnual || FOUNDER_AVAILABLE)
-      setSavingsRow('pro-savings', proSavings)
+      if (isAnnual) {
+        proBilled.textContent = formatMXN(PRICING.pro.annual) + ' cobrado una vez al año'
+        proBilled.classList.add('visible')
+      } else {
+        proBilled.classList.remove('visible')
+      }
 
-      // ── Founder chips ─────────────────────────────────────────────
+      // Founder chips
       const chipPlus = document.getElementById('founder-plus-chip')
       const chipPro  = document.getElementById('founder-pro-chip')
       if (FOUNDER_AVAILABLE) {
@@ -1857,10 +1803,6 @@
       btn.setAttribute('aria-expanded', String(!open))
       arrow.style.transform = open ? '' : 'rotate(180deg)'
     }
-
-    // Toggle badge: "Ahorra hasta $X al año" — computed from config
-    const saveBadge = document.getElementById('save-badge-label')
-    if (saveBadge) saveBadge.textContent = 'Ahorra hasta ' + formatMXN(MAX_ANNUAL_SAVINGS) + ' al año'
 
     // Founder counter & initial render
     if (FOUNDER_AVAILABLE) {

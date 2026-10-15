@@ -1,4 +1,3 @@
-import { MAX_ANNUAL_SAVINGS } from '../../data/pricing'
 import type { BillingPeriod } from '../../data/pricing'
 
 interface Props {
@@ -42,16 +41,6 @@ export function PricingToggle({ value, onChange }: Props) {
         aria-pressed={value === 'annual'}
       >
         Anual
-        <span
-          className="text-xs font-bold px-2 py-0.5 rounded-full"
-          style={{
-            background: 'rgba(32,191,143,0.15)',
-            border: '1px solid rgba(32,191,143,0.3)',
-            color: '#20BF8F',
-          }}
-        >
-          Ahorra hasta ${MAX_ANNUAL_SAVINGS.toLocaleString('es-MX')} al año
-        </span>
       </button>
     </div>
   )

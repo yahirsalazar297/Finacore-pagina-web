@@ -47,30 +47,9 @@ export const PRICES = {
   },
 } as const
 
-// ─── Ahorro anual (en pesos, nunca porcentaje) ───────────────────────────────
+// ─── Descuento anual ─────────────────────────────────────────────────────────
 
-/**
- * Ahorro = 12 meses × precio mensual − precio anual.
- * Se calcula automáticamente desde PRICES; si los precios cambian, el número
- * se actualiza solo. Nunca mostrar el ahorro como porcentaje.
- */
-export function getAnnualSavings(planId: PlanId, variant: PriceVariant = 'regular'): number {
-  if (planId === 'free') return 0
-  if (planId === 'plus') {
-    if (variant === 'founder') return PRICES.plus.founder.monthly * 12 - PRICES.plus.founder.annual
-    return PRICES.plus.monthly * 12 - PRICES.plus.annual
-  }
-  // pro
-  if (variant === 'student') return PRICES.pro.student.monthly * 12 - PRICES.pro.student.annual
-  if (variant === 'founder') return PRICES.pro.founder.monthly * 12 - PRICES.pro.founder.annual
-  return PRICES.pro.monthly * 12 - PRICES.pro.annual
-}
-
-/** El ahorro más alto visible al usuario con planes regulares. Usado en la etiqueta del toggle. */
-export const MAX_ANNUAL_SAVINGS = PRICES.pro.monthly * 12 - PRICES.pro.annual  // 789
-
-/** @deprecated — No usar en la UI. El ahorro se muestra en MXN, nunca como porcentaje. */
-export const ANNUAL_DISCOUNT_PERCENT = 33
+export const ANNUAL_DISCOUNT_PERCENT = 33  // referencia interna; no mostrar en la UI
 
 // ─── IVA ─────────────────────────────────────────────────────────────────────
 
