@@ -550,6 +550,29 @@
       text-align: center; font-size: 0.85rem; color: rgba(145,168,205,0.6);
       max-width: 500px; margin: 32px auto 0;
     }
+    .app-download-row {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      margin-top: 40px;
+    }
+    .btn-store {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: var(--radius); padding: 12px 22px;
+      color: var(--white); transition: var(--transition);
+      cursor: pointer; text-decoration: none;
+    }
+    .btn-store:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.25);
+    }
+    .btn-store:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+    .btn-store-icon { width: 28px; height: 28px; flex-shrink: 0; }
+    .btn-store-text { display: flex; flex-direction: column; }
+    .btn-store-sub { font-size: 0.68rem; color: var(--muted); line-height: 1; }
+    .btn-store-name { font-size: 1rem; font-weight: 700; line-height: 1.3; }
 
     /* ── Contacto ─────────────────────────────────────────────────── */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
@@ -1332,6 +1355,33 @@
         </div>
 
         <p class="plans-note fade-up">Los precios, beneficios específicos y condiciones de cada plan están siendo confirmados por el equipo de FINCORE. Esta sección se actualizará con información oficial una vez definida.</p>
+
+        <div class="app-download-row fade-up d1" role="group" aria-label="Descargar la app de FINCORE">
+          <!-- App Store -->
+          <a href="#" class="btn-store" aria-label="Descargar en App Store (próximamente)">
+            <svg class="btn-store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.16 14.84a5.6 5.6 0 0 1 2.67-4.71 5.74 5.74 0 0 0-4.52-2.44c-1.91-.2-3.75 1.14-4.72 1.14-.99 0-2.49-1.12-4.1-1.09a6.02 6.02 0 0 0-5.07 3.09C2.1 14.64 3.7 20.52 6 23.37c1.16 1.49 2.52 3.16 4.31 3.1 1.74-.07 2.39-1.11 4.49-1.11 2.08 0 2.69 1.11 4.5 1.07 1.87-.03 3.05-1.5 4.18-3.01a12.4 12.4 0 0 0 1.9-3.48 5.41 5.41 0 0 1-3.22-5.1Z" fill="white"/>
+              <path d="M16.96 5.72a5.52 5.52 0 0 0 1.26-3.95 5.62 5.62 0 0 0-3.63 1.88 5.25 5.25 0 0 0-1.3 3.82 4.65 4.65 0 0 0 3.67-1.75Z" fill="white"/>
+            </svg>
+            <div class="btn-store-text">
+              <span class="btn-store-sub">Descargar en</span>
+              <span class="btn-store-name">App Store</span>
+            </div>
+          </a>
+          <!-- Google Play -->
+          <a href="#" class="btn-store" aria-label="Descargar en Google Play (próximamente)">
+            <svg class="btn-store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4.5 3.17a1.5 1.5 0 0 0-.5 1.13v19.4c0 .45.17.87.5 1.13l.06.06 10.87-10.87v-.26L4.56 3.11l-.06.06Z" fill="#4FC3F7"/>
+              <path d="M19.06 17.67 15.43 14l-10.87 10.9c.48.51 1.28.57 1.84.14l12.66-7.37Z" fill="#34A853"/>
+              <path d="M19.06 10.33 6.4 2.96c-.56-.43-1.36-.37-1.84.14L15.43 14l3.63-3.67Z" fill="#FBBC04"/>
+              <path d="M19.06 10.33l3.63 3.67c.53.3.53.79 0 1.09l-3.63 2.58-3.63-3.67 3.63-3.67Z" fill="#EA4335"/>
+            </svg>
+            <div class="btn-store-text">
+              <span class="btn-store-sub">Disponible en</span>
+              <span class="btn-store-name">Google Play</span>
+            </div>
+          </a>
+        </div>
       </div>
     </section>
 
