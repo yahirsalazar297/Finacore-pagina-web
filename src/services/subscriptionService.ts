@@ -342,7 +342,11 @@ export function getDisplayPrice(
   if (planId === 'free') return 0
 
   if (planId === 'plus') {
-    if (variant === 'founder') return PRICES.plus.founder.monthly
+    if (variant === 'founder') {
+      return period === 'annual'
+        ? PRICES.plus.founder.annualMonthlyEquivalent
+        : PRICES.plus.founder.monthly
+    }
     if (period === 'annual') return PRICES.plus.annualMonthlyEquivalent
     return PRICES.plus.monthly
   }
@@ -353,7 +357,11 @@ export function getDisplayPrice(
         ? Math.round(PRICES.pro.student.annual / 12)
         : PRICES.pro.student.monthly
     }
-    if (variant === 'founder') return PRICES.pro.founder.monthly
+    if (variant === 'founder') {
+      return period === 'annual'
+        ? PRICES.pro.founder.annualMonthlyEquivalent
+        : PRICES.pro.founder.monthly
+    }
     if (period === 'annual') return PRICES.pro.annualMonthlyEquivalent
     return PRICES.pro.monthly
   }
@@ -370,7 +378,9 @@ export function getBilledTotal(
   if (planId === 'free') return 0
 
   if (planId === 'plus') {
-    if (variant === 'founder') return PRICES.plus.founder.monthly   // mensual
+    if (variant === 'founder') {
+      return period === 'annual' ? PRICES.plus.founder.annual : PRICES.plus.founder.monthly
+    }
     if (period === 'annual') return PRICES.plus.annual
     return PRICES.plus.monthly
   }
@@ -379,7 +389,9 @@ export function getBilledTotal(
     if (variant === 'student') {
       return period === 'annual' ? PRICES.pro.student.annual : PRICES.pro.student.monthly
     }
-    if (variant === 'founder') return PRICES.pro.founder.monthly   // mensual
+    if (variant === 'founder') {
+      return period === 'annual' ? PRICES.pro.founder.annual : PRICES.pro.founder.monthly
+    }
     if (period === 'annual') return PRICES.pro.annual
     return PRICES.pro.monthly
   }

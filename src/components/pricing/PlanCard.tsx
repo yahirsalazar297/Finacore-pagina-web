@@ -6,6 +6,7 @@ import {
   PLAN_NAMES,
   PLAN_TAGLINES,
   TRIAL,
+  getAnnualSavings,
 } from '../../data/pricing'
 import {
   getDisplayPrice,
@@ -47,6 +48,7 @@ export function PlanCard({
 
   const displayMonthlyPrice = getDisplayPrice(planId, period, variant)
   const billedTotal = getBilledTotal(planId, period, variant)
+  const annualSavings = period === 'annual' && !isFree ? getAnnualSavings(planId, variant) : 0
 
   const lives = LIMITS.lives[planId]
   const aiQuestions = LIMITS.aiQuestionsPerDay[planId === 'free' ? 'free' : planId === 'plus' ? 'plus' : 'pro']
@@ -104,9 +106,16 @@ export function PlanCard({
             <span className="text-slate-400 text-sm mb-1.5">/ mes</span>
           </div>
           {period === 'annual' ? (
-            <p className="text-slate-400 text-sm mb-1">
-              {formatPrice(billedTotal)} cobrado una vez al año
-            </p>
+            <>
+              <p className="text-slate-400 text-sm mb-1">
+                {formatPrice(billedTotal)} cobrado una vez al año
+              </p>
+              {annualSavings > 0 && (
+                <p className="text-sm font-bold mb-1" style={{ color: '#20BF8F' }}>
+                  Ahorras ${annualSavings.toLocaleString('es-MX')} al año
+                </p>
+              )}
+            </>
           ) : (
             <p className="text-slate-400 text-sm mb-1">cobrado mensualmente</p>
           )}

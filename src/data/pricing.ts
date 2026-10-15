@@ -24,18 +24,21 @@ export const PRICES = {
   plus: {
     monthly: 99,
     annual: 799,
-    annualMonthlyEquivalent: 67,  // Math.round(799 / 12)
+    annualMonthlyEquivalent: 67,    // Math.round(799 / 12)
     founder: {
       monthly: 69,
-      // El precio de fundador solo aplica a mensual; el anual no tiene versión fundador
+      annual: 549,
+      annualMonthlyEquivalent: 46,  // Math.round(549 / 12)
     },
   },
   pro: {
     monthly: 199,
     annual: 1_599,
-    annualMonthlyEquivalent: 133,  // Math.round(1599 / 12)
+    annualMonthlyEquivalent: 133,   // Math.round(1599 / 12)
     founder: {
       monthly: 149,
+      annual: 1_199,
+      annualMonthlyEquivalent: 100, // Math.round(1199 / 12)
     },
     student: {
       monthly: 129,
@@ -44,9 +47,30 @@ export const PRICES = {
   },
 } as const
 
-// ─── Descuento anual ─────────────────────────────────────────────────────────
+// ─── Ahorro anual (en pesos, nunca porcentaje) ───────────────────────────────
 
-export const ANNUAL_DISCOUNT_PERCENT = 33  // ~33% vs pagar 12 meses
+/**
+ * Ahorro = 12 meses × precio mensual − precio anual.
+ * Se calcula automáticamente desde PRICES; si los precios cambian, el número
+ * se actualiza solo. Nunca mostrar el ahorro como porcentaje.
+ */
+export function getAnnualSavings(planId: PlanId, variant: PriceVariant = 'regular'): number {
+  if (planId === 'free') return 0
+  if (planId === 'plus') {
+    if (variant === 'founder') return PRICES.plus.founder.monthly * 12 - PRICES.plus.founder.annual
+    return PRICES.plus.monthly * 12 - PRICES.plus.annual
+  }
+  // pro
+  if (variant === 'student') return PRICES.pro.student.monthly * 12 - PRICES.pro.student.annual
+  if (variant === 'founder') return PRICES.pro.founder.monthly * 12 - PRICES.pro.founder.annual
+  return PRICES.pro.monthly * 12 - PRICES.pro.annual
+}
+
+/** El ahorro más alto visible al usuario con planes regulares. Usado en la etiqueta del toggle. */
+export const MAX_ANNUAL_SAVINGS = PRICES.pro.monthly * 12 - PRICES.pro.annual  // 789
+
+/** @deprecated — No usar en la UI. El ahorro se muestra en MXN, nunca como porcentaje. */
+export const ANNUAL_DISCOUNT_PERCENT = 33
 
 // ─── IVA ─────────────────────────────────────────────────────────────────────
 
@@ -56,8 +80,19 @@ export const IVA_INCLUDED_LABEL = 'Precios en MXN, IVA incluido'
 // ─── Precio de fundador ──────────────────────────────────────────────────────
 
 export const FOUNDER = {
-  limit: 500,
-  /** Si el usuario cancela y regresa, pierde el precio de fundador. */
+  /**
+   * 50 lugares totales, bolsa compartida entre Plus y Pro.
+   * Se cuentan las personas que OBTUVIERON el precio, no las que lo conservan.
+   * Un lugar perdido (por cancelación o pago fallido) NO se libera.
+   * ⚠️ BACKEND REQUIRED: el conteo real vive en la DB.
+   */
+  limit: 50,
+  /**
+   * El precio de fundador se conserva de por vida mientras la suscripción
+   * esté activa sin interrupción. Una pausa permitida NO es interrupción.
+   * Si el usuario cancela o un pago fallido lo regresa a Gratis, lo pierde
+   * de forma definitiva.
+   */
   lifetimeWhileActive: true,
 } as const
 

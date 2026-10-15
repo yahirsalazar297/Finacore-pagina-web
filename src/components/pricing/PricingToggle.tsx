@@ -1,4 +1,4 @@
-import { ANNUAL_DISCOUNT_PERCENT } from '../../data/pricing'
+import { MAX_ANNUAL_SAVINGS } from '../../data/pricing'
 import type { BillingPeriod } from '../../data/pricing'
 
 interface Props {
@@ -50,7 +50,7 @@ export function PricingToggle({ value, onChange }: Props) {
             color: '#20BF8F',
           }}
         >
-          Ahorra {ANNUAL_DISCOUNT_PERCENT}%
+          Ahorra hasta ${MAX_ANNUAL_SAVINGS.toLocaleString('es-MX')} al año
         </span>
       </button>
     </div>

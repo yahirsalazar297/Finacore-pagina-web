@@ -601,8 +601,9 @@
     .pcv2-price-block { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 4px; }
     .pcv2-amount { font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
     .pcv2-period { font-size: 0.85rem; color: var(--muted); padding-bottom: 6px; }
-    .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; display: none; }
+    .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 2px; display: none; }
     .pcv2-billed.visible { display: block; }
+    .pcv2-savings { font-size: 0.82rem; font-weight: 700; color: var(--green); margin-bottom: 4px; }
     .pcv2-iva { font-size: 0.7rem; color: rgba(145,168,205,0.5); margin-bottom: 14px; }
     .founder-price-chip {
       display: none; font-size: 0.75rem; font-weight: 600; padding: 5px 10px; border-radius: 8px;
@@ -1444,7 +1445,7 @@
           </button>
           <button class="toggle-opt active" id="btn-annual" aria-pressed="true" onclick="setPeriod('annual')">
             Anual
-            <span class="save-badge">Ahorra 33%</span>
+            <span class="save-badge" id="save-badge-label">Ahorra hasta $789 al año</span>
           </button>
         </div>
         <p class="iva-note fade-up d2">Precios en MXN, IVA incluido</p>
@@ -1452,7 +1453,7 @@
         <!-- Contador fundador -->
         <div class="founder-bar fade-up d2" id="founder-bar" aria-live="polite">
           <span class="founder-dot" aria-hidden="true"></span>
-          <span id="founder-text">Quedan <strong id="founder-count">77</strong> lugares con precio de fundador</span>
+          <span id="founder-text">Quedan <strong id="founder-count">27</strong> de 50 lugares con precio de fundador</span>
         </div>
 
         <!-- Tarjetas de plan -->
@@ -1489,6 +1490,7 @@
               <span class="pcv2-period">/ mes</span>
             </div>
             <p class="pcv2-billed" id="plus-billed">$799 cobrado una vez al año</p>
+            <p class="pcv2-savings" id="plus-savings">Ahorras $389 al año</p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
             <div class="founder-price-chip" id="founder-plus-chip">
               ⚡ Precio de fundador activo
@@ -1515,6 +1517,7 @@
               <span class="pcv2-period">/ mes</span>
             </div>
             <p class="pcv2-billed" id="pro-billed">$1,599 cobrado una vez al año</p>
+            <p class="pcv2-savings" id="pro-savings">Ahorras $789 al año</p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
             <div class="founder-price-chip founder-price-chip-green" id="founder-pro-chip">
               ⚡ Precio de fundador activo
@@ -1733,55 +1736,93 @@
   <script>
     // ── Pricing config (single source of truth for index.html) ───
     const PRICING = {
-      plus:  { monthly: 99,  annual: 799,  annualMo: 67,  founderMonthly: 69  },
-      pro:   { monthly: 199, annual: 1599, annualMo: 133, founderMonthly: 149 },
+      plus:  { monthly: 99,  annual: 799,  annualMo: 67,  founderMonthly: 69,  founderAnnual: 549,  founderAnnualMo: 46  },
+      pro:   { monthly: 199, annual: 1599, annualMo: 133, founderMonthly: 149, founderAnnual: 1199, founderAnnualMo: 100 },
     }
-    const FOUNDER_SLOTS_REMAINING = 77   // ⚠️ Replace with real API call in production
-    const FOUNDER_LIMIT = 500
-    const FOUNDER_AVAILABLE = FOUNDER_SLOTS_REMAINING > 0
+    // ⚠️ BACKEND REQUIRED: Replace with real API call before go-live.
+    // Slots = people who ever claimed founder pricing (lost slots are NOT freed).
+    const FOUNDER_SLOTS_REMAINING = 27   // ⚠️ Replace with real API call in production
+    const FOUNDER_LIMIT = 50
+    const FOUNDER_AVAILABLE = FOUNDER_SLOTS_REMAINING > 0 && FOUNDER_SLOTS_REMAINING <= FOUNDER_LIMIT
+
+    // Ahorro anual en MXN (calculado automáticamente desde PRICING)
+    const SAVINGS = {
+      plusRegular:  PRICING.plus.monthly  * 12 - PRICING.plus.annual,       // 389
+      proRegular:   PRICING.pro.monthly   * 12 - PRICING.pro.annual,         // 789
+      plusFounder:  PRICING.plus.founderMonthly * 12 - PRICING.plus.founderAnnual,  // 279
+      proFounder:   PRICING.pro.founderMonthly  * 12 - PRICING.pro.founderAnnual,   // 589
+    }
+    const MAX_ANNUAL_SAVINGS = SAVINGS.proRegular  // 789, para la etiqueta del toggle
 
     let currentPeriod = 'annual'
 
     function formatMXN(n) { return '$' + n.toLocaleString('es-MX') }
 
+    function setSavingsRow(id, amount) {
+      const el = document.getElementById(id)
+      if (!el) return
+      if (amount > 0) {
+        el.textContent = 'Ahorras ' + formatMXN(amount) + ' al año'
+        el.style.display = ''
+      } else {
+        el.style.display = 'none'
+      }
+    }
+
     function updatePrices() {
       const isAnnual = currentPeriod === 'annual'
 
-      // Plus
-      const plusDisplay = FOUNDER_AVAILABLE
-        ? PRICING.plus.founderMonthly
-        : (isAnnual ? PRICING.plus.annualMo : PRICING.plus.monthly)
+      // ── Plus ──────────────────────────────────────────────────────
+      let plusDisplay, plusBilledText, plusSavings = 0
+      if (FOUNDER_AVAILABLE) {
+        if (isAnnual) {
+          plusDisplay  = PRICING.plus.founderAnnualMo
+          plusBilledText = formatMXN(PRICING.plus.founderAnnual) + ' cobrado una vez al año'
+          plusSavings  = SAVINGS.plusFounder
+        } else {
+          plusDisplay  = PRICING.plus.founderMonthly
+          plusBilledText = 'cobrado mensualmente'
+        }
+      } else if (isAnnual) {
+        plusDisplay  = PRICING.plus.annualMo
+        plusBilledText = formatMXN(PRICING.plus.annual) + ' cobrado una vez al año'
+        plusSavings  = SAVINGS.plusRegular
+      } else {
+        plusDisplay  = PRICING.plus.monthly
+        plusBilledText = 'cobrado mensualmente'
+      }
       document.getElementById('plus-price').textContent = formatMXN(plusDisplay)
       const plusBilled = document.getElementById('plus-billed')
-      if (isAnnual && !FOUNDER_AVAILABLE) {
-        plusBilled.textContent = formatMXN(PRICING.plus.annual) + ' cobrado una vez al año'
-        plusBilled.classList.add('visible')
-      } else if (FOUNDER_AVAILABLE) {
-        plusBilled.textContent = 'Precio de fundador — cobrado mensualmente'
-        plusBilled.classList.add('visible')
-      } else {
-        plusBilled.textContent = 'cobrado mensualmente'
-        plusBilled.classList.remove('visible')
-      }
+      plusBilled.textContent = plusBilledText
+      plusBilled.classList.toggle('visible', isAnnual || FOUNDER_AVAILABLE)
+      setSavingsRow('plus-savings', plusSavings)
 
-      // Pro
-      const proDisplay = FOUNDER_AVAILABLE
-        ? PRICING.pro.founderMonthly
-        : (isAnnual ? PRICING.pro.annualMo : PRICING.pro.monthly)
+      // ── Pro ───────────────────────────────────────────────────────
+      let proDisplay, proBilledText, proSavings = 0
+      if (FOUNDER_AVAILABLE) {
+        if (isAnnual) {
+          proDisplay  = PRICING.pro.founderAnnualMo
+          proBilledText = formatMXN(PRICING.pro.founderAnnual) + ' cobrado una vez al año'
+          proSavings  = SAVINGS.proFounder
+        } else {
+          proDisplay  = PRICING.pro.founderMonthly
+          proBilledText = 'cobrado mensualmente'
+        }
+      } else if (isAnnual) {
+        proDisplay  = PRICING.pro.annualMo
+        proBilledText = formatMXN(PRICING.pro.annual) + ' cobrado una vez al año'
+        proSavings  = SAVINGS.proRegular
+      } else {
+        proDisplay  = PRICING.pro.monthly
+        proBilledText = 'cobrado mensualmente'
+      }
       document.getElementById('pro-price').textContent = formatMXN(proDisplay)
       const proBilled = document.getElementById('pro-billed')
-      if (isAnnual && !FOUNDER_AVAILABLE) {
-        proBilled.textContent = formatMXN(PRICING.pro.annual) + ' cobrado una vez al año'
-        proBilled.classList.add('visible')
-      } else if (FOUNDER_AVAILABLE) {
-        proBilled.textContent = 'Precio de fundador — cobrado mensualmente'
-        proBilled.classList.add('visible')
-      } else {
-        proBilled.textContent = 'cobrado mensualmente'
-        proBilled.classList.remove('visible')
-      }
+      proBilled.textContent = proBilledText
+      proBilled.classList.toggle('visible', isAnnual || FOUNDER_AVAILABLE)
+      setSavingsRow('pro-savings', proSavings)
 
-      // Founder chips
+      // ── Founder chips ─────────────────────────────────────────────
       const chipPlus = document.getElementById('founder-plus-chip')
       const chipPro  = document.getElementById('founder-pro-chip')
       if (FOUNDER_AVAILABLE) {
@@ -1816,6 +1857,10 @@
       btn.setAttribute('aria-expanded', String(!open))
       arrow.style.transform = open ? '' : 'rotate(180deg)'
     }
+
+    // Toggle badge: "Ahorra hasta $X al año" — computed from config
+    const saveBadge = document.getElementById('save-badge-label')
+    if (saveBadge) saveBadge.textContent = 'Ahorra hasta ' + formatMXN(MAX_ANNUAL_SAVINGS) + ' al año'
 
     // Founder counter & initial render
     if (FOUNDER_AVAILABLE) {

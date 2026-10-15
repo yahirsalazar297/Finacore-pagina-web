@@ -3,6 +3,7 @@ import type { BillingPeriod, PlanId, PriceVariant } from '../data/pricing'
 import {
   IVA_INCLUDED_LABEL,
   ANALYTICS_EVENTS,
+  FOUNDER,
 } from '../data/pricing'
 import {
   getFounderStatus,
@@ -108,6 +109,23 @@ export function Plans() {
 
           {/* Toggle mensual / anual */}
           <PricingToggle value={period} onChange={handlePeriodChange} />
+
+          {/* Contador de fundadores */}
+          {founderAvailable && (
+            <div
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mt-5 text-xs font-semibold"
+              style={{
+                background: 'rgba(32,191,143,0.1)',
+                border: '1px solid rgba(32,191,143,0.3)',
+                color: '#20BF8F',
+              }}
+            >
+              <span>⚡</span>
+              <span>
+                Quedan {founderSlotsRemaining} de {FOUNDER.limit} lugares con precio de fundador
+              </span>
+            </div>
+          )}
 
           {/* IVA */}
           <p className="text-slate-500 text-xs mt-4">{IVA_INCLUDED_LABEL}</p>
