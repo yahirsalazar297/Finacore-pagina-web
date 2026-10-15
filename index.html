@@ -546,10 +546,126 @@
       border-radius: 10px; padding: 12px 16px;
       font-size: 0.8rem; color: var(--muted); text-align: center; margin-bottom: 24px;
     }
+    /* ── Billing toggle ─────────────────────────────────────────────── */
+    .billing-toggle {
+      display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 10px;
+    }
+    .toggle-opt {
+      background: none; border: none; cursor: pointer;
+      font-size: 0.9rem; font-weight: 600; color: var(--muted);
+      transition: color 0.2s; padding: 4px 0;
+    }
+    .toggle-opt.active, .toggle-opt[aria-pressed="true"] { color: var(--white); }
+    .toggle-opt:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 4px; }
+    .save-badge {
+      display: inline-flex; margin-left: 8px;
+      font-size: 0.72rem; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+      background: rgba(32,191,143,0.12); border: 1px solid rgba(32,191,143,0.3); color: var(--green);
+    }
+    .toggle-switch {
+      width: 44px; height: 24px; border-radius: 100px; border: none; cursor: pointer;
+      background: var(--blue); position: relative; transition: background 0.2s;
+    }
+    .toggle-switch:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+    .toggle-thumb {
+      position: absolute; top: 3px; left: 3px; width: 18px; height: 18px;
+      background: #fff; border-radius: 50%; transition: transform 0.2s;
+    }
+    .toggle-switch[aria-checked="true"] .toggle-thumb { transform: translateX(20px); }
+    .iva-note {
+      text-align: center; font-size: 0.78rem; color: rgba(145,168,205,0.55); margin-bottom: 18px;
+    }
+
+    /* ── Founder bar ─────────────────────────────────────────────────── */
+    .founder-bar {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 0.82rem; font-weight: 500; color: var(--green);
+      margin-bottom: 28px;
+    }
+    .founder-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--green);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    /* ── Plan cards v2 ───────────────────────────────────────────────── */
+    .plans-grid-3 {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 22px; max-width: 1000px; margin: 0 auto 28px;
+    }
+    .plan-card-v2 {
+      padding: 32px 28px; display: flex; flex-direction: column; position: relative;
+    }
+    .plan-featured { border-color: rgba(36,121,250,0.45) !important; background: rgba(36,121,250,0.07) !important; }
+    .pcv2-name { font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; }
+    .pcv2-tagline { font-size: 0.82rem; color: var(--muted); margin-bottom: 16px; }
+    .pcv2-price-block { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 4px; }
+    .pcv2-amount { font-size: 2.8rem; font-weight: 900; color: var(--white); line-height: 1; }
+    .pcv2-period { font-size: 0.85rem; color: var(--muted); padding-bottom: 6px; }
+    .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; display: none; }
+    .pcv2-billed.visible { display: block; }
+    .pcv2-iva { font-size: 0.7rem; color: rgba(145,168,205,0.5); margin-bottom: 14px; }
+    .founder-price-chip {
+      display: none; font-size: 0.75rem; font-weight: 600; padding: 5px 10px; border-radius: 8px;
+      background: rgba(32,191,143,0.1); border: 1px solid rgba(32,191,143,0.25); color: var(--green);
+      margin-bottom: 12px;
+    }
+    .founder-price-chip.visible { display: block; }
+    .founder-price-chip-green { color: var(--green); }
+    .trial-chip {
+      font-size: 0.75rem; font-weight: 600; color: var(--green); margin-bottom: 14px;
+    }
+    .pcv2-features { flex: 1; display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; padding: 0; }
+    .pcv2-features li {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px; font-size: 0.82rem;
+    }
+    .feat-label { color: var(--muted); }
+    .feat-val { font-weight: 600; color: var(--white); text-align: right; }
+    .feat-val.locked { color: rgba(145,168,205,0.4); }
+    .pcv2-cta { justify-content: center; width: 100%; margin-top: auto; }
+
+    /* ── Student link ────────────────────────────────────────────────── */
+    .student-link-row { text-align: center; margin: 4px 0 32px; }
+
+    /* ── Comparison table ───────────────────────────────────────────── */
+    .compare-wrapper {
+      max-width: 1000px; margin: 0 auto 24px;
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .compare-toggle {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 24px; background: none; border: none; cursor: pointer;
+      color: var(--white); font-size: 0.95rem; font-weight: 600;
+      transition: background 0.2s;
+    }
+    .compare-toggle:hover { background: rgba(255,255,255,0.03); }
+    .compare-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+    .compare-scroll { overflow-x: auto; padding: 0 24px 24px; }
+    .compare-tbl { width: 100%; min-width: 520px; border-collapse: collapse; font-size: 0.82rem; }
+    .compare-th-feat, .compare-th-plan {
+      padding: 10px 8px 10px 0; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .compare-th-plan { text-align: center; width: 14%; }
+    .compare-th-feat { text-align: left; }
+    .compare-section td {
+      padding: 14px 0 6px; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em; color: var(--blue);
+    }
+    .compare-row td { padding: 8px 0; color: var(--muted); border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .compare-row td:first-child { color: var(--white); }
+    .compare-row td:not(:first-child) { text-align: center; font-weight: 600; }
+    .cchk { color: var(--green) !important; }
+    .cno  { color: rgba(145,168,205,0.3) !important; }
+    .cpart { color: var(--blue) !important; font-size: 0.78rem !important; }
+
+    /* ── Plans note (legacy, kept for spacing) ──────────────────────── */
     .plans-note {
       text-align: center; font-size: 0.85rem; color: rgba(145,168,205,0.6);
       max-width: 500px; margin: 32px auto 0;
     }
+
     .app-download-row {
       display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
       margin-top: 40px;
@@ -637,6 +753,7 @@
       .tool-card.reverse .tool-visual { order: 0; }
       .ia-grid { grid-template-columns: 1fr; gap: 40px; }
       .plans-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .plans-grid-3 { grid-template-columns: 1fr; max-width: 480px; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -1307,57 +1424,189 @@
     <section id="planes" aria-labelledby="planes-heading">
       <div class="container">
         <div class="section-header fade-up">
-          <span class="eyebrow">Planes de acceso</span>
+          <span class="eyebrow">Planes y precios</span>
           <h2 class="section-title" id="planes-heading">Elige el plan <span class="gradient-text">que se adapta a ti</span></h2>
-          <p class="section-desc">FINCORE contempla un modelo que combina acceso básico con planes especializados para cada etapa de tu formación.</p>
+          <p class="section-desc">Desde educación financiera básica hasta el ecosistema completo con herramientas profesionales, IA y las 12 áreas académicas.</p>
         </div>
 
-        <div class="plans-grid">
-          <div class="card plan-card fade-up d1">
-            <div class="plan-name">Gratis</div>
-            <div class="plan-price">
-              <span class="plan-price-pending">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                Precio por confirmar
-              </span>
+        <!-- Toggle mensual / anual -->
+        <div class="billing-toggle fade-up d1" role="group" aria-label="Periodo de facturación">
+          <button class="toggle-opt" id="btn-monthly" aria-pressed="false" onclick="setPeriod('monthly')">Mensual</button>
+          <button
+            id="toggle-switch"
+            class="toggle-switch"
+            role="switch"
+            aria-checked="true"
+            aria-label="Cambiar a pago anual"
+            onclick="flipToggle()"
+          >
+            <span class="toggle-thumb" aria-hidden="true"></span>
+          </button>
+          <button class="toggle-opt active" id="btn-annual" aria-pressed="true" onclick="setPeriod('annual')">
+            Anual
+            <span class="save-badge">Ahorra 33%</span>
+          </button>
+        </div>
+        <p class="iva-note fade-up d2">Precios en MXN, IVA incluido</p>
+
+        <!-- Contador fundador -->
+        <div class="founder-bar fade-up d2" id="founder-bar" aria-live="polite">
+          <span class="founder-dot" aria-hidden="true"></span>
+          <span id="founder-text">Quedan <strong id="founder-count">77</strong> lugares con precio de fundador</span>
+        </div>
+
+        <!-- Tarjetas de plan -->
+        <div class="plans-grid-3" id="plans-grid">
+
+          <!-- GRATIS -->
+          <div class="card plan-card-v2 fade-up d1">
+            <div class="pcv2-name">Gratis</div>
+            <p class="pcv2-tagline">Para empezar sin compromiso</p>
+            <div class="pcv2-price-block">
+              <span class="pcv2-amount">$0</span>
+              <span class="pcv2-period">/ siempre</span>
             </div>
-            <p class="plan-desc">Acceso inicial para explorar FINCORE y descubrir el ecosistema de aprendizaje financiero.</p>
-            <div class="plan-pending-note">Los beneficios y condiciones de este plan están siendo definidos.</div>
-            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="justify-content:center;">Comenzar gratis</a>
+            <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
+            <ul class="pcv2-features">
+              <li><span class="feat-label">Temas disponibles</span><span class="feat-val">38 de 248</span></li>
+              <li><span class="feat-label">Vidas</span><span class="feat-val">5</span></li>
+              <li><span class="feat-label">Laboratorio contable</span><span class="feat-val">3 ejercicios</span></li>
+              <li><span class="feat-label">Calculadoras</span><span class="feat-val">2 básicas</span></li>
+              <li><span class="feat-label">Inversión y valuación</span><span class="feat-val locked">🔒 Bloqueado</span></li>
+              <li><span class="feat-label">Tutor IA</span><span class="feat-val">3 preguntas/día</span></li>
+              <li><span class="feat-label">Evaluaciones</span><span class="feat-val">Quiz por tema</span></li>
+            </ul>
+            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-secondary pcv2-cta">Comenzar gratis</a>
           </div>
 
-          <div class="card plan-card featured fade-up d2">
+          <!-- PLUS -->
+          <div class="card plan-card-v2 plan-featured fade-up d2">
             <div class="plan-badge">Popular</div>
-            <div class="plan-name" style="color:var(--blue);">Plus</div>
-            <div class="plan-price">
-              <span class="plan-price-pending">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                Precio por confirmar
-              </span>
+            <div class="pcv2-name" style="color:var(--blue);">Plus</div>
+            <p class="pcv2-tagline">Para quien quiere aprender en serio</p>
+            <div class="pcv2-price-block">
+              <span class="pcv2-amount" id="plus-price">$67</span>
+              <span class="pcv2-period">/ mes</span>
             </div>
-            <p class="plan-desc">Diseñado para estudiantes que buscan reforzar su formación académica con herramientas y contenido especializado.</p>
-            <div class="plan-pending-note">Los beneficios y condiciones de este plan están siendo definidos.</div>
-            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="justify-content:center;">Conocer más</a>
+            <p class="pcv2-billed" id="plus-billed">$799 cobrado una vez al año</p>
+            <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
+            <div class="founder-price-chip" id="founder-plus-chip">
+              ⚡ Precio de fundador activo
+            </div>
+            <ul class="pcv2-features">
+              <li><span class="feat-label">Temas disponibles</span><span class="feat-val">141 de 248</span></li>
+              <li><span class="feat-label">Vidas</span><span class="feat-val">15</span></li>
+              <li><span class="feat-label">Laboratorio contable</span><span class="feat-val">Acceso completo</span></li>
+              <li><span class="feat-label">Calculadoras</span><span class="feat-val">Todas + ISR/IVA</span></li>
+              <li><span class="feat-label">Inversión y valuación</span><span class="feat-val locked">🔒 Bloqueado</span></li>
+              <li><span class="feat-label">Tutor IA</span><span class="feat-val">20 preguntas/día</span></li>
+              <li><span class="feat-label">Evaluaciones</span><span class="feat-val">Quiz + examen por área</span></li>
+            </ul>
+            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary pcv2-cta">Obtener Plus</a>
           </div>
 
-          <div class="card plan-card fade-up d3">
-            <div class="plan-name" style="background:linear-gradient(135deg,var(--blue),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Pro</div>
-            <div class="plan-price">
-              <span class="plan-price-pending">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                Precio por confirmar
-              </span>
+          <!-- PRO -->
+          <div class="card plan-card-v2 fade-up d3">
+            <div class="plan-badge" style="background:linear-gradient(135deg,var(--blue),var(--green));">Más completo</div>
+            <div class="pcv2-name gradient-text">Pro</div>
+            <p class="pcv2-tagline">El ecosistema completo</p>
+            <div class="pcv2-price-block">
+              <span class="pcv2-amount" id="pro-price">$133</span>
+              <span class="pcv2-period">/ mes</span>
             </div>
-            <p class="plan-desc">Para profesionistas que necesitan herramientas avanzadas, acceso completo al catálogo y funcionalidades profesionales.</p>
-            <div class="plan-pending-note">Los beneficios y condiciones de este plan están siendo definidos.</div>
-            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-green" style="justify-content:center;">Conocer más</a>
+            <p class="pcv2-billed" id="pro-billed">$1,599 cobrado una vez al año</p>
+            <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
+            <div class="founder-price-chip founder-price-chip-green" id="founder-pro-chip">
+              ⚡ Precio de fundador activo
+            </div>
+            <div class="trial-chip">🎁 Prueba gratis 7 días — cancela cuando quieras</div>
+            <ul class="pcv2-features">
+              <li><span class="feat-label">Temas disponibles</span><span class="feat-val">248 de 248</span></li>
+              <li><span class="feat-label">Vidas</span><span class="feat-val" style="color:var(--green);">Ilimitadas</span></li>
+              <li><span class="feat-label">Laboratorio contable</span><span class="feat-val">Acceso completo</span></li>
+              <li><span class="feat-label">Calculadoras</span><span class="feat-val">Todas</span></li>
+              <li><span class="feat-label">Inversión y valuación</span><span class="feat-val" style="color:var(--green);">Incluido</span></li>
+              <li><span class="feat-label">Tutor IA</span><span class="feat-val" style="color:var(--green);">Ilimitado</span></li>
+              <li><span class="feat-label">Evaluaciones</span><span class="feat-val">Quiz + examen + certificado</span></li>
+            </ul>
+            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn pcv2-cta" style="background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;justify-content:center;">
+              Probar Pro gratis 7 días
+            </a>
           </div>
         </div>
 
-        <p class="plans-note fade-up">Los precios, beneficios específicos y condiciones de cada plan están siendo confirmados por el equipo de FINCORE. Esta sección se actualizará con información oficial una vez definida.</p>
+        <!-- Enlace estudiante -->
+        <div class="student-link-row fade-up">
+          <a href="#contacto" style="color:var(--green);font-weight:600;font-size:0.9rem;text-decoration:underline;text-underline-offset:4px;">
+            ¿Eres estudiante? Obtén Pro a precio especial
+          </a>
+          <p style="font-size:0.78rem;color:rgba(145,168,205,0.6);margin-top:4px;">
+            Verifica tu correo institucional — desde $129/mes o $999/año
+          </p>
+        </div>
 
+        <!-- Tabla comparativa (expandible) -->
+        <div class="compare-wrapper fade-up">
+          <button class="compare-toggle" id="compare-toggle" aria-expanded="false" aria-controls="compare-table" onclick="toggleTable()">
+            <span>Ver comparativa completa de planes</span>
+            <span id="compare-arrow" aria-hidden="true">▼</span>
+          </button>
+          <div id="compare-table" hidden>
+            <div class="compare-scroll">
+              <table class="compare-tbl">
+                <thead>
+                  <tr>
+                    <th class="compare-th-feat">Característica</th>
+                    <th class="compare-th-plan">Gratis</th>
+                    <th class="compare-th-plan" style="color:var(--blue);">Plus</th>
+                    <th class="compare-th-plan">Pro</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="compare-section"><td colspan="4">Contenido académico</td></tr>
+                  <tr class="compare-row"><td>Temas disponibles</td><td>38</td><td>141</td><td>248</td></tr>
+                  <tr class="compare-row"><td>Áreas completas</td><td>1</td><td>6</td><td>12</td></tr>
+
+                  <tr class="compare-section"><td colspan="4">Áreas incluidas completas</td></tr>
+                  <tr class="compare-row"><td>Finanzas Personales y Ed. Financiera</td><td class="cchk">✓</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Contabilidad Financiera</td><td class="cpart">10 temas</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Costos y Cont. Administrativa</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Fiscalidad y Tributación</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Economía y Entorno Empresarial</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Emprendimiento, Admin. y Estrategia</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Finanzas Corporativas</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Inversiones y Mercados Financieros</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Auditoría, Control Interno y Riesgos</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Finanzas Cuantitativas y Riesgos</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Derecho Empresarial y Regulación</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Análisis de Datos, Tec. e IA</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+
+                  <tr class="compare-section"><td colspan="4">Práctica y repaso</td></tr>
+                  <tr class="compare-row"><td>Vidas</td><td>5</td><td>15</td><td>Ilimitadas</td></tr>
+                  <tr class="compare-row"><td>Quiz por tema</td><td class="cchk">✓</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Examen por área</td><td class="cno">—</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Modo simulacro</td><td class="cno">—</td><td class="cno">—</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Certificado</td><td class="cno">—</td><td class="cno">—</td><td class="cchk">✓</td></tr>
+
+                  <tr class="compare-section"><td colspan="4">Herramientas</td></tr>
+                  <tr class="compare-row"><td>Laboratorio contable</td><td>3 ejercicios</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Calculadoras</td><td>2 básicas</td><td>Todas + ISR/IVA</td><td>Todas</td></tr>
+                  <tr class="compare-row"><td>Inversión y valuación</td><td class="cno">🔒</td><td class="cno">🔒</td><td class="cchk">✓</td></tr>
+
+                  <tr class="compare-section"><td colspan="4">Tutor IA</td></tr>
+                  <tr class="compare-row"><td>Preguntas al día</td><td>3</td><td>20</td><td>Ilimitadas</td></tr>
+
+                  <tr class="compare-section"><td colspan="4">Estadísticas</td></tr>
+                  <tr class="compare-row"><td>Progreso básico</td><td class="cchk">✓</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                  <tr class="compare-row"><td>Estadísticas detalladas</td><td class="cno">—</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones de tiendas -->
         <div class="app-download-row fade-up d1" role="group" aria-label="Descargar la app de FINCORE">
-          <!-- App Store -->
           <a href="#" class="btn-store" aria-label="Descargar en App Store (próximamente)">
             <svg class="btn-store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <path d="M20.16 14.84a5.6 5.6 0 0 1 2.67-4.71 5.74 5.74 0 0 0-4.52-2.44c-1.91-.2-3.75 1.14-4.72 1.14-.99 0-2.49-1.12-4.1-1.09a6.02 6.02 0 0 0-5.07 3.09C2.1 14.64 3.7 20.52 6 23.37c1.16 1.49 2.52 3.16 4.31 3.1 1.74-.07 2.39-1.11 4.49-1.11 2.08 0 2.69 1.11 4.5 1.07 1.87-.03 3.05-1.5 4.18-3.01a12.4 12.4 0 0 0 1.9-3.48 5.41 5.41 0 0 1-3.22-5.1Z" fill="white"/>
@@ -1368,7 +1617,6 @@
               <span class="btn-store-name">App Store</span>
             </div>
           </a>
-          <!-- Google Play -->
           <a href="#" class="btn-store" aria-label="Descargar en Google Play (próximamente)">
             <svg class="btn-store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
               <path d="M4.5 3.17a1.5 1.5 0 0 0-.5 1.13v19.4c0 .45.17.87.5 1.13l.06.06 10.87-10.87v-.26L4.56 3.11l-.06.06Z" fill="#4FC3F7"/>
@@ -1483,6 +1731,101 @@
   </footer>
 
   <script>
+    // ── Pricing config (single source of truth for index.html) ───
+    const PRICING = {
+      plus:  { monthly: 99,  annual: 799,  annualMo: 67,  founderMonthly: 69  },
+      pro:   { monthly: 199, annual: 1599, annualMo: 133, founderMonthly: 149 },
+    }
+    const FOUNDER_SLOTS_REMAINING = 77   // ⚠️ Replace with real API call in production
+    const FOUNDER_LIMIT = 500
+    const FOUNDER_AVAILABLE = FOUNDER_SLOTS_REMAINING > 0
+
+    let currentPeriod = 'annual'
+
+    function formatMXN(n) { return '$' + n.toLocaleString('es-MX') }
+
+    function updatePrices() {
+      const isAnnual = currentPeriod === 'annual'
+
+      // Plus
+      const plusDisplay = FOUNDER_AVAILABLE
+        ? PRICING.plus.founderMonthly
+        : (isAnnual ? PRICING.plus.annualMo : PRICING.plus.monthly)
+      document.getElementById('plus-price').textContent = formatMXN(plusDisplay)
+      const plusBilled = document.getElementById('plus-billed')
+      if (isAnnual && !FOUNDER_AVAILABLE) {
+        plusBilled.textContent = formatMXN(PRICING.plus.annual) + ' cobrado una vez al año'
+        plusBilled.classList.add('visible')
+      } else if (FOUNDER_AVAILABLE) {
+        plusBilled.textContent = 'Precio de fundador — cobrado mensualmente'
+        plusBilled.classList.add('visible')
+      } else {
+        plusBilled.textContent = 'cobrado mensualmente'
+        plusBilled.classList.remove('visible')
+      }
+
+      // Pro
+      const proDisplay = FOUNDER_AVAILABLE
+        ? PRICING.pro.founderMonthly
+        : (isAnnual ? PRICING.pro.annualMo : PRICING.pro.monthly)
+      document.getElementById('pro-price').textContent = formatMXN(proDisplay)
+      const proBilled = document.getElementById('pro-billed')
+      if (isAnnual && !FOUNDER_AVAILABLE) {
+        proBilled.textContent = formatMXN(PRICING.pro.annual) + ' cobrado una vez al año'
+        proBilled.classList.add('visible')
+      } else if (FOUNDER_AVAILABLE) {
+        proBilled.textContent = 'Precio de fundador — cobrado mensualmente'
+        proBilled.classList.add('visible')
+      } else {
+        proBilled.textContent = 'cobrado mensualmente'
+        proBilled.classList.remove('visible')
+      }
+
+      // Founder chips
+      const chipPlus = document.getElementById('founder-plus-chip')
+      const chipPro  = document.getElementById('founder-pro-chip')
+      if (FOUNDER_AVAILABLE) {
+        chipPlus && chipPlus.classList.add('visible')
+        chipPro  && chipPro.classList.add('visible')
+      }
+    }
+
+    function setPeriod(period) {
+      currentPeriod = period
+      const isAnnual = period === 'annual'
+
+      document.getElementById('btn-monthly').classList.toggle('active', !isAnnual)
+      document.getElementById('btn-annual').classList.toggle('active',  isAnnual)
+      document.getElementById('btn-monthly').setAttribute('aria-pressed', String(!isAnnual))
+      document.getElementById('btn-annual').setAttribute('aria-pressed',  String(isAnnual))
+      document.getElementById('toggle-switch').setAttribute('aria-checked', String(isAnnual))
+
+      updatePrices()
+    }
+
+    function flipToggle() {
+      setPeriod(currentPeriod === 'annual' ? 'monthly' : 'annual')
+    }
+
+    function toggleTable() {
+      const table = document.getElementById('compare-table')
+      const arrow = document.getElementById('compare-arrow')
+      const btn   = document.getElementById('compare-toggle')
+      const open  = !table.hidden
+      table.hidden = open
+      btn.setAttribute('aria-expanded', String(!open))
+      arrow.style.transform = open ? '' : 'rotate(180deg)'
+    }
+
+    // Founder counter & initial render
+    if (FOUNDER_AVAILABLE) {
+      document.getElementById('founder-count').textContent = FOUNDER_SLOTS_REMAINING
+    } else {
+      const bar = document.getElementById('founder-bar')
+      if (bar) bar.style.display = 'none'
+    }
+    updatePrices()   // render prices on load (anual por defecto)
+
     // ── Year ──────────────────────────────────────────────────────
     document.getElementById('year').textContent = new Date().getFullYear();
 
