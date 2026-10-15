@@ -92,17 +92,34 @@ export interface FounderStatus {
 
 // ─── Estado local (reemplazar con API real en producción) ─────────────────────
 
+function isValidSubscription(obj: unknown): obj is UserSubscription {
+  if (!obj || typeof obj !== 'object') return false
+  const o = obj as Record<string, unknown>
+  return (
+    typeof o.userId === 'string' &&
+    ['free', 'plus', 'pro'].includes(o.planId as string) &&
+    ['active', 'trialing', 'past_due', 'canceled', 'paused', 'unpaid'].includes(o.status as string)
+  )
+}
+
 /**
  * ⚠️  BACKEND: En producción leer de la DB vía GET /api/me/subscription.
  * Esta función NUNCA debe tomar decisiones de acceso basándose solo en
  * localStorage — es para UI optimista únicamente.
  */
 export async function getCurrentSubscription(): Promise<UserSubscription | null> {
+  if (import.meta.env.PROD) {
+    // ⚠️  BACKEND REQUIRED — reemplazar con GET /api/me/subscription antes de producción
+    console.error('[getCurrentSubscription] llamada en producción sin backend')
+    return null
+  }
   // ⚠️  BACKEND REQUIRED — stub de desarrollo
   const stored = localStorage.getItem('fincore_subscription_dev')
   if (!stored) return null
   try {
-    return JSON.parse(stored) as UserSubscription
+    const parsed: unknown = JSON.parse(stored)
+    if (!isValidSubscription(parsed)) return null
+    return parsed
   } catch {
     return null
   }
@@ -113,6 +130,12 @@ export async function getCurrentSubscription(): Promise<UserSubscription | null>
  * ⚠️  BACKEND: En producción verificar en el servidor, no en el cliente.
  */
 export async function hasAccess(requiredPlan: PlanId): Promise<boolean> {
+  if (import.meta.env.PROD) {
+    // ⚠️  BACKEND REQUIRED — reemplazar con GET /api/me/subscription antes de producción
+    console.error('[hasAccess] llamada en producción sin backend — denegando acceso por defecto')
+    return requiredPlan === 'free'
+  }
+
   const sub = await getCurrentSubscription()
   if (!sub) return requiredPlan === 'free'
 
@@ -224,6 +247,11 @@ export async function cancelSubscription(reason?: string): Promise<{ success: bo
  * ⚠️  BACKEND REQUIRED.
  */
 export async function pauseSubscription(): Promise<{ success: boolean; error?: string }> {
+  if (import.meta.env.PROD) {
+    // ⚠️  BACKEND REQUIRED — nunca validar límites de pausa desde localStorage en producción
+    return { success: false, error: 'Backend no disponible' }
+  }
+
   const sub = await getCurrentSubscription()
   if (!sub) return { success: false, error: 'Sin suscripción activa' }
 
@@ -252,8 +280,8 @@ export async function getFounderStatus(): Promise<FounderStatus> {
   // const res = await fetch('/api/founder-status')
   // return res.json()
 
-  // Stub de desarrollo (simula 423 usados, quedan 77)
-  return { available: true, slotsRemaining: 77 }
+  // Stub de desarrollo (simula 23 usados, quedan 27 de 50)
+  return { available: true, slotsRemaining: 27 }
 }
 
 /**
@@ -303,7 +331,7 @@ export async function verifyStudentCode(
 ): Promise<{ success: boolean; error?: string }> {
   // ⚠️  BACKEND REQUIRED
   console.warn('[subscriptionService] verifyStudentCode: BACKEND REQUIRED')
-  trackEvent(ANALYTICS_EVENTS.STUDENT_VERIFIED, { plan: 'pro' })
+  // trackEvent(ANALYTICS_EVENTS.STUDENT_VERIFIED, { plan: 'pro' }) ← llamar solo en éxito real
   return { success: false, error: 'Backend no disponible' }
 }
 
