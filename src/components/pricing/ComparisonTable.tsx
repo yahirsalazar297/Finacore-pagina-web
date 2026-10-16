@@ -148,13 +148,6 @@ export function ComparisonTable() {
             plus={<Check yes={false} />}
             pro={<Check yes />}
           />
-          <DataRow
-            label="Certificado"
-            free={<Check yes={false} />}
-            plus={<Check yes={false} />}
-            pro={<Check yes />}
-          />
-
           {/* ── Herramientas ────────────────────────────────────────── */}
           <SectionRow label="Herramientas" />
           <DataRow

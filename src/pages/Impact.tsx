@@ -129,7 +129,7 @@ export function Impact() {
               Alineación conceptual con los Objetivos de Desarrollo Sostenible
             </h2>
             <p className="text-slate-400 text-center text-sm mb-10 leading-relaxed">
-              El propósito y las actividades de FINCORE se alinean conceptualmente con los siguientes ODS de la Agenda 2030 de Naciones Unidas. Esta alineación es de carácter conceptual y no implica certificación, aval ni alianza formal con organismos internacionales.
+              El propósito y las actividades de FINCORE se alinean conceptualmente con los siguientes ODS de la Agenda 2030 de Naciones Unidas. Esta alineación es de carácter conceptual y no implica aval ni alianza formal con organismos internacionales.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {sdgs.map((sdg) => (

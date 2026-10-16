@@ -175,7 +175,7 @@ export const LIMITS = {
   evaluations: {
     free: ['quiz-por-tema'],
     plus: ['quiz-por-tema', 'examen-por-area'],
-    pro: ['quiz-por-tema', 'examen-por-area', 'certificado', 'modo-simulacro'],
+    pro: ['quiz-por-tema', 'examen-por-area', 'modo-simulacro'],
   },
 } as const
 
