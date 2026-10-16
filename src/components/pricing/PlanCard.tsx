@@ -7,6 +7,7 @@ import {
   PLAN_TAGLINES,
   TRIAL,
   PRICES,
+  getAnnualSavings,
 } from '../../data/pricing'
 import {
   getBilledTotal,
@@ -42,6 +43,7 @@ export function PlanCard({
 
   const fixedMonthlyPrice = planId === 'free' ? 0 : planId === 'plus' ? PRICES.plus.monthly : PRICES.pro.monthly
   const billedTotal = getBilledTotal(planId, period, variant)
+  const annualSavings = !isFree ? getAnnualSavings(planId as 'plus' | 'pro') : null
 
   const lives = LIMITS.lives[planId]
   const aiQuestions = LIMITS.aiQuestionsPerDay[planId === 'free' ? 'free' : planId === 'plus' ? 'plus' : 'pro']
@@ -102,6 +104,18 @@ export function PlanCard({
             <p className="text-slate-400 text-sm mb-1">
               {formatPrice(billedTotal)} cobrado una vez al año
             </p>
+          )}
+          {period === 'annual' && annualSavings && (
+            <div
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold mt-1 mb-1 self-start"
+              style={{
+                background: 'rgba(32,191,143,0.12)',
+                border: '1px solid rgba(32,191,143,0.25)',
+                color: '#20BF8F',
+              }}
+            >
+              Te ahorras {formatPrice(annualSavings.amount)} al año · {annualSavings.percent}% menos
+            </div>
           )}
         </>
       )}

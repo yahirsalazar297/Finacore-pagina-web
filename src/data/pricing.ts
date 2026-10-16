@@ -46,6 +46,17 @@ export const ANNUAL_DISCOUNT_PERCENT = 33  // referencia interna; no mostrar en 
 export const IVA_RATE = 0.16
 export const IVA_INCLUDED_LABEL = 'Precios en MXN, IVA incluido'
 
+/**
+ * Calcula el ahorro real al pagar el plan anual vs. mensual.
+ * Se basa en PRICES, por lo que se actualiza solo si cambian los precios.
+ */
+export function getAnnualSavings(planId: 'plus' | 'pro'): { amount: number; percent: number } {
+  const p = PRICES[planId]
+  const amount = p.monthly * 12 - p.annual
+  const percent = Math.round((amount / (p.monthly * 12)) * 100)
+  return { amount, percent }
+}
+
 // ─── Prueba gratuita ─────────────────────────────────────────────────────────
 
 export const TRIAL = {

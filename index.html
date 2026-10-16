@@ -590,6 +590,13 @@
     .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; display: none; }
     .pcv2-billed.visible { display: block; }
     .pcv2-iva { font-size: 0.7rem; color: rgba(145,168,205,0.5); margin-bottom: 14px; }
+    .savings-chip {
+      display: none; font-size: 0.75rem; font-weight: 600;
+      padding: 5px 10px; border-radius: 8px;
+      background: rgba(32,191,143,0.12); border: 1px solid rgba(32,191,143,0.25); color: var(--green);
+      margin-bottom: 10px;
+    }
+    .savings-chip.visible { display: inline-block; }
     .trial-chip {
       font-size: 0.75rem; font-weight: 600; color: var(--green); margin-bottom: 14px;
     }
@@ -1458,6 +1465,7 @@
               <span class="pcv2-period">/ mes</span>
             </div>
             <p class="pcv2-billed" id="plus-billed">$799 cobrado una vez al año</p>
+            <p class="savings-chip" id="plus-savings"></p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
             <ul class="pcv2-features">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">141 de 248</span></li>
@@ -1481,6 +1489,7 @@
               <span class="pcv2-period">/ mes</span>
             </div>
             <p class="pcv2-billed" id="pro-billed">$1,599 cobrado una vez al año</p>
+            <p class="savings-chip" id="pro-savings"></p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
             <div class="trial-chip">🎁 Prueba gratis 7 días — cancela cuando quieras</div>
             <ul class="pcv2-features">
@@ -1724,6 +1733,23 @@
         proBilled.classList.add('visible')
       } else {
         proBilled.classList.remove('visible')
+      }
+
+      // Ahorro anual vs. mensual (calculado automáticamente desde PRICING)
+      const plusSavingsAmt = PRICING.plus.monthly * 12 - PRICING.plus.annual
+      const plusSavingsPct = Math.round(plusSavingsAmt / (PRICING.plus.monthly * 12) * 100)
+      const proSavingsAmt  = PRICING.pro.monthly  * 12 - PRICING.pro.annual
+      const proSavingsPct  = Math.round(proSavingsAmt  / (PRICING.pro.monthly  * 12) * 100)
+      const plusSavingsEl  = document.getElementById('plus-savings')
+      const proSavingsEl   = document.getElementById('pro-savings')
+      if (isAnnual) {
+        plusSavingsEl.textContent = 'Te ahorras ' + formatMXN(plusSavingsAmt) + ' al año · ' + plusSavingsPct + '% menos'
+        plusSavingsEl.classList.add('visible')
+        proSavingsEl.textContent  = 'Te ahorras ' + formatMXN(proSavingsAmt)  + ' al año · ' + proSavingsPct  + '% menos'
+        proSavingsEl.classList.add('visible')
+      } else {
+        plusSavingsEl.classList.remove('visible')
+        proSavingsEl.classList.remove('visible')
       }
 
     }
