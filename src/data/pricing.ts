@@ -12,7 +12,7 @@
 
 export type PlanId = 'free' | 'plus' | 'pro'
 export type BillingPeriod = 'monthly' | 'annual'
-export type PriceVariant = 'regular' | 'founder' | 'student'
+export type PriceVariant = 'regular' | 'student'
 
 // ─── Precios (MXN, IVA incluido) ────────────────────────────────────────────
 
@@ -25,21 +25,11 @@ export const PRICES = {
     monthly: 99,
     annual: 799,
     annualMonthlyEquivalent: 67,    // Math.round(799 / 12)
-    founder: {
-      monthly: 69,
-      annual: 549,
-      annualMonthlyEquivalent: 46,  // Math.round(549 / 12)
-    },
   },
   pro: {
     monthly: 199,
     annual: 1_599,
     annualMonthlyEquivalent: 133,   // Math.round(1599 / 12)
-    founder: {
-      monthly: 149,
-      annual: 1_199,
-      annualMonthlyEquivalent: 100, // Math.round(1199 / 12)
-    },
     student: {
       monthly: 129,
       annual: 999,
@@ -55,25 +45,6 @@ export const ANNUAL_DISCOUNT_PERCENT = 33  // referencia interna; no mostrar en 
 
 export const IVA_RATE = 0.16
 export const IVA_INCLUDED_LABEL = 'Precios en MXN, IVA incluido'
-
-// ─── Precio de fundador ──────────────────────────────────────────────────────
-
-export const FOUNDER = {
-  /**
-   * 50 lugares totales, bolsa compartida entre Plus y Pro.
-   * Se cuentan las personas que OBTUVIERON el precio, no las que lo conservan.
-   * Un lugar perdido (por cancelación o pago fallido) NO se libera.
-   * ⚠️ BACKEND REQUIRED: el conteo real vive en la DB.
-   */
-  limit: 50,
-  /**
-   * El precio de fundador se conserva de por vida mientras la suscripción
-   * esté activa sin interrupción. Una pausa permitida NO es interrupción.
-   * Si el usuario cancela o un pago fallido lo regresa a Gratis, lo pierde
-   * de forma definitiva.
-   */
-  lifetimeWhileActive: true,
-} as const
 
 // ─── Prueba gratuita ─────────────────────────────────────────────────────────
 
@@ -209,8 +180,7 @@ export interface CouponConfig {
   periodApplicableTo: CouponPeriodApplicableTo
   expiresAt: string | null      // ISO date string o null = sin vencimiento
   maxUses: number | null        // null = usos ilimitados
-  /** Un cupón no se puede combinar con precio de fundador ni de estudiante. */
-  combinesWithFounder: false
+  /** Un cupón no se puede combinar con precio de estudiante. */
   combinesWithStudent: false
 }
 
@@ -340,7 +310,6 @@ export const ANALYTICS_EVENTS = {
   PAYMENT_RECOVERED:           'payment_recovered',
   COUPON_APPLIED:              'coupon_applied',
   STUDENT_VERIFIED:            'student_verified',
-  FOUNDER_SLOT_USED:           'founder_slot_used',
 } as const
 
 export type AnalyticsEvent = typeof ANALYTICS_EVENTS[keyof typeof ANALYTICS_EVENTS]

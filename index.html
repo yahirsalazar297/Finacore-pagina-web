@@ -573,17 +573,6 @@
       text-align: center; font-size: 0.78rem; color: rgba(145,168,205,0.55); margin-bottom: 18px;
     }
 
-    /* ── Founder bar ─────────────────────────────────────────────────── */
-    .founder-bar {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      font-size: 0.82rem; font-weight: 500; color: var(--green);
-      margin-bottom: 28px;
-    }
-    .founder-dot {
-      width: 7px; height: 7px; border-radius: 50%; background: var(--green);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
     /* ── Plan cards v2 ───────────────────────────────────────────────── */
     .plans-grid-3 {
       display: grid; grid-template-columns: repeat(3, 1fr);
@@ -601,13 +590,6 @@
     .pcv2-billed { font-size: 0.78rem; color: var(--muted); margin-bottom: 4px; display: none; }
     .pcv2-billed.visible { display: block; }
     .pcv2-iva { font-size: 0.7rem; color: rgba(145,168,205,0.5); margin-bottom: 14px; }
-    .founder-price-chip {
-      display: none; font-size: 0.75rem; font-weight: 600; padding: 5px 10px; border-radius: 8px;
-      background: rgba(32,191,143,0.1); border: 1px solid rgba(32,191,143,0.25); color: var(--green);
-      margin-bottom: 12px;
-    }
-    .founder-price-chip.visible { display: block; }
-    .founder-price-chip-green { color: var(--green); }
     .trial-chip {
       font-size: 0.75rem; font-weight: 600; color: var(--green); margin-bottom: 14px;
     }
@@ -1442,12 +1424,6 @@
         </div>
         <p class="iva-note fade-up d2">Precios en MXN, IVA incluido</p>
 
-        <!-- Contador fundador -->
-        <div class="founder-bar fade-up d2" id="founder-bar" aria-live="polite">
-          <span class="founder-dot" aria-hidden="true"></span>
-          <span id="founder-text">Quedan <strong id="founder-count">27</strong> de 50 lugares con precio de fundador</span>
-        </div>
-
         <!-- Tarjetas de plan -->
         <div class="plans-grid-3" id="plans-grid">
 
@@ -1483,9 +1459,6 @@
             </div>
             <p class="pcv2-billed" id="plus-billed">$799 cobrado una vez al año</p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
-            <div class="founder-price-chip" id="founder-plus-chip">
-              ⚡ Precio de fundador activo
-            </div>
             <ul class="pcv2-features">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">141 de 248</span></li>
               <li><span class="feat-label">Vidas</span><span class="feat-val">15</span></li>
@@ -1509,9 +1482,6 @@
             </div>
             <p class="pcv2-billed" id="pro-billed">$1,599 cobrado una vez al año</p>
             <p class="pcv2-iva">Precios en MXN, IVA incluido</p>
-            <div class="founder-price-chip founder-price-chip-green" id="founder-pro-chip">
-              ⚡ Precio de fundador activo
-            </div>
             <div class="trial-chip">🎁 Prueba gratis 7 días — cancela cuando quieras</div>
             <ul class="pcv2-features">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">248 de 248</span></li>
@@ -1725,14 +1695,9 @@
   <script>
     // ── Pricing config (single source of truth for index.html) ───
     const PRICING = {
-      plus:  { monthly: 99,  annual: 799,  annualMo: 67,  founderMonthly: 69,  founderAnnual: 549,  founderAnnualMo: 46  },
-      pro:   { monthly: 199, annual: 1599, annualMo: 133, founderMonthly: 149, founderAnnual: 1199, founderAnnualMo: 100 },
+      plus:  { monthly: 99,  annual: 799,  annualMo: 67  },
+      pro:   { monthly: 199, annual: 1599, annualMo: 133 },
     }
-    // ⚠️ BACKEND REQUIRED: Replace with real API call before go-live.
-    // Slots = people who ever claimed founder pricing (lost slots are NOT freed).
-    const FOUNDER_SLOTS_REMAINING = 27   // ⚠️ Replace with real API call in production
-    const FOUNDER_LIMIT = 50
-    const FOUNDER_AVAILABLE = FOUNDER_SLOTS_REMAINING > 0 && FOUNDER_SLOTS_REMAINING <= FOUNDER_LIMIT
 
     let currentPeriod = 'annual'
 
@@ -1761,13 +1726,6 @@
         proBilled.classList.remove('visible')
       }
 
-      // Founder chips
-      const chipPlus = document.getElementById('founder-plus-chip')
-      const chipPro  = document.getElementById('founder-pro-chip')
-      if (FOUNDER_AVAILABLE) {
-        chipPlus && chipPlus.classList.add('visible')
-        chipPro  && chipPro.classList.add('visible')
-      }
     }
 
     function setPeriod(period) {
@@ -1797,13 +1755,6 @@
       arrow.style.transform = open ? '' : 'rotate(180deg)'
     }
 
-    // Founder counter & initial render
-    if (FOUNDER_AVAILABLE) {
-      document.getElementById('founder-count').textContent = FOUNDER_SLOTS_REMAINING
-    } else {
-      const bar = document.getElementById('founder-bar')
-      if (bar) bar.style.display = 'none'
-    }
     updatePrices()   // render prices on load (anual por defecto)
 
     // ── Year ──────────────────────────────────────────────────────

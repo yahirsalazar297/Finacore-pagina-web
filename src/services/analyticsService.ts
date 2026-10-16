@@ -115,7 +115,3 @@ export function trackCouponApplied(
 export function trackStudentVerified(props: BaseEventProps): void {
   send(ANALYTICS_EVENTS.STUDENT_VERIFIED, props)
 }
-
-export function trackFounderSlotUsed(props: BaseEventProps): void {
-  send(ANALYTICS_EVENTS.FOUNDER_SLOT_USED, props)
-}

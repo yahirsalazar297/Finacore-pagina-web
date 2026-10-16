@@ -46,7 +46,6 @@ export interface UserSubscription {
   currentPeriodEnd: string | null         // ISO date
   cancelAtPeriodEnd: boolean
   trialEnd: string | null                 // ISO date, null si no hay trial activo
-  isFounder: boolean
   isStudentVerified: boolean
   studentVerificationExpiry: string | null
   pauseCount: number                      // Pausas usadas en el año en curso
@@ -83,11 +82,6 @@ export interface CouponValidation {
   valid: boolean
   discountLabel?: string
   error?: string
-}
-
-export interface FounderStatus {
-  available: boolean
-  slotsRemaining: number
 }
 
 // ─── Estado local (reemplazar con API real en producción) ─────────────────────
@@ -153,7 +147,7 @@ export async function hasAccess(requiredPlan: PlanId): Promise<boolean> {
  * Inicia el flujo de checkout.
  * ⚠️  BACKEND REQUIRED: En producción este método llama a POST /api/checkout,
  * que crea la sesión de Stripe/MP en el servidor y devuelve la URL de pago.
- * El servidor es quien decide si aplica precio de fundador, estudiante o cupón.
+ * El servidor es quien decide si aplica precio de estudiante o cupón.
  */
 export async function startCheckout(params: CheckoutParams): Promise<{ checkoutUrl: string }> {
   trackEvent(ANALYTICS_EVENTS.CHECKOUT_STARTED, {
@@ -268,30 +262,6 @@ export async function pauseSubscription(): Promise<{ success: boolean; error?: s
   return { success: false, error: 'Backend no disponible' }
 }
 
-// ─── Precio de fundador ───────────────────────────────────────────────────────
-
-/**
- * Consulta cuántos lugares de fundador quedan.
- * ⚠️  BACKEND REQUIRED: Leer el conteo real de la DB.
- * En development devuelve un stub.
- */
-export async function getFounderStatus(): Promise<FounderStatus> {
-  // ⚠️  BACKEND REQUIRED
-  // const res = await fetch('/api/founder-status')
-  // return res.json()
-
-  // Stub de desarrollo (simula 23 usados, quedan 27 de 50)
-  return { available: true, slotsRemaining: 27 }
-}
-
-/**
- * Un fundador que cancela y regresa PIERDE el precio de fundador.
- * Esta verificación ocurre en el servidor al crear la nueva suscripción.
- */
-export function wasFormerFounder(sub: UserSubscription): boolean {
-  return sub.isFounder && sub.status === 'canceled'
-}
-
 // ─── Verificación de estudiante ───────────────────────────────────────────────
 
 /**
@@ -340,7 +310,7 @@ export async function verifyStudentCode(
 /**
  * Valida un cupón de descuento.
  * ⚠️  BACKEND REQUIRED: La validación real ocurre en el servidor.
- * Un cupón no se puede combinar con precio de fundador ni de estudiante.
+ * Un cupón no se puede combinar con precio de estudiante.
  */
 export async function validateCoupon(
   _code: string,
@@ -348,10 +318,10 @@ export async function validateCoupon(
   _period: BillingPeriod,
   variant: PriceVariant
 ): Promise<CouponValidation> {
-  if (variant === 'founder' || variant === 'student') {
+  if (variant === 'student') {
     return {
       valid: false,
-      error: 'Los cupones no se pueden combinar con precio de fundador ni de estudiante.',
+      error: 'Los cupones no se pueden combinar con precio de estudiante.',
     }
   }
   // ⚠️  BACKEND REQUIRED
@@ -370,11 +340,6 @@ export function getDisplayPrice(
   if (planId === 'free') return 0
 
   if (planId === 'plus') {
-    if (variant === 'founder') {
-      return period === 'annual'
-        ? PRICES.plus.founder.annualMonthlyEquivalent
-        : PRICES.plus.founder.monthly
-    }
     if (period === 'annual') return PRICES.plus.annualMonthlyEquivalent
     return PRICES.plus.monthly
   }
@@ -384,11 +349,6 @@ export function getDisplayPrice(
       return period === 'annual'
         ? Math.round(PRICES.pro.student.annual / 12)
         : PRICES.pro.student.monthly
-    }
-    if (variant === 'founder') {
-      return period === 'annual'
-        ? PRICES.pro.founder.annualMonthlyEquivalent
-        : PRICES.pro.founder.monthly
     }
     if (period === 'annual') return PRICES.pro.annualMonthlyEquivalent
     return PRICES.pro.monthly
@@ -406,9 +366,6 @@ export function getBilledTotal(
   if (planId === 'free') return 0
 
   if (planId === 'plus') {
-    if (variant === 'founder') {
-      return period === 'annual' ? PRICES.plus.founder.annual : PRICES.plus.founder.monthly
-    }
     if (period === 'annual') return PRICES.plus.annual
     return PRICES.plus.monthly
   }
@@ -416,9 +373,6 @@ export function getBilledTotal(
   if (planId === 'pro') {
     if (variant === 'student') {
       return period === 'annual' ? PRICES.pro.student.annual : PRICES.pro.student.monthly
-    }
-    if (variant === 'founder') {
-      return period === 'annual' ? PRICES.pro.founder.annual : PRICES.pro.founder.monthly
     }
     if (period === 'annual') return PRICES.pro.annual
     return PRICES.pro.monthly

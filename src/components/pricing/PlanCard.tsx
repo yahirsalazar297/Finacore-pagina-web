@@ -16,8 +16,6 @@ import {
 interface Props {
   planId: PlanId
   period: BillingPeriod
-  founderAvailable: boolean
-  founderSlotsRemaining: number
   isHighlighted?: boolean
   badge?: string
   onSelect: (planId: PlanId, period: BillingPeriod, variant: PriceVariant) => void
@@ -35,15 +33,12 @@ function AiLabel(questions: number | typeof Infinity): string {
 export function PlanCard({
   planId,
   period,
-  founderAvailable,
-  founderSlotsRemaining,
   isHighlighted = false,
   badge,
   onSelect,
 }: Props) {
   const isFree = planId === 'free'
-  const hasFounderPrice = founderAvailable && (planId === 'plus' || planId === 'pro')
-  const variant: PriceVariant = hasFounderPrice ? 'founder' : 'regular'
+  const variant: PriceVariant = 'regular'
 
   const fixedMonthlyPrice = planId === 'free' ? 0 : planId === 'plus' ? PRICES.plus.monthly : PRICES.pro.monthly
   const billedTotal = getBilledTotal(planId, period, variant)
@@ -109,17 +104,6 @@ export function PlanCard({
             </p>
           )}
         </>
-      )}
-
-      {/* Precio de fundador */}
-      {hasFounderPrice && (
-        <div
-          className="mt-1 mb-4 px-3 py-2 rounded-lg text-xs font-semibold flex items-center gap-2"
-          style={{ background: 'rgba(32,191,143,0.1)', border: '1px solid rgba(32,191,143,0.25)', color: '#20BF8F' }}
-        >
-          <span>⚡</span>
-          <span>Precio de fundador — quedan {founderSlotsRemaining} lugares</span>
-        </div>
       )}
 
       {/* IVA */}

@@ -3,10 +3,8 @@ import type { BillingPeriod, PlanId, PriceVariant } from '../data/pricing'
 import {
   IVA_INCLUDED_LABEL,
   ANALYTICS_EVENTS,
-  FOUNDER,
 } from '../data/pricing'
 import {
-  getFounderStatus,
   startCheckout,
   trackEvent,
 } from '../services/subscriptionService'
@@ -16,18 +14,10 @@ import { ComparisonTable } from '../components/pricing/ComparisonTable'
 
 export function Plans() {
   const [period, setPeriod] = useState<BillingPeriod>('annual')
-  const [founderAvailable, setFounderAvailable] = useState(false)
-  const [founderSlotsRemaining, setFounderSlotsRemaining] = useState(0)
   const [isTableOpen, setIsTableOpen] = useState(false)
 
   useEffect(() => {
     document.title = 'Planes y precios — FINCORE'
-
-    // Leer estado de fundador desde el servidor
-    getFounderStatus().then(status => {
-      setFounderAvailable(status.available)
-      setFounderSlotsRemaining(status.slotsRemaining)
-    })
 
     // Analítica: página de precios vista
     const params = new URLSearchParams(window.location.search)
@@ -110,23 +100,6 @@ export function Plans() {
           {/* Toggle mensual / anual */}
           <PricingToggle value={period} onChange={handlePeriodChange} />
 
-          {/* Contador de fundadores */}
-          {founderAvailable && (
-            <div
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mt-5 text-xs font-semibold"
-              style={{
-                background: 'rgba(32,191,143,0.1)',
-                border: '1px solid rgba(32,191,143,0.3)',
-                color: '#20BF8F',
-              }}
-            >
-              <span>⚡</span>
-              <span>
-                Quedan {founderSlotsRemaining} de {FOUNDER.limit} lugares con precio de fundador
-              </span>
-            </div>
-          )}
-
           {/* IVA */}
           <p className="text-slate-500 text-xs mt-4">{IVA_INCLUDED_LABEL}</p>
         </div>
@@ -138,23 +111,17 @@ export function Plans() {
           <PlanCard
             planId="free"
             period={period}
-            founderAvailable={founderAvailable}
-            founderSlotsRemaining={founderSlotsRemaining}
             onSelect={handlePlanSelect}
           />
           <PlanCard
             planId="plus"
             period={period}
-            founderAvailable={founderAvailable}
-            founderSlotsRemaining={founderSlotsRemaining}
             isHighlighted
             onSelect={handlePlanSelect}
           />
           <PlanCard
             planId="pro"
             period={period}
-            founderAvailable={founderAvailable}
-            founderSlotsRemaining={founderSlotsRemaining}
             badge="Más completo"
             onSelect={handlePlanSelect}
           />
