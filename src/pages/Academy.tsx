@@ -49,12 +49,12 @@ export function Academy() {
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { label: 'Cursos estructurados', desc: 'Contenido organizado en rutas de aprendizaje claras y progresivas.' },
-              { label: 'Ejercicios prácticos', desc: 'Actividades para reforzar y aplicar cada concepto estudiado.' },
-              { label: 'Módulos de repaso', desc: 'Revisión periódica para consolidar el conocimiento adquirido.' },
-              { label: 'Evaluaciones', desc: 'Medición objetiva del progreso y comprensión de los temas.' },
+              { label: 'Cursos estructurados', desc: 'Contenido organizado en rutas de aprendizaje claras y progresivas.', delay: '' },
+              { label: 'Ejercicios prácticos', desc: 'Actividades para reforzar y aplicar cada concepto estudiado.', delay: 'reveal-delay-1' },
+              { label: 'Módulos de repaso', desc: 'Revisión periódica para consolidar el conocimiento adquirido.', delay: 'reveal-delay-2' },
+              { label: 'Evaluaciones', desc: 'Medición objetiva del progreso y comprensión de los temas.', delay: 'reveal-delay-3' },
             ].map((b) => (
-              <div key={b.label} className="card-glass border border-white/8 rounded-2xl p-6">
+              <div key={b.label} className={`card-glass border border-white/8 rounded-2xl p-6 reveal ${b.delay}`}>
                 <CheckCircle2 className="text-brand-green-light mb-3" size={22} strokeWidth={1.5} />
                 <h3 className="text-white font-semibold text-sm mb-2">{b.label}</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">{b.desc}</p>
@@ -81,13 +81,13 @@ export function Academy() {
                   <div className="flex-1 h-px bg-white/5" aria-hidden="true" />
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {category.areas.map((area) => (
+                  {category.areas.map((area, j) => (
                     <div
                       key={area.id}
-                      className={`card-glass border rounded-2xl p-6 transition-all duration-200 hover:-translate-y-0.5 ${
+                      className={`card-glass border rounded-2xl p-6 reveal ${j % 2 === 1 ? 'reveal-delay-1' : ''} ${
                         category.color === 'blue'
-                          ? 'border-brand-blue/15 hover:border-brand-blue/35'
-                          : 'border-brand-green/15 hover:border-brand-green/35'
+                          ? 'border-brand-blue/15 card-hover-blue'
+                          : 'border-brand-green/15 card-hover-green'
                       }`}
                     >
                       <div className="flex items-start gap-3">

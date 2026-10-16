@@ -59,7 +59,7 @@ export function Tools() {
               return (
                 <div
                   key={tool.id}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${isReversed ? 'lg:grid-flow-col-dense' : ''}`}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center reveal ${isReversed ? 'lg:grid-flow-col-dense' : ''}`}
                 >
                   {/* Text */}
                   <div className={isReversed ? 'lg:col-start-2' : ''}>

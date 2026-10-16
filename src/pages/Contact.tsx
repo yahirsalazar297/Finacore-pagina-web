@@ -82,10 +82,11 @@ export function Contact() {
       <section className="section-padding bg-navy-900" aria-labelledby="contact-types-heading">
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-3xl mx-auto mb-16">
-            {contactReasons.map((r) => {
+            {contactReasons.map((r, i) => {
               const Icon = r.icon
+              const delay = ['', 'reveal-delay-1', 'reveal-delay-2'][i] ?? ''
               return (
-                <div key={r.title} className="card-glass border border-white/8 rounded-2xl p-6 text-center">
+                <div key={r.title} className={`card-glass border border-white/8 rounded-2xl p-6 text-center reveal ${delay} card-hover-neutral`}>
                   <div className="w-12 h-12 rounded-2xl bg-brand-blue/15 flex items-center justify-center mx-auto mb-4">
                     <Icon size={22} className="text-brand-blue-electric" strokeWidth={1.5} />
                   </div>

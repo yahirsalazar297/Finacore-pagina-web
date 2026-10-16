@@ -8,20 +8,21 @@ interface SectionHeaderProps {
 
 export function SectionHeader({ eyebrow, title, highlight, description, centered = true }: SectionHeaderProps) {
   const alignClass = centered ? 'text-center' : 'text-left'
+  const descAlign = centered ? 'mx-auto' : ''
 
   return (
-    <div className={`${alignClass} mb-12`}>
+    <div className={`${alignClass} mb-14 reveal`}>
       {eyebrow && (
-        <span className="inline-block text-brand-blue-electric text-sm font-semibold tracking-widest uppercase mb-3">
+        <span className={`section-eyebrow ${centered ? 'justify-center' : ''}`}>
           {eyebrow}
         </span>
       )}
-      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight mb-5">
         {title}{' '}
         {highlight && <span className="gradient-text">{highlight}</span>}
       </h2>
       {description && (
-        <p className="text-slate-400 text-lg max-w-2xl mx-auto leading-relaxed">
+        <p className={`text-slate-400 text-lg max-w-2xl ${descAlign} leading-relaxed`}>
           {description}
         </p>
       )}

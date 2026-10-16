@@ -61,11 +61,12 @@ export function Impact() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {company.segments.map((segment, i) => {
               const isBlue = i % 2 === 0
+              const delay = ['', 'reveal-delay-1', 'reveal-delay-2', '', 'reveal-delay-1', 'reveal-delay-2'][i] ?? ''
               return (
                 <div
                   key={segment.name}
-                  className={`card-glass border rounded-2xl p-7 ${
-                    isBlue ? 'border-brand-blue/20' : 'border-brand-green/20'
+                  className={`card-glass border rounded-2xl p-7 reveal ${delay} ${
+                    isBlue ? 'border-brand-blue/20 card-hover-blue' : 'border-brand-green/20 card-hover-green'
                   }`}
                 >
                   <Users
@@ -105,7 +106,7 @@ export function Impact() {
               ].map((item) => {
                 const Icon = item.icon
                 return (
-                  <div key={item.title} className="card-glass border border-white/8 rounded-2xl p-5 flex items-center gap-4">
+                  <div key={item.title} className="card-glass border border-white/8 rounded-2xl p-5 flex items-center gap-4 reveal card-hover-neutral">
                     <div className="w-11 h-11 rounded-xl bg-brand-green/15 flex items-center justify-center flex-shrink-0">
                       <Icon size={20} className="text-brand-green-light" strokeWidth={1.5} />
                     </div>
@@ -132,11 +133,11 @@ export function Impact() {
               El propósito y las actividades de FINCORE se alinean conceptualmente con los siguientes ODS de la Agenda 2030 de Naciones Unidas. Esta alineación es de carácter conceptual y no implica aval ni alianza formal con organismos internacionales.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              {sdgs.map((sdg) => (
+              {sdgs.map((sdg, i) => (
                 <div
                   key={sdg.number}
-                  className={`card-glass border rounded-2xl p-6 text-center ${
-                    sdg.color === 'blue' ? 'border-brand-blue/20' : 'border-brand-green/20'
+                  className={`card-glass border rounded-2xl p-6 text-center reveal ${['', 'reveal-delay-1', 'reveal-delay-2'][i]} ${
+                    sdg.color === 'blue' ? 'border-brand-blue/20 card-hover-blue' : 'border-brand-green/20 card-hover-green'
                   }`}
                 >
                   <div className={`text-3xl font-black gradient-text mb-2`}>ODS {sdg.number}</div>

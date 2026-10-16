@@ -38,10 +38,10 @@ export function AISection() {
             </p>
 
             <div className="flex flex-col gap-5 mb-8">
-              {benefits.map((b) => {
+              {benefits.map((b, i) => {
                 const Icon = b.icon
                 return (
-                  <div key={b.title} className="flex items-start gap-4">
+                  <div key={b.title} className={`flex items-start gap-4 reveal reveal-delay-${i + 1}`}>
                     <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-brand-blue/15 flex items-center justify-center text-brand-blue-electric">
                       <Icon size={18} strokeWidth={1.5} />
                     </div>
@@ -61,7 +61,7 @@ export function AISection() {
           </div>
 
           {/* Visual card */}
-          <div className="relative">
+          <div className="relative reveal reveal-delay-1">
             <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-green/10 rounded-3xl blur-3xl" aria-hidden="true" />
             <div className="relative card-glass border border-brand-blue/25 p-8 rounded-3xl">
               <div className="flex items-center gap-3 mb-6">

@@ -156,7 +156,7 @@ export function Plans() {
         aria-labelledby="tabla-heading"
       >
         <div
-          className="rounded-2xl p-8"
+          className="rounded-2xl p-8 reveal"
           style={{
             background: 'rgba(16,32,62,0.6)',
             border: '1px solid rgba(36,121,250,0.12)',

@@ -36,7 +36,7 @@ export function About() {
       <section className="section-padding bg-navy-900" aria-labelledby="purpose-heading">
         <div className="section-container">
           <div className="max-w-3xl mx-auto">
-            <div className="card-glass border border-brand-blue/25 rounded-3xl p-10 text-center">
+            <div className="card-glass border border-brand-blue/25 rounded-3xl p-10 text-center reveal">
               <Target className="w-12 h-12 text-brand-blue-electric mx-auto mb-5" strokeWidth={1.5} />
               <h2 id="purpose-heading" className="text-2xl font-bold text-white mb-4">Nuestro Propósito</h2>
               <p className="text-xl text-brand-blue-electric font-semibold mb-4 italic">
@@ -53,7 +53,7 @@ export function About() {
         <div className="section-container">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Mission */}
-            <div className="card-glass border border-white/10 rounded-3xl p-8">
+            <div className="card-glass border border-white/10 rounded-3xl p-8 reveal">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 rounded-2xl bg-brand-blue/15 flex items-center justify-center">
                   <Target size={22} className="text-brand-blue-electric" strokeWidth={1.5} />
@@ -72,7 +72,7 @@ export function About() {
             </div>
 
             {/* Vision */}
-            <div className="card-glass border border-white/10 rounded-3xl p-8">
+            <div className="card-glass border border-white/10 rounded-3xl p-8 reveal reveal-delay-1">
               <div className="flex items-center gap-3 mb-5">
                 <div className="w-12 h-12 rounded-2xl bg-brand-green/15 flex items-center justify-center">
                   <Eye size={22} className="text-brand-green-light" strokeWidth={1.5} />
@@ -96,11 +96,11 @@ export function About() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
-              { step: '01', name: 'Aprender', desc: 'Adquirir conocimientos financieros y contables sólidos que construyan bases reales.' },
-              { step: '02', name: 'Aplicar', desc: 'Utilizar herramientas prácticas para resolver necesidades cotidianas y profesionales.' },
-              { step: '03', name: 'Evolucionar', desc: 'Desarrollar progresivamente nuevas capacidades personales y profesionales.' },
+              { step: '01', name: 'Aprender', desc: 'Adquirir conocimientos financieros y contables sólidos que construyan bases reales.', delay: '' },
+              { step: '02', name: 'Aplicar', desc: 'Utilizar herramientas prácticas para resolver necesidades cotidianas y profesionales.', delay: 'reveal-delay-1' },
+              { step: '03', name: 'Evolucionar', desc: 'Desarrollar progresivamente nuevas capacidades personales y profesionales.', delay: 'reveal-delay-2' },
             ].map((item) => (
-              <div key={item.step} className="card-glass border border-white/8 rounded-2xl p-6 text-center">
+              <div key={item.step} className={`card-glass border border-white/8 rounded-2xl p-6 text-center reveal ${item.delay}`}>
                 <div className="text-4xl font-black gradient-text mb-2">{item.step}</div>
                 <h3 className="text-white font-bold text-lg mb-2">{item.name}</h3>
                 <p className="text-slate-400 text-sm leading-relaxed">{item.desc}</p>
@@ -122,11 +122,12 @@ export function About() {
             {company.values.map((value, i) => {
               const Icon = iconMap[value.icon]
               const isEven = i % 2 === 0
+              const delay = ['', 'reveal-delay-1', 'reveal-delay-2', '', 'reveal-delay-1', 'reveal-delay-2'][i] ?? ''
               return (
                 <div
                   key={value.name}
-                  className={`card-glass border rounded-2xl p-7 transition-all duration-300 hover:-translate-y-1 ${
-                    isEven ? 'border-brand-blue/20 hover:border-brand-blue/40' : 'border-brand-green/20 hover:border-brand-green/40'
+                  className={`card-glass border rounded-2xl p-7 reveal ${delay} ${
+                    isEven ? 'border-brand-blue/20 card-hover-blue' : 'border-brand-green/20 card-hover-green'
                   }`}
                 >
                   <div className={`w-11 h-11 rounded-xl flex items-center justify-center mb-4 ${
