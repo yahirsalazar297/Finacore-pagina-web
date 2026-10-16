@@ -11,18 +11,20 @@ const iconMap: Record<string, typeof GraduationCap> = {
 
 const colorMap = {
   blue: {
-    border: 'border-brand-blue/30 hover:border-brand-blue/60',
-    icon: 'bg-brand-blue/15 text-brand-blue-electric',
-    number: 'text-brand-blue/30',
-    glow: 'group-hover:shadow-brand-blue/10',
+    border:  'border-brand-blue/25',
+    icon:    'bg-brand-blue/15 text-brand-blue-electric',
+    number:  'text-brand-blue/20',
+    hover:   'card-hover-blue',
   },
   green: {
-    border: 'border-brand-green/30 hover:border-brand-green/60',
-    icon: 'bg-brand-green/15 text-brand-green-light',
-    number: 'text-brand-green/30',
-    glow: 'group-hover:shadow-brand-green/10',
+    border:  'border-brand-green/25',
+    icon:    'bg-brand-green/15 text-brand-green-light',
+    number:  'text-brand-green/20',
+    hover:   'card-hover-green',
   },
 }
+
+const revealDelays = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3']
 
 export function Pillars() {
   return (
@@ -36,22 +38,28 @@ export function Pillars() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {company.pillars.map((pillar) => {
-            const Icon = iconMap[pillar.icon]
+          {company.pillars.map((pillar, i) => {
+            const Icon   = iconMap[pillar.icon]
             const colors = colorMap[pillar.color as keyof typeof colorMap]
+            const delay  = revealDelays[i] ?? ''
             return (
               <div
                 key={pillar.number}
-                className={`group card-glass border ${colors.border} p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${colors.glow}`}
+                className={`group card-glass border ${colors.border} ${colors.hover} reveal ${delay} p-8`}
               >
                 <div className="flex items-start gap-6">
-                  <div className={`flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center ${colors.icon}`}>
+                  {/* Icon */}
+                  <div className={`flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center ${colors.icon} transition-transform duration-300 group-hover:scale-110`}>
                     <Icon size={26} strokeWidth={1.5} />
                   </div>
+
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-xs font-semibold tracking-widest text-slate-500 uppercase">
                         Pilar {pillar.number}
+                      </span>
+                      <span className={`text-5xl font-black ${colors.number} leading-none select-none`} aria-hidden="true">
+                        {String(pillar.number).padStart(2, '0')}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold text-white mb-3">{pillar.name}</h3>
