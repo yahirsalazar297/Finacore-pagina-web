@@ -16,8 +16,8 @@ export function AcademicAreasPreview() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          {academicCategories.map((category) => (
-            <div key={category.name} className="card-glass border border-white/8 p-6 rounded-2xl">
+          {academicCategories.map((category, i) => (
+            <div key={category.name} className={`card-glass border border-white/8 p-6 rounded-2xl reveal ${i === 1 ? 'reveal-delay-1' : ''}`}>
               <div className="flex items-center gap-3 mb-5">
                 <Badge color={category.color as 'blue' | 'green'}>{category.name}</Badge>
               </div>

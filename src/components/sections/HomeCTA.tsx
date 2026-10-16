@@ -6,7 +6,7 @@ export function HomeCTA() {
   return (
     <section className="section-padding bg-navy-900" aria-labelledby="cta-heading">
       <div className="section-container">
-        <div className="relative overflow-hidden card-glass border border-brand-blue/20 rounded-3xl p-10 md:p-16 text-center">
+        <div className="relative overflow-hidden card-glass border border-brand-blue/20 rounded-3xl p-10 md:p-16 text-center reveal">
           {/* Glow effects */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-blue/10 rounded-full blur-3xl" aria-hidden="true" />
           <div className="absolute bottom-0 right-1/4 w-[300px] h-[200px] bg-brand-green/8 rounded-full blur-3xl" aria-hidden="true" />

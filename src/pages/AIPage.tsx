@@ -119,14 +119,15 @@ export function AIPage() {
             highlight="apoyar tu aprendizaje"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {capabilities.map((cap) => {
+            {capabilities.map((cap, i) => {
               const Icon = cap.icon
               const isBlue = cap.color === 'blue'
+              const delay = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3'][i] ?? ''
               return (
                 <div
                   key={cap.title}
-                  className={`card-glass border rounded-2xl p-7 ${
-                    isBlue ? 'border-brand-blue/20' : 'border-brand-green/20'
+                  className={`card-glass border rounded-2xl p-7 reveal ${delay} ${
+                    isBlue ? 'border-brand-blue/20 card-hover-blue' : 'border-brand-green/20 card-hover-green'
                   }`}
                 >
                   <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${
