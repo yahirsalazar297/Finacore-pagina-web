@@ -1,10 +1,10 @@
 export const brand = {
-  name: 'FINCORE',
+  name: 'FINACORE',
   subtitle: 'Accounting & Finance Academy',
   slogan: 'Aprende. Aplica. Evoluciona.',
   tagline: 'Educación financiera, herramientas profesionales e inteligencia artificial en un solo ecosistema.',
   logo: '/logo-fincore.png',
-  logoAlt: 'FINCORE — Accounting & Finance Academy',
+  logoAlt: 'FINACORE — Accounting & Finance Academy',
   academyUrl: 'https://alejandrocavazos.github.io/Fincore/#/courses',
   colors: {
     navyDeep: '#0a1628',

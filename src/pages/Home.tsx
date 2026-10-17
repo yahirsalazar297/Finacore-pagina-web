@@ -8,7 +8,7 @@ import { HomeCTA } from '../components/sections/HomeCTA'
 
 export function Home() {
   useEffect(() => {
-    document.title = 'FINCORE — Accounting & Finance Academy'
+    document.title = 'FINACORE — Accounting & Finance Academy'
   }, [])
 
   return (

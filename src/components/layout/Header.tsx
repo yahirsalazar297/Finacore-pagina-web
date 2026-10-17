@@ -29,7 +29,7 @@ export function Header() {
       <nav className="section-container" aria-label="Navegación principal">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-brand-blue rounded-lg" aria-label="FINCORE — Inicio">
+          <Link to="/" className="flex-shrink-0 focus:outline-none focus:ring-2 focus:ring-brand-blue rounded-lg" aria-label="FINACORE — Inicio">
             <img
               src={brand.logo}
               alt={brand.logoAlt}
@@ -62,7 +62,7 @@ export function Header() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-sm py-2.5"
-              aria-label="Explorar FINCORE Academia (abre en nueva ventana)"
+              aria-label="Explorar FINACORE Academia (abre en nueva ventana)"
             >
               Probar demo
               <ExternalLink size={14} />

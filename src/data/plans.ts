@@ -1,4 +1,4 @@
-// NOTE: Plan details, prices, and feature lists are pending confirmation by FINCORE.
+// NOTE: Plan details, prices, and feature lists are pending confirmation by FINACORE.
 // This structure is ready to populate once commercial terms are defined.
 
 export type Plan = {
@@ -17,7 +17,7 @@ export const plans: Plan[] = [
     id: 'free',
     name: 'Free',
     price: null,
-    description: 'Acceso inicial para explorar FINCORE y descubrir el ecosistema.',
+    description: 'Acceso inicial para explorar FINACORE y descubrir el ecosistema.',
     highlighted: false,
     cta: 'Comenzar gratis',
     features: [],

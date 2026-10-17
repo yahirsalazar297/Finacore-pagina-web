@@ -31,10 +31,10 @@ export function Pillars() {
     <section className="section-padding bg-navy-900" aria-labelledby="pillars-heading">
       <div className="section-container">
         <SectionHeader
-          eyebrow="Los pilares de FINCORE"
+          eyebrow="Los pilares de FINACORE"
           title="Un ecosistema diseñado para"
           highlight="transformar"
-          description="FINCORE integra cuatro pilares que funcionan en conjunto para ofrecer una experiencia de aprendizaje y trabajo financiero completa."
+          description="FINACORE integra cuatro pilares que funcionan en conjunto para ofrecer una experiencia de aprendizaje y trabajo financiero completa."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

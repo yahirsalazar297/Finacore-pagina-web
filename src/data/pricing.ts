@@ -1,5 +1,5 @@
 /**
- * FINCORE — Configuración central de precios y suscripciones
+ * FINACORE — Configuración central de precios y suscripciones
  *
  * Esta es la ÚNICA fuente de verdad para todos los precios, límites y
  * configuraciones de planes. No escribas ningún precio o límite directamente

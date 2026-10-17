@@ -1,5 +1,5 @@
 /**
- * Dominios institucionales permitidos para el precio de estudiante de FINCORE.
+ * Dominios institucionales permitidos para el precio de estudiante de FINACORE.
  *
  * Para agregar un nuevo dominio, añade la entrada al arreglo y haz deploy.
  * En producción este archivo debería cargarse desde la base de datos para

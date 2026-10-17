@@ -1,19 +1,19 @@
 export const company = {
   purpose: 'Democratizar el acceso a la educación financiera en México.',
   purposeDetail:
-    'FINCORE busca que cualquier persona, independientemente de sus conocimientos previos, experiencia profesional o situación económica, pueda acceder a recursos educativos y herramientas que le permitan comprender, aplicar y desarrollar habilidades financieras.',
+    'FINACORE busca que cualquier persona, independientemente de sus conocimientos previos, experiencia profesional o situación económica, pueda acceder a recursos educativos y herramientas que le permitan comprender, aplicar y desarrollar habilidades financieras.',
 
   mission:
     'Proporcionar herramientas de aprendizaje y trabajo en contabilidad, finanzas y negocios mediante una plataforma tecnológica accesible que integre educación, práctica e inteligencia artificial, facilitando la adquisición de conocimientos y su aplicación en situaciones reales.',
 
   vision:
-    'Ser la empresa de software educativo más grande de México en el sector financiero. FINCORE aspira a consolidarse como un ecosistema tecnológico de referencia nacional, reconocido por su innovación, calidad educativa, accesibilidad y capacidad para transformar la manera en que las personas aprenden y aplican conocimientos financieros.',
+    'Ser la empresa de software educativo más grande de México en el sector financiero. FINACORE aspira a consolidarse como un ecosistema tecnológico de referencia nacional, reconocido por su innovación, calidad educativa, accesibilidad y capacidad para transformar la manera en que las personas aprenden y aplican conocimientos financieros.',
 
   history:
-    'FINCORE surge en México como una iniciativa emprendedora impulsada por tres fundadores que identificaron una oportunidad transformadora en el contexto de cambios en la economía digital mexicana. La idea nació del deseo de desarrollar software que pudiera ser utilizado tanto por personas sin conocimientos financieros como por estudiantes y profesionistas especializados, creando un espacio donde los usuarios pudieran adquirir conocimientos, desarrollar habilidades y aplicar lo aprendido mediante herramientas de trabajo reales.',
+    'FINACORE surge en México como una iniciativa emprendedora impulsada por tres fundadores que identificaron una oportunidad transformadora en el contexto de cambios en la economía digital mexicana. La idea nació del deseo de desarrollar software que pudiera ser utilizado tanto por personas sin conocimientos financieros como por estudiantes y profesionistas especializados, creando un espacio donde los usuarios pudieran adquirir conocimientos, desarrollar habilidades y aplicar lo aprendido mediante herramientas de trabajo reales.',
 
   philosophy:
-    'La filosofía central de FINCORE reconoce que la educación financiera no debe limitarse a la teoría, sino proporcionar capacidades que puedan utilizarse en la vida cotidiana y profesional. Por eso, integra formación académica, soluciones prácticas e inteligencia artificial dentro de un mismo ecosistema.',
+    'La filosofía central de FINACORE reconoce que la educación financiera no debe limitarse a la teoría, sino proporcionar capacidades que puedan utilizarse en la vida cotidiana y profesional. Por eso, integra formación académica, soluciones prácticas e inteligencia artificial dentro de un mismo ecosistema.',
 
   values: [
     {
@@ -77,7 +77,7 @@ export const company = {
       number: '04',
       name: 'Innovación Continua',
       description:
-        'FINCORE es un ecosistema en evolución constante. La empresa contempla incorporar progresivamente nuevas herramientas, contenidos y funcionalidades para mantenerse a la vanguardia.',
+        'FINACORE es un ecosistema en evolución constante. La empresa contempla incorporar progresivamente nuevas herramientas, contenidos y funcionalidades para mantenerse a la vanguardia.',
       icon: 'Rocket',
       color: 'green',
     },

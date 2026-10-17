@@ -7,17 +7,17 @@ import { brand } from '../data/brand'
 
 export function Academy() {
   useEffect(() => {
-    document.title = 'Academia — FINCORE'
+    document.title = 'Academia — FINACORE'
   }, [])
 
   return (
     <div className="bg-navy-950">
       {/* Hero */}
-      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Academia FINCORE">
+      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Academia FINACORE">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/8 to-transparent" aria-hidden="true" />
         <div className="section-container relative z-10 text-center max-w-3xl mx-auto">
           <span className="inline-block text-brand-blue-electric text-sm font-semibold tracking-widest uppercase mb-4">
-            Academia FINCORE
+            Academia FINACORE
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             12 áreas de{' '}
@@ -114,7 +114,7 @@ export function Academy() {
           </div>
 
           <div className="text-center mt-14">
-            <p className="text-slate-500 text-sm mb-6">Accede a todos los cursos y herramientas en la plataforma FINCORE</p>
+            <p className="text-slate-500 text-sm mb-6">Accede a todos los cursos y herramientas en la plataforma FINACORE</p>
             <a
               href={brand.academyUrl}
               target="_blank"

@@ -30,7 +30,7 @@ export function ToolsPreview() {
           eyebrow="Herramientas profesionales"
           title="De la teoría"
           highlight="a la práctica"
-          description="FINCORE integra herramientas de trabajo diseñadas para aplicar conocimientos contables y financieros en situaciones reales."
+          description="FINACORE integra herramientas de trabajo diseñadas para aplicar conocimientos contables y financieros en situaciones reales."
         />
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">

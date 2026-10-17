@@ -1,5 +1,5 @@
 /**
- * FINCORE — Servicio de analítica
+ * FINACORE — Servicio de analítica
  *
  * Todos los eventos definidos en pricing.ts se registran aquí.
  * Reemplaza la implementación de `send()` con tu proveedor real.

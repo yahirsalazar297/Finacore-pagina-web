@@ -4,7 +4,7 @@ export const tools = [
     name: 'Laboratorio Contable',
     tagline: 'De la teoría a la práctica.',
     description:
-      'Registra operaciones contables, organiza tus cuentas y aplica tus conocimientos financieros con las herramientas de FINCORE.',
+      'Registra operaciones contables, organiza tus cuentas y aplica tus conocimientos financieros con las herramientas de FINACORE.',
     features: [
       'Registro de cargos y abonos',
       'Elaboración de asientos contables',

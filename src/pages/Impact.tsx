@@ -26,13 +26,13 @@ const sdgs = [
 
 export function Impact() {
   useEffect(() => {
-    document.title = 'Impacto Social — FINCORE'
+    document.title = 'Impacto Social — FINACORE'
   }, [])
 
   return (
     <div className="bg-navy-950">
       {/* Hero */}
-      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Impacto social FINCORE">
+      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Impacto social FINACORE">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-green/8 to-transparent" aria-hidden="true" />
         <div className="section-container relative z-10 text-center max-w-3xl mx-auto">
           <Heart className="w-16 h-16 text-brand-green-light mx-auto mb-5" strokeWidth={1.5} />
@@ -56,7 +56,7 @@ export function Impact() {
             eyebrow="A quién servimos"
             title="Educación financiera"
             highlight="para todos"
-            description="FINCORE elimina las barreras de acceso al conocimiento financiero, sin importar el nivel de experiencia o situación económica del usuario."
+            description="FINACORE elimina las barreras de acceso al conocimiento financiero, sin importar el nivel de experiencia o situación económica del usuario."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {company.segments.map((segment, i) => {
@@ -92,10 +92,10 @@ export function Impact() {
                 Accesibilidad como principio fundamental
               </h2>
               <p className="text-slate-400 leading-relaxed mb-6">
-                FINCORE surge de la convicción de que el conocimiento financiero no debería ser un privilegio reservado para quienes tuvieron acceso a educación formal especializada o pueden pagar asesoría profesional costosa.
+                FINACORE surge de la convicción de que el conocimiento financiero no debería ser un privilegio reservado para quienes tuvieron acceso a educación formal especializada o pueden pagar asesoría profesional costosa.
               </p>
               <p className="text-slate-400 leading-relaxed">
-                Mediante tecnología educativa, herramientas de trabajo accesibles e inteligencia artificial, FINCORE acerca las finanzas a personas de todos los niveles y contextos, contribuyendo al desarrollo económico y a la reducción de la brecha de conocimiento financiero en México.
+                Mediante tecnología educativa, herramientas de trabajo accesibles e inteligencia artificial, FINACORE acerca las finanzas a personas de todos los niveles y contextos, contribuyendo al desarrollo económico y a la reducción de la brecha de conocimiento financiero en México.
               </p>
             </div>
             <div className="grid grid-cols-1 gap-4">
@@ -130,7 +130,7 @@ export function Impact() {
               Alineación conceptual con los Objetivos de Desarrollo Sostenible
             </h2>
             <p className="text-slate-400 text-center text-sm mb-10 leading-relaxed">
-              El propósito y las actividades de FINCORE se alinean conceptualmente con los siguientes ODS de la Agenda 2030 de Naciones Unidas. Esta alineación es de carácter conceptual y no implica aval ni alianza formal con organismos internacionales.
+              El propósito y las actividades de FINACORE se alinean conceptualmente con los siguientes ODS de la Agenda 2030 de Naciones Unidas. Esta alineación es de carácter conceptual y no implica aval ni alianza formal con organismos internacionales.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {sdgs.map((sdg, i) => (

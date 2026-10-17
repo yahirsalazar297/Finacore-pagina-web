@@ -1,9 +1,9 @@
 /**
- * FINCORE — Servicio de suscripciones
+ * FINACORE — Servicio de suscripciones
  *
  * ⚠️  BACKEND REQUIRED
  * ─────────────────────────────────────────────────────────────────────────────
- * Este módulo contiene TODA la lógica de suscripciones de FINCORE.
+ * Este módulo contiene TODA la lógica de suscripciones de FINACORE.
  * Las funciones marcadas con "⚠️ BACKEND" deben ejecutarse EXCLUSIVAMENTE
  * en el servidor, nunca en el navegador, antes de cobrar dinero real:
  *
@@ -108,7 +108,7 @@ export async function getCurrentSubscription(): Promise<UserSubscription | null>
     return null
   }
   // ⚠️  BACKEND REQUIRED — stub de desarrollo
-  const stored = localStorage.getItem('fincore_subscription_dev')
+  const stored = localStorage.getItem('finacore_subscription_dev')
   if (!stored) return null
   try {
     const parsed: unknown = JSON.parse(stored)

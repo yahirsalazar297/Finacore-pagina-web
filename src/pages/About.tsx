@@ -10,7 +10,7 @@ const iconMap: Record<string, typeof Globe> = {
 
 export function About() {
   useEffect(() => {
-    document.title = 'Nosotros — FINCORE'
+    document.title = 'Nosotros — FINACORE'
   }, [])
 
   return (
@@ -24,7 +24,7 @@ export function About() {
           </span>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
             Conoce a{' '}
-            <span className="gradient-text">FINCORE</span>
+            <span className="gradient-text">FINACORE</span>
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed">
             {company.history}
@@ -154,7 +154,7 @@ export function About() {
             loading="lazy"
           />
           <p className="text-slate-500 text-sm max-w-md mx-auto">
-            La identidad visual de FINCORE representa la convergencia entre las finanzas y la tecnología, con la precisión y el crecimiento como ejes fundamentales.
+            La identidad visual de FINACORE representa la convergencia entre las finanzas y la tecnología, con la precisión y el crecimiento como ejes fundamentales.
           </p>
         </div>
       </section>

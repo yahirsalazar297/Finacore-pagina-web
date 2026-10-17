@@ -21,7 +21,7 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link to="/" aria-label="FINCORE — Inicio">
+            <Link to="/" aria-label="FINACORE — Inicio">
               <img
                 src={brand.logo}
                 alt={brand.logoAlt}
@@ -62,7 +62,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-slate-500 text-sm">
-            © {new Date().getFullYear()} FINCORE. Todos los derechos reservados.
+            © {new Date().getFullYear()} FINACORE. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
             <a
@@ -70,9 +70,9 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-brand-blue-electric text-sm flex items-center gap-1.5 transition-colors duration-200"
-              aria-label="Ir a la plataforma FINCORE (abre en nueva ventana)"
+              aria-label="Ir a la plataforma FINACORE (abre en nueva ventana)"
             >
-              Plataforma FINCORE
+              Plataforma FINACORE
               <ExternalLink size={12} />
             </a>
             <Link

@@ -70,7 +70,7 @@ export function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary text-base px-8 py-4"
-              aria-label="Explorar FINCORE Academia (abre en nueva ventana)"
+              aria-label="Explorar FINACORE Academia (abre en nueva ventana)"
             >
               Probar demo
               <ExternalLink size={16} />

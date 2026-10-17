@@ -34,7 +34,7 @@ export function AISection() {
               <span className="gradient-text">siempre disponible</span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed mb-8">
-              FINCORE integra un tutor de inteligencia artificial diseñado para apoyar tu proceso educativo. Una herramienta complementaria que facilita la comprensión y acompaña tu formación financiera.
+              FINACORE integra un tutor de inteligencia artificial diseñado para apoyar tu proceso educativo. Una herramienta complementaria que facilita la comprensión y acompaña tu formación financiera.
             </p>
 
             <div className="flex flex-col gap-5 mb-8">
@@ -69,7 +69,7 @@ export function AISection() {
                   <Brain size={20} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">Tutor FINCORE IA</p>
+                  <p className="text-white font-semibold text-sm">Tutor FINACORE IA</p>
                   <p className="text-brand-green text-xs flex items-center gap-1">
                     <span className="w-1.5 h-1.5 bg-brand-green rounded-full animate-pulse-slow" aria-hidden="true" />
                     Activo

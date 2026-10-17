@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react'
 
 export function NotFound() {
   useEffect(() => {
-    document.title = 'Página no encontrada — FINCORE'
+    document.title = 'Página no encontrada — FINACORE'
   }, [])
 
   return (

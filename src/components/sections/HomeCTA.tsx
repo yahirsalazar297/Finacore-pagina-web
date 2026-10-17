@@ -21,7 +21,7 @@ export function HomeCTA() {
               comienza aquí
             </h2>
             <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-              Únete a FINCORE y accede a un ecosistema de aprendizaje, herramientas profesionales e inteligencia artificial diseñado para transformar tu conocimiento financiero.
+              Únete a FINACORE y accede a un ecosistema de aprendizaje, herramientas profesionales e inteligencia artificial diseñado para transformar tu conocimiento financiero.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

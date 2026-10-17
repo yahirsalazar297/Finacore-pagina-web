@@ -31,13 +31,13 @@ const capabilities = [
 
 export function AIPage() {
   useEffect(() => {
-    document.title = 'Inteligencia Artificial — FINCORE'
+    document.title = 'Inteligencia Artificial — FINACORE'
   }, [])
 
   return (
     <div className="bg-navy-950">
       {/* Hero */}
-      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Tutor de IA FINCORE">
+      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Tutor de IA FINACORE">
         <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/10 via-transparent to-brand-green/5" aria-hidden="true" />
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-brand-blue/8 rounded-full blur-3xl" aria-hidden="true" />
         <div className="section-container relative z-10 text-center max-w-3xl mx-auto">
@@ -52,7 +52,7 @@ export function AIPage() {
             <span className="gradient-text">siempre disponible</span>
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed">
-            FINCORE integra un tutor de inteligencia artificial diseñado para apoyar el proceso educativo, facilitar la comprensión de conceptos y acompañar al usuario durante su formación financiera.
+            FINACORE integra un tutor de inteligencia artificial diseñado para apoyar el proceso educativo, facilitar la comprensión de conceptos y acompañar al usuario durante su formación financiera.
           </p>
         </div>
       </section>
@@ -66,7 +66,7 @@ export function AIPage() {
                 Una herramienta complementaria para tu formación
               </h2>
               <p className="text-slate-400 leading-relaxed mb-6">
-                El tutor de IA de FINCORE no reemplaza a los cursos ni a la práctica real, sino que funciona como un apoyo inteligente que enriquece la experiencia de aprendizaje.
+                El tutor de IA de FINACORE no reemplaza a los cursos ni a la práctica real, sino que funciona como un apoyo inteligente que enriquece la experiencia de aprendizaje.
               </p>
               <p className="text-slate-400 leading-relaxed">
                 Su rol es facilitar la comprensión de conceptos, resolver dudas en tiempo real y acompañar al usuario durante cada etapa de su formación en contabilidad, finanzas y negocios.
@@ -80,7 +80,7 @@ export function AIPage() {
                   <Brain size={17} className="text-white" />
                 </div>
                 <div>
-                  <p className="text-white font-semibold text-sm">Tutor FINCORE IA</p>
+                  <p className="text-white font-semibold text-sm">Tutor FINACORE IA</p>
                   <p className="text-brand-green text-xs flex items-center gap-1.5">
                     <span className="w-1.5 h-1.5 bg-brand-green rounded-full" aria-hidden="true" />
                     Activo
@@ -152,7 +152,7 @@ export function AIPage() {
             <div>
               <h3 id="ai-note-heading" className="text-white font-semibold mb-2">Sobre el tutor de IA</h3>
               <p className="text-slate-400 text-sm leading-relaxed">
-                El tutor de inteligencia artificial de FINCORE es una herramienta educativa complementaria diseñada para facilitar el aprendizaje. No reemplaza el criterio profesional en decisiones contables, fiscales o financieras reales. Para decisiones que requieran asesoría especializada, siempre se recomienda consultar a un profesional certificado.
+                El tutor de inteligencia artificial de FINACORE es una herramienta educativa complementaria diseñada para facilitar el aprendizaje. No reemplaza el criterio profesional en decisiones contables, fiscales o financieras reales. Para decisiones que requieran asesoría especializada, siempre se recomienda consultar a un profesional certificado.
               </p>
             </div>
           </div>

@@ -26,13 +26,13 @@ const colorMap = {
 
 export function Tools() {
   useEffect(() => {
-    document.title = 'Herramientas — FINCORE'
+    document.title = 'Herramientas — FINACORE'
   }, [])
 
   return (
     <div className="bg-navy-950">
       {/* Hero */}
-      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Herramientas FINCORE">
+      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Herramientas FINACORE">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-green/6 to-transparent" aria-hidden="true" />
         <div className="section-container relative z-10 text-center max-w-3xl mx-auto">
           <span className="inline-block text-brand-green-light text-sm font-semibold tracking-widest uppercase mb-4">
@@ -43,7 +43,7 @@ export function Tools() {
             <span className="gradient-text">a la práctica</span>
           </h1>
           <p className="text-slate-400 text-lg leading-relaxed">
-            FINCORE incorpora herramientas de trabajo diseñadas para aplicar conocimientos contables y financieros en situaciones reales, complementando tu formación académica.
+            FINACORE incorpora herramientas de trabajo diseñadas para aplicar conocimientos contables y financieros en situaciones reales, complementando tu formación académica.
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export function Tools() {
             Accede a todas las herramientas en la plataforma
           </h2>
           <p className="text-slate-400 mb-8">
-            Las herramientas de FINCORE están integradas en la plataforma educativa y disponibles para todos los usuarios registrados.
+            Las herramientas de FINACORE están integradas en la plataforma educativa y disponibles para todos los usuarios registrados.
           </p>
           <a
             href={brand.academyUrl}
@@ -122,7 +122,7 @@ export function Tools() {
             rel="noopener noreferrer"
             className="btn-primary"
           >
-            Ir a la plataforma FINCORE
+            Ir a la plataforma FINACORE
             <ExternalLink size={16} />
           </a>
         </div>

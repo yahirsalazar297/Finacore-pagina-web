@@ -30,7 +30,7 @@ export function Contact() {
   const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
-    document.title = 'Contacto — FINCORE'
+    document.title = 'Contacto — FINACORE'
   }, [])
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
@@ -62,7 +62,7 @@ export function Contact() {
   return (
     <div className="bg-navy-950">
       {/* Hero */}
-      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Contacto FINCORE">
+      <section className="relative section-padding pt-32 overflow-hidden" aria-label="Contacto FINACORE">
         <div className="absolute inset-0 bg-gradient-to-b from-brand-blue/8 to-transparent" aria-hidden="true" />
         <div className="section-container relative z-10 text-center max-w-2xl mx-auto">
           <span className="inline-block text-brand-blue-electric text-sm font-semibold tracking-widest uppercase mb-4">

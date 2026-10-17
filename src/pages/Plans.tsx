@@ -17,7 +17,7 @@ export function Plans() {
   const [isTableOpen, setIsTableOpen] = useState(false)
 
   useEffect(() => {
-    document.title = 'Planes y precios — FINCORE'
+    document.title = 'Planes y precios — FINACORE'
 
     // Analítica: página de precios vista
     const params = new URLSearchParams(window.location.search)
