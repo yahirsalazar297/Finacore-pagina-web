@@ -30,7 +30,7 @@ export function HomeCTA() {
                 rel="noopener noreferrer"
                 className="btn-primary text-base px-10 py-4"
               >
-                Explorar FINCORE
+                Probar demo
                 <ExternalLink size={16} />
               </a>
               <Link to="/planes" className="btn-secondary text-base px-10 py-4">

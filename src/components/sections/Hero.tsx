@@ -72,7 +72,7 @@ export function Hero() {
               className="btn-primary text-base px-8 py-4"
               aria-label="Explorar FINCORE Academia (abre en nueva ventana)"
             >
-              Explorar FINCORE
+              Probar demo
               <ExternalLink size={16} />
             </a>
             <Link

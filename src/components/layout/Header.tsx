@@ -64,7 +64,7 @@ export function Header() {
               className="btn-primary text-sm py-2.5"
               aria-label="Explorar FINCORE Academia (abre en nueva ventana)"
             >
-              Explorar FINCORE
+              Probar demo
               <ExternalLink size={14} />
             </a>
           </div>
@@ -105,7 +105,7 @@ export function Header() {
                   rel="noopener noreferrer"
                   className="btn-primary w-full justify-center text-sm py-3"
                 >
-                  Explorar FINCORE
+                  Probar demo
                   <ExternalLink size={14} />
                 </a>
               </div>
