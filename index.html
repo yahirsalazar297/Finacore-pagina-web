@@ -179,9 +179,42 @@
     .icon-blue { background: rgba(36,121,250,0.15); color: var(--blue); }
     .icon-green { background: rgba(32,191,143,0.15); color: var(--green); }
 
+    /* ── Announcement bar ───────────────────────────────────────── */
+    #announce-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1001;
+      background: linear-gradient(90deg, rgba(36,121,250,0.10), rgba(32,191,143,0.08), rgba(36,121,250,0.10));
+      border-bottom: 1px solid rgba(36,121,250,0.16);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      padding: 8px 20px;
+      font-size: 0.81rem; font-weight: 600;
+      color: rgba(145,168,205,0.9);
+      letter-spacing: 0.01em;
+    }
+    .announce-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+    .announce-label {
+      color: var(--white); font-weight: 700;
+      letter-spacing: 0.07em; font-size: 0.74rem;
+      text-transform: uppercase;
+    }
+    .announce-cursor {
+      display: inline-block; width: 2px; height: 0.88em;
+      background: var(--blue); border-radius: 1px;
+      animation: blink-cursor 1.1s step-end infinite;
+      vertical-align: text-bottom; margin-left: 2px;
+    }
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
     /* ── Navbar ─────────────────────────────────────────────────── */
     #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed; top: 37px; left: 0; right: 0; z-index: 1000;
       background: rgba(8,17,38,0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
@@ -246,7 +279,7 @@
     /* ── Hero ───────────────────────────────────────────────────── */
     #inicio {
       min-height: 100vh; display: flex; align-items: center;
-      padding: 120px 0 80px;
+      padding: 158px 0 80px;
       position: relative; overflow: hidden;
     }
     .hero-bg {
@@ -880,6 +913,14 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Ir al contenido principal</a>
+
+  <!-- ── ANNOUNCEMENT BAR ─────────────────────────────────────── -->
+  <div id="announce-bar" role="status" aria-live="polite">
+    <span class="announce-dot" aria-hidden="true"></span>
+    <span class="announce-label">Coming soon</span>
+    <span aria-hidden="true">·</span>
+    <span>Nueva versión de la plataforma en camino<span class="announce-cursor" aria-hidden="true"></span></span>
+  </div>
 
   <!-- ── NAVBAR ────────────────────────────────────────────────── -->
   <header id="navbar" role="banner">
