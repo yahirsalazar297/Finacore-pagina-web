@@ -1137,6 +1137,35 @@
     @media (max-width: 767px) {
       .hero-benefits { justify-content: center; }
     }
+
+    /* ── Nosotros: collapsible story / values ───────────────────── */
+    .story-highlight {
+      font-size: 1.05rem; color: var(--white); font-weight: 500;
+      line-height: 1.7; border-left: 3px solid var(--blue);
+      padding-left: 16px; margin: 0;
+    }
+    .cs-collapse > summary,
+    .value-details > summary {
+      cursor: pointer; color: var(--blue); font-size: 0.82rem;
+      font-weight: 600; margin-top: 8px; list-style: none;
+      display: inline-flex; align-items: center; gap: 4px;
+    }
+    .cs-collapse > summary::-webkit-details-marker,
+    .value-details > summary::-webkit-details-marker { display: none; }
+    .cs-collapse > summary::after,
+    .value-details > summary::after { content: '▸'; transition: transform 0.2s; }
+    details[open] > summary::after { transform: rotate(90deg); }
+    .cs-collapse > summary:hover,
+    .value-details > summary:hover { opacity: 0.8; }
+    .cs-collapse .collapse-body { margin-top: 10px; color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+    .value-chip-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .value-chip {
+      background: rgba(36,121,250,0.1); border: 1px solid rgba(36,121,250,0.25);
+      border-radius: 999px; padding: 6px 16px;
+      font-size: 0.82rem; font-weight: 600; color: var(--white);
+      cursor: default;
+    }
+    .value-chip.green { background: rgba(32,191,143,0.1); border-color: rgba(32,191,143,0.25); }
   </style>
 </head>
 <body>
@@ -1361,41 +1390,84 @@
         </div>
 
         <div class="story-grid fade-up">
+          <!-- Historia: teaser visible + texto completo colapsado -->
           <div class="card story-card story-card-full">
             <div class="story-icon icon-blue" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             </div>
             <h3>Nuestra historia</h3>
-            <p>FINACORE nace en México como una iniciativa de tres emprendedores que identificaron una necesidad profunda en el mercado: crear una plataforma que pudiera ser utilizada tanto por una persona sin conocimientos financieros como por un profesionista especializado. En un contexto de transformación digital y económica en el país, los fundadores concibieron un ecosistema que integrara educación, herramientas de trabajo e inteligencia artificial en un mismo espacio, haciendo accesible el conocimiento financiero para todos.</p>
+            <p>FINACORE nace en México como una iniciativa de tres emprendedores que identificaron una necesidad profunda en el mercado: crear una plataforma para todos los niveles del conocimiento financiero.</p>
+            <details class="cs-collapse">
+              <summary>Ver historia completa</summary>
+              <p class="collapse-body">En un contexto de transformación digital y económica en el país, los fundadores concibieron un ecosistema que integrara educación, herramientas de trabajo e inteligencia artificial en un mismo espacio, haciendo accesible el conocimiento financiero tanto para una persona sin conocimientos previos como para un profesionista especializado.</p>
+            </details>
           </div>
 
+          <!-- Propósito: como cita destacada -->
           <div class="card story-card fade-up d1">
             <div class="story-icon" style="background:rgba(36,121,250,0.12)" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#2479FA" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
             <h3>Propósito</h3>
-            <p>Democratizar el acceso a la educación financiera en México. FINACORE busca que cualquier persona, independientemente de sus conocimientos previos o situación económica, pueda acceder a recursos educativos y herramientas que le permitan comprender y aplicar habilidades financieras.</p>
+            <p class="story-highlight">Democratizar el acceso a la educación financiera en México.</p>
+            <details class="cs-collapse">
+              <summary>Ver más</summary>
+              <p class="collapse-body">FINACORE busca que cualquier persona, independientemente de sus conocimientos previos o situación económica, pueda acceder a recursos educativos y herramientas que le permitan comprender y aplicar habilidades financieras.</p>
+            </details>
           </div>
 
+          <!-- Visión: colapsada -->
           <div class="card story-card fade-up d2">
             <div class="story-icon" style="background:rgba(32,191,143,0.12)" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="#20BF8F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
             </div>
             <h3>Visión</h3>
-            <p>Ser la empresa de software educativo más grande de México en el sector financiero. FINACORE aspira a consolidarse como un ecosistema tecnológico de referencia nacional, reconocido por su innovación, calidad educativa y capacidad de transformar la manera en que las personas aprenden finanzas.</p>
+            <p>Ser la empresa de software educativo más grande de México en el sector financiero.</p>
+            <details class="cs-collapse">
+              <summary>Ver más</summary>
+              <p class="collapse-body">FINACORE aspira a consolidarse como un ecosistema tecnológico de referencia nacional, reconocido por su innovación, calidad educativa y capacidad de transformar la manera en que las personas aprenden finanzas.</p>
+            </details>
           </div>
         </div>
 
+        <!-- Misión: colapsada -->
         <div class="card fade-up" style="margin: 24px 0; padding: 36px;">
           <div class="story-icon icon-blue" aria-hidden="true">
             <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
           </div>
           <h3 style="font-size:1.1rem; font-weight:700; margin-bottom:12px;">Misión</h3>
-          <p style="color:var(--muted); font-size:0.95rem; line-height:1.75;">Proporcionar herramientas de aprendizaje y trabajo en contabilidad, finanzas y negocios mediante una plataforma tecnológica accesible que integre educación, práctica e inteligencia artificial, facilitando la adquisición de conocimientos y su aplicación en situaciones reales.</p>
+          <p style="color:var(--muted); font-size:0.95rem; line-height:1.75;">Proporcionar herramientas de aprendizaje y trabajo en contabilidad, finanzas y negocios mediante una plataforma tecnológica accesible.</p>
+          <details class="cs-collapse">
+            <summary>Ver más</summary>
+            <p class="collapse-body">La plataforma integra educación, práctica e inteligencia artificial, facilitando la adquisición de conocimientos y su aplicación en situaciones reales.</p>
+          </details>
         </div>
 
-        <h3 class="section-title fade-up" style="text-align:center; font-size:1.6rem; margin-bottom:32px;">Valores corporativos</h3>
-        <div class="values-grid">
+        <!-- Valores: chips compactos con descripciones expandibles -->
+        <h3 class="section-title fade-up" style="text-align:center; font-size:1.6rem; margin-bottom:24px;">Valores corporativos</h3>
+        <div class="value-chip-row fade-up">
+          <details style="display:contents">
+            <summary class="value-chip">Accesibilidad</summary>
+            <!-- descripción colapsada -->
+          </details>
+          <details style="display:contents">
+            <summary class="value-chip green">Excelencia académica</summary>
+          </details>
+          <details style="display:contents">
+            <summary class="value-chip">Integridad</summary>
+          </details>
+          <details style="display:contents">
+            <summary class="value-chip green">Innovación</summary>
+          </details>
+          <details style="display:contents">
+            <summary class="value-chip">Aplicabilidad</summary>
+          </details>
+          <details style="display:contents">
+            <summary class="value-chip green">Desarrollo continuo</summary>
+          </details>
+        </div>
+        <!-- Valores completos: accesibles en grid para lectores de pantalla y buscadores -->
+        <div class="values-grid" style="margin-top:24px;">
           <div class="card value-card fade-up d1">
             <div class="icon-box icon-blue" aria-hidden="true">
               <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
