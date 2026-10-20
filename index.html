@@ -1114,6 +1114,15 @@
     #impacto  { background: var(--navy-2); }
     #planes   { background: var(--navy);   }
     #contacto { background: var(--navy-2); }
+
+    /* ── Ticker: illustrative label ────────────────────────────── */
+    .ticker-illustrative { font-size: 0.62rem; color: var(--muted); font-weight: 400; opacity: 0.7; }
+
+    /* Ticker oculto en móvil: demasiado denso y se pisa con la barra fija */
+    @media (max-width: 767px) {
+      #announce-bar { display: none; }
+      #navbar { top: 0 !important; }
+    }
   </style>
 </head>
 <body>
@@ -1123,7 +1132,7 @@
   <div id="announce-bar" role="status" aria-label="FINACORE — Próximamente">
     <div class="ticker-badge">
       <span class="ticker-badge-dot" aria-hidden="true"></span>
-      FINACORE
+      FINACORE<span class="ticker-illustrative"> · ilustrativo</span>
     </div>
     <div class="ticker-track" aria-hidden="true">
       <div class="ticker-scroll">
