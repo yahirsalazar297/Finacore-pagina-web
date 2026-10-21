@@ -1257,10 +1257,10 @@
         <span class="ticker-item"><span class="t-sym">IPC</span><span class="t-val">52,847.30</span><span class="t-up">▲ +1.24%</span></span>
         <span class="ticker-item"><span class="t-sym">TIIE 28D</span><span class="t-val">10.50%</span><span class="t-down">▼ −0.25pb</span></span>
         <span class="ticker-item"><span class="t-sym">FINACORE ACADEMIA</span><span class="t-sep">|</span><span class="t-up">▲ 12 CURSOS</span></span>
-        <span class="ticker-item"><span class="t-sym">USD/MXN</span><span class="t-val">17.42</span><span class="t-down">▼ −0.18%</span></span>
+        <span class="ticker-item" data-ticker="USD/MXN"><span class="t-sym">USD/MXN</span><span class="t-val" data-ticker-val="USD/MXN">17.42</span><span class="t-chg" data-ticker-chg="USD/MXN">▼ −0.18%</span></span>
         <span class="ticker-item"><span class="t-sym">ISR 2025</span><span class="t-val">30%</span><span class="t-up">▲ Aprende a optimizarlo</span></span>
         <span class="ticker-item"><span class="t-sym">NIF A-1</span><span class="t-val">Postulado</span><span class="t-up">▲ Nuevo módulo</span></span>
-        <span class="ticker-item"><span class="t-sym">BTC/USD</span><span class="t-val">97,842.10</span><span class="t-up">▲ +3.61%</span></span>
+        <span class="ticker-item" data-ticker="BTC/USD"><span class="t-sym">BTC/USD</span><span class="t-val" data-ticker-val="BTC/USD">97,842.10</span><span class="t-chg" data-ticker-chg="BTC/USD">▲ +3.61%</span></span>
         <span class="ticker-item"><span class="t-sym">IVA</span><span class="t-val">16.00%</span><span class="t-up">▲ Domínalo</span></span>
         <span class="ticker-item"><span class="t-sym">CETES 28D</span><span class="t-val">10.90%</span><span class="t-up">▲ +5pb</span></span>
         <span class="ticker-item"><span class="t-sym">CFDI 4.0</span><span class="t-val">SAT 2025</span><span class="t-up">▲ Certificación</span></span>
@@ -1274,10 +1274,10 @@
         <span class="ticker-item"><span class="t-sym">IPC</span><span class="t-val">52,847.30</span><span class="t-up">▲ +1.24%</span></span>
         <span class="ticker-item"><span class="t-sym">TIIE 28D</span><span class="t-val">10.50%</span><span class="t-down">▼ −0.25pb</span></span>
         <span class="ticker-item"><span class="t-sym">FINACORE ACADEMIA</span><span class="t-sep">|</span><span class="t-up">▲ 12 CURSOS</span></span>
-        <span class="ticker-item"><span class="t-sym">USD/MXN</span><span class="t-val">17.42</span><span class="t-down">▼ −0.18%</span></span>
+        <span class="ticker-item" data-ticker="USD/MXN"><span class="t-sym">USD/MXN</span><span class="t-val" data-ticker-val="USD/MXN">17.42</span><span class="t-chg" data-ticker-chg="USD/MXN">▼ −0.18%</span></span>
         <span class="ticker-item"><span class="t-sym">ISR 2025</span><span class="t-val">30%</span><span class="t-up">▲ Aprende a optimizarlo</span></span>
         <span class="ticker-item"><span class="t-sym">NIF A-1</span><span class="t-val">Postulado</span><span class="t-up">▲ Nuevo módulo</span></span>
-        <span class="ticker-item"><span class="t-sym">BTC/USD</span><span class="t-val">97,842.10</span><span class="t-up">▲ +3.61%</span></span>
+        <span class="ticker-item" data-ticker="BTC/USD"><span class="t-sym">BTC/USD</span><span class="t-val" data-ticker-val="BTC/USD">97,842.10</span><span class="t-chg" data-ticker-chg="BTC/USD">▲ +3.61%</span></span>
         <span class="ticker-item"><span class="t-sym">IVA</span><span class="t-val">16.00%</span><span class="t-up">▲ Domínalo</span></span>
         <span class="ticker-item"><span class="t-sym">CETES 28D</span><span class="t-val">10.90%</span><span class="t-up">▲ +5pb</span></span>
         <span class="ticker-item"><span class="t-sym">CFDI 4.0</span><span class="t-val">SAT 2025</span><span class="t-up">▲ Certificación</span></span>
@@ -1877,7 +1877,7 @@
           <a href="#contacto" style="color:var(--green);font-weight:600;font-size:0.9rem;text-decoration:underline;text-underline-offset:4px;">
             ¿Eres estudiante? Obtén Pro a precio especial
           </a>
-          <p style="font-size:0.78rem;color:rgba(145,168,205,0.6);margin-top:4px;">
+          <p style="font-size:0.92rem;color:rgba(145,168,205,0.8);margin-top:4px;">
             Verifica tu correo institucional — desde $129/mes o $999/año
           </p>
         </div>
@@ -2517,6 +2517,65 @@
         }
       });
     });
+
+    /* ── Live ticker ─────────────────────────────────────────────── */
+    (function() {
+      function fmtPrice(n, decimals) {
+        return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
+      }
+      function fmtPct(n) {
+        var sign = n >= 0 ? '+' : '';
+        return sign + n.toFixed(2) + '%';
+      }
+      function arrowCls(n) { return n >= 0 ? 't-up' : 't-down'; }
+      function arrow(n) { return n >= 0 ? '▲ ' : '▼ '; }
+
+      function updateTicker(sym, price, pctChange) {
+        var valEls = document.querySelectorAll('[data-ticker-val="' + sym + '"]');
+        var chgEls = document.querySelectorAll('[data-ticker-chg="' + sym + '"]');
+        var decimals = sym === 'BTC/USD' ? 2 : 4;
+        valEls.forEach(function(el) {
+          el.textContent = fmtPrice(price, decimals);
+        });
+        chgEls.forEach(function(el) {
+          el.className = 't-chg ' + arrowCls(pctChange);
+          el.textContent = arrow(pctChange) + fmtPct(pctChange);
+        });
+      }
+
+      function fetchBTC() {
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true')
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var price = data.bitcoin.usd;
+            var chg = data.bitcoin.usd_24h_change;
+            updateTicker('BTC/USD', price, chg);
+          })
+          .catch(function() {});
+      }
+
+      function fetchUSDMXN() {
+        fetch('https://api.frankfurter.app/latest?from=USD&to=MXN')
+          .then(function(r) { return r.json(); })
+          .then(function(data) {
+            var rate = data.rates.MXN;
+            updateTicker('USD/MXN', rate, 0);
+            /* Frankfurter doesn't give change %; hide change span when no delta */
+            document.querySelectorAll('[data-ticker-chg="USD/MXN"]').forEach(function(el) {
+              el.textContent = '';
+            });
+          })
+          .catch(function() {});
+      }
+
+      function refresh() {
+        fetchBTC();
+        fetchUSDMXN();
+      }
+
+      refresh();
+      setInterval(refresh, 60000);
+    })();
   </script>
 </body>
 </html>
