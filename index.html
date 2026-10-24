@@ -1239,6 +1239,306 @@
       pointer-events: none; opacity: 0; transition: opacity 0.15s;
     }
     .btn-store-disabled:hover::after { opacity: 1; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       PROFESSIONAL VISUAL REFINEMENT
+       Targeted overrides — no functionality changed.
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* ── Refined tokens ──────────────────────────────────────────── */
+    :root {
+      --radius:         10px;
+      --radius-lg:      14px;
+      --radius-sm:       6px;
+      --transition:     all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --surface-1:      rgba(10, 21, 44, 0.98);
+      --surface-2:      rgba(14, 26, 54, 0.98);
+      --surface-hover:  rgba(16, 30, 60, 0.98);
+      --border-subtle:  rgba(255,255,255,0.07);
+      --border-mid:     rgba(255,255,255,0.12);
+      --shadow-sm:      0 1px 3px rgba(0,0,0,.4), 0 1px 2px rgba(0,0,0,.2);
+      --shadow-md:      0 4px 16px rgba(0,0,0,.3), 0 2px 6px rgba(0,0,0,.2);
+      --shadow-lg:      0 12px 40px rgba(0,0,0,.35), 0 4px 12px rgba(0,0,0,.2);
+    }
+
+    /* ── Typography precision ─────────────────────────────────────── */
+    .section-title {
+      font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+    }
+    .section-desc {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(145,168,205,0.85);
+    }
+    .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      gap: 0;
+      margin-bottom: 12px;
+    }
+    .eyebrow::before { display: none; }
+    .section-header-left .eyebrow {
+      padding-left: 10px;
+      border-left: 2px solid var(--blue);
+    }
+    .section-header-left .eyebrow-green { border-left-color: var(--green); }
+
+    /* ── Hero typography ─────────────────────────────────────────── */
+    .hero-title {
+      font-size: clamp(2.6rem, 5vw, 4.4rem);
+      letter-spacing: -0.035em;
+      line-height: 1.03;
+    }
+    .hero-stat-value {
+      font-size: 1.85rem;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(145,168,205,0.7);
+      margin-top: 5px;
+    }
+    .hero-stats {
+      gap: 28px;
+      padding-top: 22px;
+      border-top-color: rgba(255,255,255,0.07);
+      margin-top: 28px;
+    }
+    .hero-badge {
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border-color: rgba(36,121,250,0.18);
+    }
+    .hero-benefit {
+      font-size: 0.8rem;
+      color: rgba(145,168,205,0.7);
+    }
+
+    /* ── Card system — clean surfaces, no blur ────────────────────── */
+    .card {
+      background: var(--surface-1);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .card:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-mid);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* ── Buttons ─────────────────────────────────────────────────── */
+    .btn {
+      border-radius: 9px;
+      font-size: 0.9rem;
+      padding: 12px 24px;
+      transition: background 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn-primary {
+      background: var(--blue);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset;
+    }
+    .btn-primary:hover {
+      background: var(--blue-light);
+      transform: none;
+      box-shadow: 0 0 0 1px rgba(36,121,250,0.4), 0 4px 20px rgba(36,121,250,0.3);
+    }
+    .btn-secondary {
+      border-color: var(--border-mid);
+      color: rgba(255,255,255,0.85);
+    }
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.22);
+      transform: none;
+    }
+    .btn-sm { padding: 8px 18px; font-size: 0.85rem; }
+
+    /* ── Navigation ──────────────────────────────────────────────── */
+    #navbar { border-bottom-color: rgba(255,255,255,0.06); }
+    .nav-links a {
+      font-size: 0.84rem;
+      padding: 7px 11px;
+      border-radius: 7px;
+      color: rgba(145,168,205,0.75);
+      letter-spacing: 0.005em;
+    }
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.05);
+    }
+    .nav-links a.active {
+      color: var(--white);
+      background: rgba(255,255,255,0.07);
+      font-weight: 600;
+    }
+
+    /* ── Plan cards ──────────────────────────────────────────────── */
+    .plan-card-v2 {
+      border-radius: var(--radius);
+      padding: 28px 26px;
+    }
+    .plan-card-v2.plan-featured {
+      border-color: rgba(36,121,250,0.3) !important;
+      background: rgba(15, 28, 56, 0.98) !important;
+      box-shadow: 0 0 0 1px rgba(36,121,250,0.08), var(--shadow-md) !important;
+      overflow: visible;
+    }
+    .plan-card-v2.plan-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent 5%, var(--blue) 35%, var(--green) 65%, transparent 95%);
+      pointer-events: none;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+    .pcv2-name { font-size: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+    .pcv2-amount { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+    .pcv2-tagline { font-size: 0.8rem; color: rgba(145,168,205,0.7); margin-bottom: 14px; }
+    .pcv2-period { font-size: 0.82rem; }
+    .pcv2-features { gap: 8px; margin-bottom: 18px; }
+    .pcv2-features li {
+      font-size: 0.81rem;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    .pcv2-features li:last-child { border-bottom: none; }
+    .feat-label { color: rgba(145,168,205,0.75); }
+    .feat-val { font-weight: 600; font-size: 0.81rem; }
+    .plan-badge { font-size: 0.68rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 4px 12px; }
+    .toggle-opt { font-size: 0.87rem; color: rgba(145,168,205,0.65); }
+    .toggle-opt.active, .toggle-opt[aria-pressed="true"] { color: var(--white); }
+    .iva-note { font-size: 0.76rem; color: rgba(145,168,205,0.5); margin-bottom: 16px; }
+    .savings-chip, .save-badge { font-size: 0.7rem; border-radius: 6px; }
+
+    /* ── Area cards (Academia) ───────────────────────────────────── */
+    .area-card { padding: 22px; gap: 0; }
+    .area-card-header { margin-bottom: 10px; gap: 10px; }
+    .area-number {
+      font-size: 0.62rem; font-weight: 800; letter-spacing: 0.08em;
+      color: rgba(145,168,205,0.5);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 5px; width: 24px; height: 24px;
+    }
+    .area-card h3 { font-size: 0.92rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 0; }
+    .area-card p { font-size: 0.85rem; color: rgba(145,168,205,0.8); line-height: 1.65; }
+    .icon-box { width: 40px; height: 40px; border-radius: 9px; }
+    .icon-box svg { width: 18px; height: 18px; }
+
+    /* ── Tags ────────────────────────────────────────────────────── */
+    .tag { font-size: 0.68rem; padding: 2px 8px; border-radius: 5px; letter-spacing: 0.02em; }
+
+    /* ── Segment cards (Para quién) ──────────────────────────────── */
+    .segment-card { padding: 20px 22px; gap: 12px; }
+    .segment-card h4 { font-size: 0.88rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 4px; }
+    .segment-card p { font-size: 0.81rem; color: rgba(145,168,205,0.8); line-height: 1.6; }
+    .segment-chip { font-size: 0.75rem; padding: 6px 14px; border-radius: 7px; border-color: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+
+    /* ── Story / values (Nosotros) ───────────────────────────────── */
+    .story-card { padding: 28px 26px; }
+    .story-card h3 { font-size: 0.98rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 10px; }
+    .story-card p { font-size: 0.88rem; line-height: 1.72; color: rgba(145,168,205,0.82); }
+    .story-highlight { border-left: 2px solid var(--blue); padding-left: 14px; font-size: 1rem; line-height: 1.72; color: rgba(255,255,255,0.9); }
+    .story-icon { border-radius: 10px; width: 44px; height: 44px; margin-bottom: 16px; }
+    .value-card { padding: 22px; }
+    .value-card h4 { font-size: 0.9rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 5px; }
+    .value-card p { font-size: 0.84rem; color: rgba(145,168,205,0.8); line-height: 1.65; }
+
+    /* ── SDG cards ───────────────────────────────────────────────── */
+    .sdg-card { padding: 28px 22px; }
+    .sdg-card h3 { font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px; }
+    .sdg-card p { font-size: 0.84rem; color: rgba(145,168,205,0.8); line-height: 1.65; }
+    .sdg-img { border-radius: 6px; margin-bottom: 14px; }
+    .sdg-note { font-size: 0.8rem; color: rgba(145,168,205,0.55); }
+    .impact-hero { max-width: 600px; margin-bottom: 52px; }
+
+    /* ── Contact ─────────────────────────────────────────────────── */
+    .contact-channel {
+      border-radius: var(--radius); padding: 16px;
+      border-color: var(--border-subtle);
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+    .contact-channel:hover { border-color: rgba(36,121,250,0.2); background: rgba(36,121,250,0.03); }
+    .contact-channel h4 { font-size: 0.88rem; font-weight: 700; letter-spacing: -0.01em; }
+    .contact-channel p { font-size: 0.81rem; color: rgba(145,168,205,0.75); }
+    .contact-cta-box { border-radius: var(--radius); padding: 36px 32px; }
+    .contact-cta-box h3 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 10px; }
+    .contact-cta-box p { font-size: 0.9rem; line-height: 1.72; }
+
+    /* ── Comparison table ────────────────────────────────────────── */
+    .compare-wrapper { border-color: var(--border-subtle); border-radius: var(--radius); }
+    .compare-toggle { font-size: 0.88rem; padding: 16px 20px; }
+    .compare-th-feat, .compare-th-plan { font-size: 0.65rem; letter-spacing: 0.13em; }
+    .compare-row td { font-size: 0.81rem; padding: 8px 0; }
+
+    /* ── App store buttons ───────────────────────────────────────── */
+    .btn-store { border-radius: var(--radius); padding: 11px 20px; border-color: var(--border-subtle); gap: 10px; }
+    .btn-store:hover { background: rgba(255,255,255,0.07); border-color: var(--border-mid); transform: none; box-shadow: var(--shadow-sm); }
+    .btn-store-name { font-size: 0.95rem; }
+    .btn-store-sub { font-size: 0.65rem; color: rgba(145,168,205,0.65); }
+
+    /* ── Footer ──────────────────────────────────────────────────── */
+    footer { background: var(--navy); border-top-color: rgba(255,255,255,0.06); padding: 56px 0 28px; }
+    .footer-grid { gap: 48px; margin-bottom: 40px; }
+    .footer-brand p { font-size: 0.84rem; line-height: 1.72; color: rgba(145,168,205,0.7); }
+    .footer-slogan { font-size: 0.82rem; color: rgba(36,121,250,0.85); }
+    .footer-col h4 { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.14em; color: rgba(255,255,255,0.45); margin-bottom: 14px; }
+    .footer-col a { font-size: 0.84rem; color: rgba(145,168,205,0.65); margin-bottom: 8px; transition: color 0.15s ease; }
+    .footer-col a:hover { color: rgba(255,255,255,0.9); }
+    .footer-bottom p { font-size: 0.76rem; color: rgba(145,168,205,0.45); }
+    .footer-legal span { font-size: 0.74rem; color: rgba(145,168,205,0.38); }
+
+    /* ── Section spacing ─────────────────────────────────────────── */
+    section { padding: 88px 0; }
+    .section-header { margin-bottom: 52px; }
+    .section-header-left { margin-bottom: 44px; }
+    @media (max-width: 767px) { section { padding: 60px 0; } }
+
+    /* ── Fade-up — improved easing ───────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── Preview panel ───────────────────────────────────────────── */
+    .preview-panel { border-radius: var(--radius); border-color: rgba(255,255,255,0.1); box-shadow: var(--shadow-lg); }
+    .preview-course-card { border-radius: 9px; padding: 12px 14px; }
+    .preview-bar { height: 2px; border-radius: 2px; }
+
+    /* ── Ticker ──────────────────────────────────────────────────── */
+    #announce-bar { border-bottom-color: rgba(255,255,255,0.06); }
+    .ticker-badge { font-size: 0.63rem; letter-spacing: 0.13em; padding: 0 14px; }
+    .ticker-item { font-size: 0.71rem; padding: 0 18px; }
+
+    /* ── Coming soon ─────────────────────────────────────────────── */
+    .cs-eyebrow { font-size: 0.68rem; letter-spacing: 0.16em; }
+    .cs-headline { font-size: clamp(3rem, 9vw, 7.5rem); letter-spacing: -0.045em; }
+
+    /* ── Plan pending note ───────────────────────────────────────── */
+    .plan-pending-note { border-radius: var(--radius-sm); font-size: 0.78rem; }
+    .student-link-row { margin: 0 0 28px; }
+    .plans-note { font-size: 0.82rem; }
+
   </style>
 </head>
 <body>
@@ -1463,7 +1763,7 @@
     <!-- ── ACADEMIA ─────────────────────────────────────────────── -->
     <section id="academia" aria-labelledby="academia-heading">
       <div class="container">
-        <div class="section-header fade-up">
+        <div class="section-header-left fade-up">
           <span class="eyebrow">Oferta académica</span>
           <h2 class="section-title" id="academia-heading">12 áreas de conocimiento especializado</h2>
           <p class="section-desc">Desde educación financiera básica hasta formación avanzada en contabilidad, finanzas, tecnología y negocios. Un catálogo diseñado para todos los niveles.</p>
@@ -1972,7 +2272,7 @@
     <!-- ── NOSOTROS ─────────────────────────────────────────────── -->
     <section id="nosotros" aria-labelledby="nosotros-heading">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header-left">
           <span class="eyebrow">Nuestra historia</span>
           <h2 class="section-title" id="nosotros-heading">Conoce a FINACORE</h2>
           <p class="section-desc">Una empresa mexicana con la misión de transformar el acceso al conocimiento financiero.</p>
