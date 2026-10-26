@@ -1,4 +1,5 @@
-# Simple workflow for deploying static content to GitHub Pages
+# Despliega a GitHub Pages SOLO la carpeta _site/, construida con una lista blanca de archivos
+# (scripts/build-site.py). Así no se publican documentos internos ni archivos de desarrollo.
 name: Deploy static content to Pages
 
 on:
@@ -33,11 +34,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Construir y verificar _site (lista blanca)
+        run: python3 scripts/build-site.py _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Solo los archivos públicos; nunca el repositorio completo
+          path: '_site'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
