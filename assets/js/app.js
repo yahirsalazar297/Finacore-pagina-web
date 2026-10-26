@@ -327,67 +327,84 @@
     });
   })();
 
-  /* ── Cinta de mercado: cotizaciones en vivo ─────────────────────────── */
+  /* ── Cinta de mercado: cotizaciones en vivo ─────────────────────────────
+     BTC/USD y USD/MXN se muestran SOLO mientras su API responde con un valor válido.
+     Si la API falla, tarda demasiado o devuelve un dato inválido, el elemento se oculta
+     y se borra su valor: nunca se muestran cifras de respaldo ni valores vencidos. */
   (function () {
     var bar = $('#announce-bar');
+    var TIMEOUT_MS = 10000;
+
     function fmtPrice(n, decimals) {
       return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
     }
     function fmtPct(n) { return (n >= 0 ? '+' : '') + n.toFixed(2) + '%'; }
-    function arrowCls(n) { return n >= 0 ? 't-up' : 't-down'; }
-    function arrow(n) { return n >= 0 ? '▲ ' : '▼ '; }
-
-    function updateTicker(sym, price, pctChange) {
-      var valEls = document.querySelectorAll('[data-ticker-val="' + sym + '"]');
-      var chgEls = document.querySelectorAll('[data-ticker-chg="' + sym + '"]');
-      var decimals = sym === 'BTC/USD' ? 2 : 4;
-      valEls.forEach(function (el) { el.textContent = fmtPrice(price, decimals); });
-      if (pctChange !== null && pctChange !== undefined && !isNaN(pctChange)) {
-        chgEls.forEach(function (el) {
-          el.className = 't-chg ' + arrowCls(pctChange);
-          el.textContent = arrow(pctChange) + fmtPct(pctChange);
-        });
-      }
-      document.querySelectorAll('.ticker-item[data-ticker="' + sym + '"]').forEach(function (el) { el.hidden = false; });
-      bar.classList.add('has-live');
-      mark(sym, false);
+    function valid(n) { return typeof n === 'number' && isFinite(n) && n > 0; }
+    function tickerItems(sym) { return document.querySelectorAll('.ticker-item[data-ticker="' + sym + '"]'); }
+    function syncBar() {
+      bar.classList.toggle('has-live', !!document.querySelector('.ticker-item[data-ticker]:not([hidden])'));
     }
-    // Si una actualización posterior falla, el último valor mostrado queda en cursiva (dato no vigente)
-    function mark(sym, off) {
-      document.querySelectorAll('.ticker-item[data-ticker="' + sym + '"]').forEach(function (el) {
-        el.classList.toggle('is-offline', off);
+
+    function show(sym, price, pct) {
+      var decimals = sym === 'BTC/USD' ? 2 : 4;
+      var hasPct = typeof pct === 'number' && isFinite(pct);
+      document.querySelectorAll('[data-ticker-val="' + sym + '"]').forEach(function (el) {
+        el.textContent = fmtPrice(price, decimals);
       });
+      document.querySelectorAll('[data-ticker-chg="' + sym + '"]').forEach(function (el) {
+        el.className = 't-chg ' + (hasPct ? (pct >= 0 ? 't-up' : 't-down') : '');
+        el.textContent = hasPct ? (pct >= 0 ? '▲ ' : '▼ ') + fmtPct(pct) : '';
+      });
+      tickerItems(sym).forEach(function (el) { el.hidden = false; });
+      syncBar();
+    }
+
+    function hide(sym) {
+      tickerItems(sym).forEach(function (el) { el.hidden = true; });
+      document.querySelectorAll('[data-ticker-val="' + sym + '"], [data-ticker-chg="' + sym + '"]').forEach(function (el) {
+        el.textContent = '';
+      });
+      syncBar();
+    }
+
+    function getJSON(url) {
+      var ctrl = typeof AbortController === 'function' ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, TIMEOUT_MS) : null;
+      return fetch(url, ctrl ? { signal: ctrl.signal } : undefined)
+        .then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+        .then(function (data) { clearTimeout(timer); return data; },
+              function (err) { clearTimeout(timer); throw err; });
     }
 
     function fetchBTC() {
       /* CoinCap v2 — gratis, sin clave, con CORS */
-      fetch('https://api.coincap.io/v2/assets/bitcoin')
-        .then(function (r) { return r.json(); })
+      getJSON('https://api.coincap.io/v2/assets/bitcoin')
         .then(function (data) {
-          updateTicker('BTC/USD', parseFloat(data.data.priceUsd), parseFloat(data.data.changePercent24Hr));
+          var d = data && data.data;
+          var price = d ? parseFloat(d.priceUsd) : NaN;
+          if (!valid(price)) throw new Error('dato inválido');
+          show('BTC/USD', price, parseFloat(d.changePercent24Hr));
         })
-        .catch(function () { mark('BTC/USD', true); });
+        .catch(function () { hide('BTC/USD'); });
     }
 
     function fetchUSDMXN() {
       /* @fawazahmed0/currency-api vía jsDelivr, con respaldo en pages.dev */
-      var primary  = 'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json';
-      var fallback = 'https://latest.currency-api.pages.dev/v1/currencies/usd.json';
-      function parse(data) {
-        var rate = data.usd && data.usd.mxn;
-        if (rate) {
-          updateTicker('USD/MXN', rate, null);
-          document.querySelectorAll('[data-ticker-chg="USD/MXN"]').forEach(function (el) { el.textContent = ''; });
-        } else {
-          mark('USD/MXN', true);
-        }
+      var urls = [
+        'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',
+        'https://latest.currency-api.pages.dev/v1/currencies/usd.json'
+      ];
+      function attempt(i) {
+        if (i >= urls.length) { hide('USD/MXN'); return; }
+        getJSON(urls[i])
+          .then(function (data) {
+            var rate = data && data.usd ? data.usd.mxn : NaN;
+            if (!valid(rate)) throw new Error('dato inválido');
+            show('USD/MXN', rate, null);   // la fuente no entrega variación: no se muestra ninguna
+          })
+          .catch(function () { attempt(i + 1); });
       }
-      fetch(primary)
-        .then(function (r) { return r.json(); })
-        .then(parse)
-        .catch(function () {
-          fetch(fallback).then(function (r) { return r.json(); }).then(parse).catch(function () { mark('USD/MXN', true); });
-        });
+      attempt(0);
     }
 
     function refresh() { fetchBTC(); fetchUSDMXN(); }
