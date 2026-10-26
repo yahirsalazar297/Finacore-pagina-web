@@ -10,9 +10,11 @@
   var $$ = function (sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); };
 
   /* ── Precios (única fuente de verdad de esta página) ────────────────── */
+  // Precios oficiales (MXN, IVA incluido). Se muestra siempre el precio mensual fijo ($99 / $199); en periodo anual
+  // se añade el total anual y el ahorro, que se calcula desde esta misma tabla. Plan estudiante: $129/mes o $999/año.
   var PRICING = {
-    plus: { monthly: 99,  annual: 799,  annualMo: 67  },
-    pro:  { monthly: 199, annual: 1599, annualMo: 133 }
+    plus: { monthly: 99,  annual: 799  },
+    pro:  { monthly: 199, annual: 1599 }
   };
 
   var currentPeriod = 'annual';
@@ -27,6 +29,24 @@
       el.classList.remove('rolled');
       void el.offsetWidth;
       el.classList.add('rolled');
+    }
+  }
+
+  function annualSavings(plan) {
+    var yearAtMonthly = plan.monthly * 12;
+    if (!(plan.monthly > 0 && plan.annual > 0 && plan.annual < yearAtMonthly)) return null;
+    var amount = yearAtMonthly - plan.annual;
+    return { amount: amount, percent: Math.round(amount / yearAtMonthly * 100) };
+  }
+
+  function showSavings(el, plan, isAnnual) {
+    var saving = isAnnual ? annualSavings(plan) : null;
+    if (saving) {
+      el.textContent = 'Te ahorras ' + formatMXN(saving.amount) + ' al año · ' + saving.percent + '% menos';
+      el.classList.add('visible');
+    } else {
+      el.textContent = '';
+      el.classList.remove('visible');
     }
   }
 
@@ -50,22 +70,9 @@
       proBilled.classList.remove('visible');
     }
 
-    // Ahorro anual vs. mensual (calculado desde PRICING)
-    var plusSavingsAmt = PRICING.plus.monthly * 12 - PRICING.plus.annual;
-    var plusSavingsPct = Math.round(plusSavingsAmt / (PRICING.plus.monthly * 12) * 100);
-    var proSavingsAmt  = PRICING.pro.monthly * 12 - PRICING.pro.annual;
-    var proSavingsPct  = Math.round(proSavingsAmt / (PRICING.pro.monthly * 12) * 100);
-    var plusSavingsEl = $('#plus-savings');
-    var proSavingsEl  = $('#pro-savings');
-    if (isAnnual) {
-      plusSavingsEl.textContent = 'Te ahorras ' + formatMXN(plusSavingsAmt) + ' al año · ' + plusSavingsPct + '% menos';
-      plusSavingsEl.classList.add('visible');
-      proSavingsEl.textContent = 'Te ahorras ' + formatMXN(proSavingsAmt) + ' al año · ' + proSavingsPct + '% menos';
-      proSavingsEl.classList.add('visible');
-    } else {
-      plusSavingsEl.classList.remove('visible');
-      proSavingsEl.classList.remove('visible');
-    }
+    // Ahorro anual vs. mensual: (mensual × 12) − anual, solo en periodo anual y solo si los precios lo permiten
+    showSavings($('#plus-savings'), PRICING.plus, isAnnual);
+    showSavings($('#pro-savings'), PRICING.pro, isAnnual);
   }
 
   function setPeriod(period) {
@@ -208,7 +215,7 @@
       if (target) {
         e.preventDefault();
         var offset = 72;
-        var top = target.getBoundingClientRect().top + window.scrollY - offset;
+        var top = id === '#inicio' ? 0 : target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top: top, behavior: prefersReduced ? 'auto' : 'smooth' });
         if (history.replaceState) history.replaceState(null, '', id);
       }
@@ -322,6 +329,7 @@
 
   /* ── Cinta de mercado: cotizaciones en vivo ─────────────────────────── */
   (function () {
+    var bar = $('#announce-bar');
     function fmtPrice(n, decimals) {
       return n.toLocaleString('en-US', { minimumFractionDigits: decimals, maximumFractionDigits: decimals });
     }
@@ -340,9 +348,11 @@
           el.textContent = arrow(pctChange) + fmtPct(pctChange);
         });
       }
+      document.querySelectorAll('.ticker-item[data-ticker="' + sym + '"]').forEach(function (el) { el.hidden = false; });
+      bar.classList.add('has-live');
       mark(sym, false);
     }
-    // Atenúa solo el dato que no pudo actualizarse (los valores fijos no son datos de mercado)
+    // Si una actualización posterior falla, el último valor mostrado queda en cursiva (dato no vigente)
     function mark(sym, off) {
       document.querySelectorAll('.ticker-item[data-ticker="' + sym + '"]').forEach(function (el) {
         el.classList.toggle('is-offline', off);

@@ -52,41 +52,45 @@
     </button>
     <div class="ticker-track" aria-hidden="true">
       <div class="ticker-scroll">
+        <!-- D5 — Cinta de mercado. Se muestran solo: (1) cotizaciones en vivo (BTC/USD, USD/MXN) que aparecen cuando la API
+             responde; (2) referencias normativas con fuente pública: IVA 16 % (LIVA art. 1), ISR 30 % personas morales
+             (LISR art. 9), PTU 10 % (LFT art. 117; CPEUM art. 123, A, IX); (3) rótulos de producto. IPC, TIIE, CETES, INPC y
+             Bono M 10Y estaban escritos a mano, sin fuente: están comentados abajo para restaurarlos si se conecta una. -->
         <!-- Set A -->
         <div class="ticker-set">
           <span class="ticker-item"><span class="t-sym">FINACORE PRO</span><span class="t-sep">|</span><span class="t-soon">COMING SOON</span></span>
-          <span class="ticker-item"><span class="t-sym">IPC</span><span class="t-val">52,847.30</span><span class="t-up">▲ +1.24%</span></span>
-          <span class="ticker-item"><span class="t-sym">TIIE 28D</span><span class="t-val">10.50%</span><span class="t-down">▼ −0.25pb</span></span>
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">IPC</span><span class="t-val">52,847.30</span><span class="t-up">▲ +1.24%</span></span> -->
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">TIIE 28D</span><span class="t-val">10.50%</span><span class="t-down">▼ −0.25pb</span></span> -->
           <span class="ticker-item"><span class="t-sym">FINACORE ACADEMIA</span><span class="t-sep">|</span><span class="t-up">▲ 12 CURSOS</span></span>
-          <span class="ticker-item" data-ticker="USD/MXN"><span class="t-sym">USD/MXN</span><span class="t-val" data-ticker-val="USD/MXN">17.42</span><span class="t-chg" data-ticker-chg="USD/MXN">▼ −0.18%</span></span>
+          <span class="ticker-item" data-ticker="USD/MXN" hidden><span class="t-sym">USD/MXN</span><span class="t-val" data-ticker-val="USD/MXN"></span><span class="t-chg" data-ticker-chg="USD/MXN"></span></span><!-- D5 · valor de respaldo anterior, sin fuente, retirado: 17.42 ▼ −0.18% -->
           <span class="ticker-item"><span class="t-sym">ISR 2026</span><span class="t-val">30%</span><span class="t-up">▲ Aprende a optimizarlo</span></span>
           <span class="ticker-item"><span class="t-sym">NIF A-1</span><span class="t-val">Postulado</span><span class="t-up">▲ Nuevo módulo</span></span>
-          <span class="ticker-item" data-ticker="BTC/USD"><span class="t-sym">BTC/USD</span><span class="t-val" data-ticker-val="BTC/USD">97,842.10</span><span class="t-chg" data-ticker-chg="BTC/USD">▲ +3.61%</span></span>
+          <span class="ticker-item" data-ticker="BTC/USD" hidden><span class="t-sym">BTC/USD</span><span class="t-val" data-ticker-val="BTC/USD"></span><span class="t-chg" data-ticker-chg="BTC/USD"></span></span><!-- D5 · valor de respaldo anterior, sin fuente, retirado: 97,842.10 ▲ +3.61% -->
           <span class="ticker-item"><span class="t-sym">IVA</span><span class="t-val">16.00%</span><span class="t-up">▲ Domínalo</span></span>
-          <span class="ticker-item"><span class="t-sym">CETES 28D</span><span class="t-val">8.60%</span><span class="t-down">▼ −0.10pb</span></span>
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">CETES 28D</span><span class="t-val">8.60%</span><span class="t-down">▼ −0.10pb</span></span> -->
           <span class="ticker-item"><span class="t-sym">CFDI 4.0</span><span class="t-val">SAT 2026</span><span class="t-up">▲ Certificación</span></span>
           <span class="ticker-item"><span class="t-sym">FINACORE TOOLS</span><span class="t-sep">|</span><span class="t-soon">COMING SOON</span></span>
-          <span class="ticker-item"><span class="t-sym">INPC</span><span class="t-val">3.82%</span><span class="t-down">▼ −0.08%</span></span>
-          <span class="ticker-item"><span class="t-sym">BONO M 10Y</span><span class="t-val">9.25%</span><span class="t-up">▲ +2pb</span></span>
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">INPC</span><span class="t-val">3.82%</span><span class="t-down">▼ −0.08%</span></span> -->
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">BONO M 10Y</span><span class="t-val">9.25%</span><span class="t-up">▲ +2pb</span></span> -->
           <span class="ticker-item"><span class="t-sym">FINACORE EXCEL</span><span class="t-sep">|</span><span class="t-up">▲ Próximamente</span></span>
           <span class="ticker-item"><span class="t-sym">PTU 2026</span><span class="t-val">10%</span><span class="t-up">▲ Nuevo curso</span></span>
         </div>
         <!-- Set B — duplicado para el bucle continuo -->
         <div class="ticker-set ticker-set-b">
           <span class="ticker-item"><span class="t-sym">FINACORE PRO</span><span class="t-sep">|</span><span class="t-soon">COMING SOON</span></span>
-          <span class="ticker-item"><span class="t-sym">IPC</span><span class="t-val">52,847.30</span><span class="t-up">▲ +1.24%</span></span>
-          <span class="ticker-item"><span class="t-sym">TIIE 28D</span><span class="t-val">10.50%</span><span class="t-down">▼ −0.25pb</span></span>
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">IPC</span><span class="t-val">52,847.30</span><span class="t-up">▲ +1.24%</span></span> -->
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">TIIE 28D</span><span class="t-val">10.50%</span><span class="t-down">▼ −0.25pb</span></span> -->
           <span class="ticker-item"><span class="t-sym">FINACORE ACADEMIA</span><span class="t-sep">|</span><span class="t-up">▲ 12 CURSOS</span></span>
-          <span class="ticker-item" data-ticker="USD/MXN"><span class="t-sym">USD/MXN</span><span class="t-val" data-ticker-val="USD/MXN">17.42</span><span class="t-chg" data-ticker-chg="USD/MXN">▼ −0.18%</span></span>
+          <span class="ticker-item" data-ticker="USD/MXN" hidden><span class="t-sym">USD/MXN</span><span class="t-val" data-ticker-val="USD/MXN"></span><span class="t-chg" data-ticker-chg="USD/MXN"></span></span><!-- D5 · valor de respaldo anterior, sin fuente, retirado: 17.42 ▼ −0.18% -->
           <span class="ticker-item"><span class="t-sym">ISR 2026</span><span class="t-val">30%</span><span class="t-up">▲ Aprende a optimizarlo</span></span>
           <span class="ticker-item"><span class="t-sym">NIF A-1</span><span class="t-val">Postulado</span><span class="t-up">▲ Nuevo módulo</span></span>
-          <span class="ticker-item" data-ticker="BTC/USD"><span class="t-sym">BTC/USD</span><span class="t-val" data-ticker-val="BTC/USD">97,842.10</span><span class="t-chg" data-ticker-chg="BTC/USD">▲ +3.61%</span></span>
+          <span class="ticker-item" data-ticker="BTC/USD" hidden><span class="t-sym">BTC/USD</span><span class="t-val" data-ticker-val="BTC/USD"></span><span class="t-chg" data-ticker-chg="BTC/USD"></span></span><!-- D5 · valor de respaldo anterior, sin fuente, retirado: 97,842.10 ▲ +3.61% -->
           <span class="ticker-item"><span class="t-sym">IVA</span><span class="t-val">16.00%</span><span class="t-up">▲ Domínalo</span></span>
-          <span class="ticker-item"><span class="t-sym">CETES 28D</span><span class="t-val">8.60%</span><span class="t-down">▼ −0.10pb</span></span>
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">CETES 28D</span><span class="t-val">8.60%</span><span class="t-down">▼ −0.10pb</span></span> -->
           <span class="ticker-item"><span class="t-sym">CFDI 4.0</span><span class="t-val">SAT 2026</span><span class="t-up">▲ Certificación</span></span>
           <span class="ticker-item"><span class="t-sym">FINACORE TOOLS</span><span class="t-sep">|</span><span class="t-soon">COMING SOON</span></span>
-          <span class="ticker-item"><span class="t-sym">INPC</span><span class="t-val">3.82%</span><span class="t-down">▼ −0.08%</span></span>
-          <span class="ticker-item"><span class="t-sym">BONO M 10Y</span><span class="t-val">9.25%</span><span class="t-up">▲ +2pb</span></span>
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">INPC</span><span class="t-val">3.82%</span><span class="t-down">▼ −0.08%</span></span> -->
+          <!-- D5 · oculto hasta contar con una fuente verificable: <span class="ticker-item"><span class="t-sym">BONO M 10Y</span><span class="t-val">9.25%</span><span class="t-up">▲ +2pb</span></span> -->
           <span class="ticker-item"><span class="t-sym">FINACORE EXCEL</span><span class="t-sep">|</span><span class="t-up">▲ Próximamente</span></span>
           <span class="ticker-item"><span class="t-sym">PTU 2026</span><span class="t-val">10%</span><span class="t-up">▲ Nuevo curso</span></span>
         </div>
@@ -262,125 +266,147 @@
         <div class="develop">
           <div class="explorer" data-explorer>
             <ul class="areas">
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Contabilidad Financiera</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Fundamentos y aplicaciones: registro de operaciones, estados financieros, normas de información y análisis de resultados.</p>
-                    <ul class="tags"><li class="tag">Estados financieros</li><li class="tag">IFRS</li><li class="tag">Análisis</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>10 temas</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
+              <!-- Categorías de navegación corporativa (brief del 13-oct; src/data/academicAreas.ts): son cuatro.
+                   No modifican la organización académica de la plataforma. -->
+              <li class="area-cat">
+                <h3 class="cat-title">Contaduría y Fiscalidad</h3>
+                <ul class="cat-areas">
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Contabilidad Financiera</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Fundamentos y aplicaciones: registro de operaciones, estados financieros, normas de información y análisis de resultados.</p>
+                      <ul class="tags"><li class="tag">Estados financieros</li><li class="tag">IFRS</li><li class="tag">Análisis</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>10 temas</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Costos y Contabilidad Administrativa</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Sistemas de costos, presupuestos, análisis de rentabilidad y herramientas para la toma de decisiones gerenciales.</p>
+                      <ul class="tags"><li class="tag">Costeo ABC</li><li class="tag">Presupuestos</li><li class="tag">Rentabilidad</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Fiscalidad y Tributación</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Marco tributario mexicano, obligaciones fiscales, cumplimiento de impuestos y estrategias de planeación fiscal responsable.</p>
+                      <ul class="tags"><li class="tag">ISR</li><li class="tag">IVA</li><li class="tag">Planeación fiscal</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Auditoría, Control Interno y Riesgos</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Principios de auditoría, diseño de controles internos, identificación y gestión de riesgos organizacionales.</p>
+                      <ul class="tags"><li class="tag">Auditoría</li><li class="tag">COSO</li><li class="tag">Riesgos</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                </ul>
               </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Costos y Contabilidad Administrativa</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Sistemas de costos, presupuestos, análisis de rentabilidad y herramientas para la toma de decisiones gerenciales.</p>
-                    <ul class="tags"><li class="tag">Costeo ABC</li><li class="tag">Presupuestos</li><li class="tag">Rentabilidad</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
+              <li class="area-cat">
+                <h3 class="cat-title">Finanzas e Inversiones</h3>
+                <ul class="cat-areas">
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Finanzas Corporativas</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Valuación de empresas, estructura de capital, decisiones de inversión, financiamiento y gestión del valor para accionistas.</p>
+                      <ul class="tags"><li class="tag">DCF</li><li class="tag">WACC</li><li class="tag">Valuación</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Finanzas Personales y Educación Financiera</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Presupuesto personal, ahorro, crédito, seguros, planificación patrimonial e inteligencia financiera cotidiana.</p>
+                      <ul class="tags"><li class="tag">Presupuesto</li><li class="tag">Ahorro</li><li class="tag">Crédito</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>✓</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Inversiones y Mercados Financieros</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Instrumentos de inversión, mercado de valores, análisis fundamental y técnico, portafolios y toma de decisiones.</p>
+                      <ul class="tags"><li class="tag">Acciones</li><li class="tag">Bonos</li><li class="tag">Portafolios</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Finanzas Cuantitativas y Gestión de Riesgos</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Modelado matemático y estadístico aplicado a las finanzas, derivados, medición de riesgos y estrategias de cobertura.</p>
+                      <ul class="tags"><li class="tag">VaR</li><li class="tag">Derivados</li><li class="tag">Estadística</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                </ul>
               </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Fiscalidad y Tributación</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Marco tributario mexicano, obligaciones fiscales, cumplimiento de impuestos y estrategias de planeación fiscal responsable.</p>
-                    <ul class="tags"><li class="tag">ISR</li><li class="tag">IVA</li><li class="tag">Planeación fiscal</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
+              <li class="area-cat">
+                <h3 class="cat-title">Economía y Negocios</h3>
+                <ul class="cat-areas">
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Economía y Entorno Empresarial</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Principios macroeconómicos y microeconómicos, análisis del entorno de negocios y su impacto en las decisiones financieras.</p>
+                      <ul class="tags"><li class="tag">Macroeconomía</li><li class="tag">Microeconomía</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Derecho Empresarial y Regulación</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Marco legal de las empresas en México, contratos, regulación financiera y cumplimiento normativo en el entorno de negocios.</p>
+                      <ul class="tags"><li class="tag">Contratos</li><li class="tag">Regulación</li><li class="tag">Compliance</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Emprendimiento, Administración y Estrategia</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Creación y gestión de empresas, planeación estratégica, modelos de negocio, liderazgo y administración de recursos.</p>
+                      <ul class="tags"><li class="tag">Startups</li><li class="tag">Estrategia</li><li class="tag">Liderazgo</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                </ul>
               </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Auditoría, Control Interno y Riesgos</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Principios de auditoría, diseño de controles internos, identificación y gestión de riesgos organizacionales.</p>
-                    <ul class="tags"><li class="tag">Auditoría</li><li class="tag">COSO</li><li class="tag">Riesgos</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>—</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Finanzas Corporativas</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Valuación de empresas, estructura de capital, decisiones de inversión, financiamiento y gestión del valor para accionistas.</p>
-                    <ul class="tags"><li class="tag">DCF</li><li class="tag">WACC</li><li class="tag">Valuación</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>—</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Finanzas Personales y Educación Financiera</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Presupuesto personal, ahorro, crédito, seguros, planificación patrimonial e inteligencia financiera cotidiana.</p>
-                    <ul class="tags"><li class="tag">Presupuesto</li><li class="tag">Ahorro</li><li class="tag">Crédito</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>✓</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Inversiones y Mercados Financieros</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Instrumentos de inversión, mercado de valores, análisis fundamental y técnico, portafolios y toma de decisiones.</p>
-                    <ul class="tags"><li class="tag">Acciones</li><li class="tag">Bonos</li><li class="tag">Portafolios</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>—</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Finanzas Cuantitativas y Gestión de Riesgos</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Modelado matemático y estadístico aplicado a las finanzas, derivados, medición de riesgos y estrategias de cobertura.</p>
-                    <ul class="tags"><li class="tag">VaR</li><li class="tag">Derivados</li><li class="tag">Estadística</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>—</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Economía y Entorno Empresarial</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Principios macroeconómicos y microeconómicos, análisis del entorno de negocios y su impacto en las decisiones financieras.</p>
-                    <ul class="tags"><li class="tag">Macroeconomía</li><li class="tag">Microeconomía</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Derecho Empresarial y Regulación</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Marco legal de las empresas en México, contratos, regulación financiera y cumplimiento normativo en el entorno de negocios.</p>
-                    <ul class="tags"><li class="tag">Contratos</li><li class="tag">Regulación</li><li class="tag">Compliance</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>—</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Análisis de Datos, Tecnología e IA</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Herramientas digitales, programación aplicada a finanzas, análisis de datos e inteligencia artificial al servicio del sector financiero.</p>
-                    <ul class="tags"><li class="tag">Excel avanzado</li><li class="tag">Python</li><li class="tag">Big Data</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>—</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
-              </li>
-              <li class="area">
-                <details name="areas">
-                  <summary><span class="area-name">Emprendimiento, Administración y Estrategia</span><span class="area-hint">Ver descripción</span></summary>
-                  <div class="area-body">
-                    <p>Creación y gestión de empresas, planeación estratégica, modelos de negocio, liderazgo y administración de recursos.</p>
-                    <ul class="tags"><li class="tag">Startups</li><li class="tag">Estrategia</li><li class="tag">Liderazgo</li></ul>
-                    <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>✓</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
-                  </div>
-                </details>
+              <li class="area-cat">
+                <h3 class="cat-title">Tecnología y Análisis de Datos</h3>
+                <ul class="cat-areas">
+                <li class="area">
+                  <details name="areas">
+                    <summary><span class="area-name">Análisis de Datos, Tecnología e IA</span><span class="area-hint">Ver descripción</span></summary>
+                    <div class="area-body">
+                      <p>Herramientas digitales, programación aplicada a finanzas, análisis de datos e inteligencia artificial al servicio del sector financiero.</p>
+                      <ul class="tags"><li class="tag">Excel avanzado</li><li class="tag">Python</li><li class="tag">Big Data</li></ul>
+                      <dl class="area-plans"><div><dt>Gratis</dt><dd>1 tema</dd></div><div><dt>Plus</dt><dd>1 tema</dd></div><div><dt>Pro</dt><dd>✓</dd></div></dl>
+                    </div>
+                  </details>
+                </li>
+                </ul>
               </li>
             </ul>
             <aside class="panel" data-panel aria-hidden="true"><div class="panel-inner"></div></aside>
@@ -444,6 +470,9 @@
         </div>
 
         <!-- Columnas de plan (libro mayor, sin tarjetas) -->
+        <!-- Precios (instrucción del 15-oct): fijos $0 / $99 / $199 al mes en ambos periodos; en anual se añade el total anual
+             ($799 / $1,599) y el ahorro calculado. El valor mensual equivalente ($67 / $133) de la especificación original
+             quedó sustituido por esa instrucción posterior y ya no se muestra. -->
         <div class="plans" id="plans-grid">
           <!-- GRATIS -->
           <article class="plan plan-free">
@@ -471,10 +500,10 @@
             <h3 class="plan-name">Plus</h3>
             <p class="plan-tag">Para quien quiere aprender en serio</p>
             <div class="plan-price">
-              <span class="amount" id="plus-price">$67</span>
+              <span class="amount" id="plus-price">$99</span>
               <span class="period">/ mes</span>
             </div>
-            <p class="pcv2-billed" id="plus-billed">$799 cobrado una vez al año</p>
+            <p class="pcv2-billed visible" id="plus-billed">$799 cobrado una vez al año</p>
             <p class="savings-chip" id="plus-savings"></p>
             <div class="cover" aria-hidden="true" style="--cov:57%"><i></i></div>
             <ul class="feats">
@@ -494,10 +523,10 @@
             <h3 class="plan-name">Pro</h3>
             <p class="plan-tag">El ecosistema completo</p>
             <div class="plan-price">
-              <span class="amount" id="pro-price">$133</span>
+              <span class="amount" id="pro-price">$199</span>
               <span class="period">/ mes</span>
             </div>
-            <p class="pcv2-billed" id="pro-billed">$1,599 cobrado una vez al año</p>
+            <p class="pcv2-billed visible" id="pro-billed">$1,599 cobrado una vez al año</p>
             <p class="savings-chip" id="pro-savings"></p>
             <p class="trial"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg> Prueba gratis 7 días — cancela cuando quieras</p>
             <div class="cover" aria-hidden="true" style="--cov:100%"><i></i></div>
@@ -525,6 +554,8 @@
             <span>Ver comparativa completa de planes</span>
             <span id="compare-arrow" aria-hidden="true">▼</span>
           </button>
+          <!-- Cobertura "Gratis": "1 tema" en las 10 áreas no completas, como define la especificación del 15-oct y
+               pricing.ts (CONTENT.free.firstTopicAreas = 10). Antes esta tabla mostraba "—" en 6 de esas áreas. -->
           <div id="compare-table" hidden>
             <div class="compare-scroll">
               <table class="compare-tbl">
@@ -548,12 +579,12 @@
                                 <tr class="compare-row"><td>Fiscalidad y Tributación</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
                                 <tr class="compare-row"><td>Economía y Entorno Empresarial</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
                                 <tr class="compare-row"><td>Emprendimiento, Admin. y Estrategia</td><td class="cpart">1 tema</td><td class="cchk">✓</td><td class="cchk">✓</td></tr>
-                                <tr class="compare-row"><td>Finanzas Corporativas</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
-                                <tr class="compare-row"><td>Inversiones y Mercados Financieros</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
-                                <tr class="compare-row"><td>Auditoría, Control Interno y Riesgos</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
-                                <tr class="compare-row"><td>Finanzas Cuantitativas y Riesgos</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
-                                <tr class="compare-row"><td>Derecho Empresarial y Regulación</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
-                                <tr class="compare-row"><td>Análisis de Datos, Tec. e IA</td><td class="cno">—</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                                <tr class="compare-row"><td>Finanzas Corporativas</td><td class="cpart">1 tema</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                                <tr class="compare-row"><td>Inversiones y Mercados Financieros</td><td class="cpart">1 tema</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                                <tr class="compare-row"><td>Auditoría, Control Interno y Riesgos</td><td class="cpart">1 tema</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                                <tr class="compare-row"><td>Finanzas Cuantitativas y Riesgos</td><td class="cpart">1 tema</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                                <tr class="compare-row"><td>Derecho Empresarial y Regulación</td><td class="cpart">1 tema</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
+                                <tr class="compare-row"><td>Análisis de Datos, Tec. e IA</td><td class="cpart">1 tema</td><td class="cpart">1 tema</td><td class="cchk">✓</td></tr>
               
                                 <tr class="compare-section"><td colspan="4">Práctica y repaso</td></tr>
                                 <tr class="compare-row"><td>Vidas</td><td>5</td><td>15</td><td>Ilimitadas</td></tr>
@@ -807,10 +838,10 @@
           Fecha de lanzamiento: <strong>Por confirmar</strong>
         </p>
         <ul class="cs-features" aria-label="Próximas funcionalidades">
-          <li>App móvil</li>
-          <li>Comunidad FINACORE</li>
-          <li>Herramientas Pro</li>
-          <li>Curso de trading</li>
+          <li><span>App móvil</span><span class="cs-state">Próximamente</span></li>
+          <li><span>Comunidad FINACORE</span><span class="cs-state">Próximamente</span></li>
+          <li><span>Herramientas Pro</span><span class="cs-state">Próximamente</span></li>
+          <li><span>Curso de trading</span><span class="cs-state">Próximamente</span></li>
         </ul>
       </div>
     </div>
