@@ -3,7 +3,7 @@
 
 Uso:  python3 scripts/build-site.py [carpeta_de_salida]      (por defecto: _site)
 
-GitHub Pages publica únicamente el contenido de _site/. Esta es la ÚNICA lista blanca:
+GitHub Pages publica únicamente el contenido de _site/. Esta es la ÚNICA lista blanca (15 archivos con assets/):
 si se añade un archivo público nuevo, se agrega aquí y en ningún otro lugar.
 
 Verificaciones (si alguna falla, el script termina con código 1 y el despliegue se detiene):
@@ -27,6 +27,8 @@ FILES = [
     'ods-4.png',
     'ods-8.png',
     'ods-10.png',
+    'robots.txt',
+    'sitemap.xml',
 ]
 ASSETS_DIR = 'assets'                           # css, js y fuentes (con sus licencias OFL)
 ASSET_EXTENSIONS = {'.css', '.js', '.woff2', '.txt'}

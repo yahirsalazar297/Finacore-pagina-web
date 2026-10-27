@@ -60,10 +60,19 @@
     var STAGGER = 70;
 
     // Cada lote revelado se limpia con un único temporizador (una sola invalidación de estilos, no una por elemento)
-    function revealBatch(list) {
+    function revealBatch(list, instant) {
       var life = 0;
       list.forEach(function (el, i) {
         var kind = el.getAttribute('data-reveal');
+        if (instant) {
+          // Foco de teclado: lo enfocado nunca puede estar oculto ni a medias; se muestra al instante, sin transición
+          el.style.transition = 'none';
+          el.classList.add('is-in');
+          void el.offsetWidth;
+          el.style.removeProperty('transition');
+          life = Math.max(life, 200);
+          return;
+        }
         if (kind !== 'draw') el.style.setProperty('--d', Math.min(i, 5) * STAGGER + 'ms');
         el.classList.add('is-in');
         life = Math.max(life, (el.classList.contains('cover') ? 1500 : (kind === 'draw' ? 1900 : 1000)) + Math.min(i, 5) * STAGGER);
@@ -86,6 +95,23 @@
       if (batch.length) revealBatch(batch.map(function (e) { return e.target; }));
     }, { threshold: [0, 0.12], rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (el) { io.observe(el); });
+
+    // Accesibilidad (WCAG 2.4.7): al recibir el foco, el elemento y los bloques que lo contienen quedan visibles y completos
+    // al instante: los que aún no se habían revelado se revelan sin transición y los que estaban a medias se rematan.
+    document.addEventListener('focusin', function (e) {
+      var pend = [], snap = [];
+      for (var el = e.target; el && el !== root; el = el.parentElement) {
+        if (!el.hasAttribute || !el.hasAttribute('data-reveal')) continue;
+        if (el.classList.contains('is-in')) snap.push(el); else pend.push(el);
+      }
+      pend.forEach(function (el) { io.unobserve(el); });
+      if (pend.length) revealBatch(pend, true);
+      if (snap.length) {
+        snap.forEach(function (el) { el.style.transition = 'none'; });
+        void root.offsetWidth;
+        snap.forEach(function (el) { el.style.removeProperty('transition'); });
+      }
+    });
 
     // El margen inferior de -8 % deja fuera lo que queda pegado al final de la página (copyright del footer):
     // al llegar al final se revela todo lo pendiente que ya está en pantalla.

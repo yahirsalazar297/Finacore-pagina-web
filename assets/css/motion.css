@@ -76,9 +76,6 @@
   html.motion:not(.motion-ready) .taccount:not(.is-in) { animation: ff-show-border 0s linear 3s forwards; }
   @keyframes ff-show-border { to { border-bottom-color: var(--rule-strong); } }
 
-  /* La regla corta del folio crece al entrar la sección */
-  html.motion .folio.is-in::before { animation: ff-grow .8s .2s var(--ease-out) both; transform-origin: left; }
-  @keyframes ff-grow { from { transform: scaleX(0); } }
 
   /* ── 2. Transición entre secciones: la regla superior se dibuja de izquierda a derecha ─────────── */
   html.motion .sec, html.motion .impact { position: relative; border-top-color: transparent; }
