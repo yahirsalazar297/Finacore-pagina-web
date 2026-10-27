@@ -99,8 +99,9 @@
   $('#compare-toggle').addEventListener('click', function () {
     var table = $('#compare-table');
     var arrow = $('#compare-arrow');
-    var open = !table.hidden;
-    table.hidden = open;
+    var open = this.getAttribute('aria-expanded') === 'true';   // el estado vive en aria-expanded: la animación puede estar a medias
+    if (window.FFMotion) window.FFMotion.expand(table, !open);  // motion.js: altura y opacidad animadas
+    else table.hidden = open;
     this.setAttribute('aria-expanded', String(!open));
     arrow.style.transform = open ? '' : 'rotate(180deg)';
   });
@@ -191,7 +192,7 @@
 
   /* ── Títulos que se ensanchan al entrar (una sola vez) ──────────────── */
   var revealEls = $$('.reveal-type');
-  var drawEls = $$('.access, .foot-curve');
+  var drawEls = $$('.access, .foot-curve, .foot-fit');
   if ('IntersectionObserver' in window) {
     var once = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {

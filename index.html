@@ -18,7 +18,8 @@
   <link rel="preload" href="assets/fonts/archivo-latin-wdth-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/main.css">
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="assets/css/motion.css">
+  <script>(function(d){var c=d.documentElement.classList;c.add('js');try{var n=navigator,k=n.connection;if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window&&!((k&&k.saveData)||(n.deviceMemory&&n.deviceMemory<=2)))c.add('motion')}catch(e){}})(document)</script>
 </head>
 <body data-act="aprende">
   <a class="skip-link" href="#main">Ir al contenido principal</a>
@@ -39,7 +40,7 @@
   </svg>
 
   <!-- Plano del libro mayor: suelo en perspectiva que cambia de inclinación según el acto de la página -->
-  <div class="ground" aria-hidden="true"></div>
+  <div class="ground" aria-hidden="true"><i class="g-plane"><i class="g-grid"></i></i></div>
 
   <!-- ── CINTA DE MERCADO ─────────────────────────────────────── -->
   <div id="announce-bar" role="status" aria-label="FINACORE — Próximamente">
@@ -113,6 +114,7 @@
         <a href="#planes">Planes</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
+        <i class="nav-ink" aria-hidden="true"></i>
       </div>
 
       <div class="nav-cta">
@@ -122,6 +124,7 @@
         </a>
       </div>
     </nav>
+    <i class="nav-progress" aria-hidden="true"></i>
   </header>
 
   <!-- Riel de posición (≥1280 px): los tres actos del eslogan y el avance de lectura -->
@@ -249,13 +252,13 @@
     </section>
 
     <!-- ═════════ ACADEMIA — explorador ═════════ -->
-    <section id="academia" class="sec" aria-labelledby="academia-heading">
+    <section id="academia" class="sec" data-reveal="draw" aria-labelledby="academia-heading">
       <div class="wrap ledger ledger-wide">
         <header class="concept">
-          <p class="folio">Oferta académica</p>
+          <p class="folio" data-reveal>Oferta académica</p>
           <h2 class="h2 reveal-type" id="academia-heading">12 áreas de conocimiento especializado</h2>
-          <p class="lede">Desde educación financiera básica hasta formación avanzada en contabilidad, finanzas, tecnología y negocios. Un catálogo diseñado para todos los niveles.</p>
-          <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <p class="lede" data-reveal>Desde educación financiera básica hasta formación avanzada en contabilidad, finanzas, tecnología y negocios. Un catálogo diseñado para todos los niveles.</p>
+          <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-reveal>
             Acceder a todos los cursos
             <svg class="i" aria-hidden="true"><use href="#i-ext"/></svg>
           </a>
@@ -266,7 +269,7 @@
             <ul class="areas">
               <!-- Categorías de navegación corporativa (brief del 13-oct; src/data/academicAreas.ts): son cuatro.
                    No modifican la organización académica de la plataforma. -->
-              <li class="area-cat">
+              <li class="area-cat" data-tone="blue" data-reveal>
                 <h3 class="cat-title">Contaduría y Fiscalidad</h3>
                 <ul class="cat-areas">
                 <li class="area">
@@ -311,7 +314,7 @@
                 </li>
                 </ul>
               </li>
-              <li class="area-cat">
+              <li class="area-cat" data-tone="green" data-reveal>
                 <h3 class="cat-title">Finanzas e Inversiones</h3>
                 <ul class="cat-areas">
                 <li class="area">
@@ -356,7 +359,7 @@
                 </li>
                 </ul>
               </li>
-              <li class="area-cat">
+              <li class="area-cat" data-tone="blue" data-reveal>
                 <h3 class="cat-title">Economía y Negocios</h3>
                 <ul class="cat-areas">
                 <li class="area">
@@ -391,7 +394,7 @@
                 </li>
                 </ul>
               </li>
-              <li class="area-cat">
+              <li class="area-cat" data-tone="green" data-reveal>
                 <h3 class="cat-title">Tecnología y Análisis de Datos</h3>
                 <ul class="cat-areas">
                 <li class="area">
@@ -414,36 +417,36 @@
     </section>
 
     <!-- ═════════ PARA QUIÉN ═════════ -->
-    <section id="para-quien" class="sec" aria-labelledby="para-quien-heading">
+    <section id="para-quien" class="sec" data-reveal="draw" aria-labelledby="para-quien-heading">
       <div class="wrap ledger">
         <header class="concept">
-          <p class="folio">Para quién</p>
+          <p class="folio" data-reveal>Para quién</p>
           <h2 class="h2 reveal-type" id="para-quien-heading">¿Para quién es FINACORE?</h2>
-          <p class="lede">FINACORE está diseñado para acompañar a personas en distintos momentos de su vida financiera.</p>
+          <p class="lede" data-reveal>FINACORE está diseñado para acompañar a personas en distintos momentos de su vida financiera.</p>
         </header>
         <div class="develop">
           <dl class="defs">
-            <div class="def"><dt>Sin conocimientos previos</dt><dd>Comprenden el ahorro, presupuesto, crédito e inversión personal desde cero.</dd></div>
-            <div class="def"><dt>Estudiantes</dt><dd>Refuerzan materias académicas y desarrollan habilidades prácticas que complementan su formación.</dd></div>
-            <div class="def"><dt>Profesionistas</dt><dd>Actualizan conocimientos, mejoran capacidades y utilizan herramientas de trabajo especializadas.</dd></div>
-            <div class="def"><dt>Emprendedores</dt><dd>Comprenden y administran las operaciones financieras y contables de sus negocios con mayor seguridad.</dd></div>
-            <div class="def"><dt>Interesados en finanzas</dt><dd>Amplían conocimientos y desarrollan capacidades para tomar decisiones mejor informadas.</dd></div>
+            <div class="def" data-reveal="row"><dt>Sin conocimientos previos</dt><dd>Comprenden el ahorro, presupuesto, crédito e inversión personal desde cero.</dd></div>
+            <div class="def" data-reveal="row"><dt>Estudiantes</dt><dd>Refuerzan materias académicas y desarrollan habilidades prácticas que complementan su formación.</dd></div>
+            <div class="def" data-reveal="row"><dt>Profesionistas</dt><dd>Actualizan conocimientos, mejoran capacidades y utilizan herramientas de trabajo especializadas.</dd></div>
+            <div class="def" data-reveal="row"><dt>Emprendedores</dt><dd>Comprenden y administran las operaciones financieras y contables de sus negocios con mayor seguridad.</dd></div>
+            <div class="def" data-reveal="row"><dt>Interesados en finanzas</dt><dd>Amplían conocimientos y desarrollan capacidades para tomar decisiones mejor informadas.</dd></div>
           </dl>
         </div>
       </div>
     </section>
 
     <!-- ═════════ PLANES ═════════ -->
-    <section id="planes" class="sec" aria-labelledby="planes-heading">
+    <section id="planes" class="sec" data-reveal="draw" aria-labelledby="planes-heading">
       <div class="wrap">
         <div class="plans-head">
           <header class="plans-title">
-            <p class="folio">Planes y precios</p>
+            <p class="folio" data-reveal>Planes y precios</p>
             <h2 class="h2 reveal-type" id="planes-heading">Elige el plan que se adapta a ti</h2>
-            <p class="lede">Desde educación financiera básica hasta el ecosistema completo con herramientas profesionales, IA y las 12 áreas académicas.</p>
+            <p class="lede" data-reveal>Desde educación financiera básica hasta el ecosistema completo con herramientas profesionales, IA y las 12 áreas académicas.</p>
           </header>
 
-          <div class="billing">
+          <div class="billing" data-reveal>
             <!-- Toggle mensual / anual -->
             <div class="billing-toggle" role="group" aria-label="Periodo de facturación">
               <button class="toggle-opt" id="btn-monthly" type="button" aria-pressed="false">Mensual</button>
@@ -473,14 +476,14 @@
              quedó sustituido por esa instrucción posterior y ya no se muestra. -->
         <div class="plans" id="plans-grid">
           <!-- GRATIS -->
-          <article class="plan plan-free">
+          <article class="plan plan-free" data-reveal>
             <h3 class="plan-name">Gratis</h3>
             <p class="plan-tag">Para empezar sin compromiso</p>
             <div class="plan-price">
               <span class="amount">$0</span>
               <span class="period">/ siempre</span>
             </div>
-            <div class="cover" aria-hidden="true" style="--cov:15%"><i></i></div>
+            <div class="cover" data-reveal aria-hidden="true" style="--cov:15%"><i></i></div>
             <ul class="feats">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">38 de 248</span></li>
               <li><span class="feat-label">Vidas</span><span class="feat-val">5</span></li>
@@ -493,7 +496,7 @@
           </article>
 
           <!-- PLUS -->
-          <article class="plan plan-plus">
+          <article class="plan plan-plus" data-reveal>
             <p class="plan-badge">Popular</p>
             <h3 class="plan-name">Plus</h3>
             <p class="plan-tag">Para quien quiere aprender en serio</p>
@@ -503,7 +506,7 @@
             </div>
             <p class="pcv2-billed visible" id="plus-billed">$799 cobrado una vez al año</p>
             <p class="savings-chip" id="plus-savings"></p>
-            <div class="cover" aria-hidden="true" style="--cov:57%"><i></i></div>
+            <div class="cover" data-reveal aria-hidden="true" style="--cov:57%"><i></i></div>
             <ul class="feats">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">141 de 248</span></li>
               <li><span class="feat-label">Vidas</span><span class="feat-val">15</span></li>
@@ -516,7 +519,7 @@
           </article>
 
           <!-- PRO -->
-          <article class="plan plan-pro">
+          <article class="plan plan-pro" data-reveal>
             <p class="plan-badge">Más completo</p>
             <h3 class="plan-name">Pro</h3>
             <p class="plan-tag">El ecosistema completo</p>
@@ -527,7 +530,7 @@
             <p class="pcv2-billed visible" id="pro-billed">$1,599 cobrado una vez al año</p>
             <p class="savings-chip" id="pro-savings"></p>
             <p class="trial"><svg class="i" aria-hidden="true"><use href="#i-gift"/></svg> Prueba gratis 7 días — cancela cuando quieras</p>
-            <div class="cover" aria-hidden="true" style="--cov:100%"><i></i></div>
+            <div class="cover" data-reveal aria-hidden="true" style="--cov:100%"><i></i></div>
             <ul class="feats">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">248 de 248</span></li>
               <li><span class="feat-label">Vidas</span><span class="feat-val pos">Ilimitadas</span></li>
@@ -541,13 +544,13 @@
         </div>
 
         <!-- Enlace estudiante -->
-        <div class="student">
+        <div class="student" data-reveal>
           <a href="#contacto" class="student-link">¿Eres estudiante? Obtén Pro a precio especial</a>
           <p class="student-note">Verifica tu correo institucional — desde $129/mes o $999/año</p>
         </div>
 
         <!-- Tabla comparativa (expandible) -->
-        <div class="compare">
+        <div class="compare" data-reveal>
           <button class="compare-toggle" id="compare-toggle" type="button" aria-expanded="false" aria-controls="compare-table">
             <span>Ver comparativa completa de planes</span>
             <span id="compare-arrow" aria-hidden="true">▼</span>
@@ -608,7 +611,7 @@
 
         <!-- REVISAR: App Store y Google Play siguen sin URL real — sustituir el botón por un <a href> cuando existan -->
         <!-- Botones de tiendas -->
-        <div class="stores" role="group" aria-label="Descargar la app de FINACORE">
+        <div class="stores" data-reveal role="group" aria-label="Descargar la app de FINACORE">
           <button type="button" class="store" aria-disabled="true" data-hint="Próximamente" aria-label="Descargar en App Store — próximamente" title="Próximamente en App Store">
             <svg class="store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M20.16 14.84a5.6 5.6 0 0 1 2.67-4.71 5.74 5.74 0 0 0-4.52-2.44c-1.91-.2-3.75 1.14-4.72 1.14-.99 0-2.49-1.12-4.1-1.09a6.02 6.02 0 0 0-5.07 3.09C2.1 14.64 3.7 20.52 6 23.37c1.16 1.49 2.52 3.16 4.31 3.1 1.74-.07 2.39-1.11 4.49-1.11 2.08 0 2.69 1.11 4.5 1.07 1.87-.03 3.05-1.5 4.18-3.01a12.4 12.4 0 0 0 1.9-3.48 5.41 5.41 0 0 1-3.22-5.1Z" fill="white"/>
               <path d="M16.96 5.72a5.52 5.52 0 0 0 1.26-3.95 5.62 5.62 0 0 0-3.63 1.88 5.25 5.25 0 0 0-1.3 3.82 4.65 4.65 0 0 0 3.67-1.75Z" fill="white"/></svg>
@@ -633,17 +636,17 @@
     </section>
 
     <!-- ═════════ NOSOTROS + IMPACTO ═════════ -->
-    <section id="nosotros" class="sec" aria-labelledby="nosotros-heading">
+    <section id="nosotros" class="sec" data-reveal="draw" aria-labelledby="nosotros-heading">
       <div class="wrap ledger">
         <header class="concept">
-          <p class="folio">Nuestra historia</p>
+          <p class="folio" data-reveal>Nuestra historia</p>
           <h2 class="h2 reveal-type" id="nosotros-heading">Conoce a FINACORE</h2>
-          <p class="lede">Una empresa mexicana con la misión de transformar el acceso al conocimiento financiero.</p>
+          <p class="lede" data-reveal>Una empresa mexicana con la misión de transformar el acceso al conocimiento financiero.</p>
         </header>
 
         <div class="develop">
           <!-- Propósito: la frase mayor de la página -->
-          <div class="purpose-block">
+          <div class="purpose-block" data-reveal>
             <h3 class="mini">Propósito</h3>
             <p class="purpose">Democratizar el acceso a la educación financiera en México.</p>
             <details class="more">
@@ -653,7 +656,7 @@
           </div>
 
           <!-- Historia: teaser visible + texto completo colapsado -->
-          <div class="story">
+          <div class="story" data-reveal>
             <h3 class="mini">Nuestra historia</h3>
             <p class="story-lead">FINACORE nace en México como una iniciativa de tres emprendedores que identificaron una necesidad profunda en el mercado: crear una plataforma para todos los niveles del conocimiento financiero.</p>
             <details class="more">
@@ -663,7 +666,7 @@
           </div>
 
           <!-- Misión y Visión como cuenta T -->
-          <div class="taccount">
+          <div class="taccount" data-reveal="draw">
             <div class="t-side">
               <h3 class="t-title">Misión</h3>
               <p class="t-text">Proporcionar herramientas de aprendizaje y trabajo en contabilidad, finanzas y negocios mediante una plataforma tecnológica accesible.</p>
@@ -683,31 +686,31 @@
           </div>
 
           <!-- Valores: glosario -->
-          <div class="values">
+          <div class="values" data-reveal>
             <h3 class="mini">Valores corporativos</h3>
             <dl class="gloss">
-              <div class="def"><dt>Accesibilidad</dt><dd>Reducir las barreras para acceder a la educación financiera en México.</dd></div>
-              <div class="def"><dt>Excelencia académica</dt><dd>Promover contenidos rigurosos, claros y útiles para todos los niveles.</dd></div>
-              <div class="def"><dt>Integridad</dt><dd>Fomentar prácticas financieras y contables responsables y transparentes.</dd></div>
-              <div class="def"><dt>Innovación</dt><dd>Utilizar tecnología e IA para mejorar el aprendizaje y el trabajo financiero.</dd></div>
-              <div class="def"><dt>Aplicabilidad</dt><dd>Priorizar conocimientos y herramientas que puedan usarse en situaciones reales.</dd></div>
-              <div class="def"><dt>Desarrollo continuo</dt><dd>Mejorar constantemente los productos, contenidos y servicios de la plataforma.</dd></div>
+              <div class="def" data-reveal="row"><dt>Accesibilidad</dt><dd>Reducir las barreras para acceder a la educación financiera en México.</dd></div>
+              <div class="def" data-reveal="row"><dt>Excelencia académica</dt><dd>Promover contenidos rigurosos, claros y útiles para todos los niveles.</dd></div>
+              <div class="def" data-reveal="row"><dt>Integridad</dt><dd>Fomentar prácticas financieras y contables responsables y transparentes.</dd></div>
+              <div class="def" data-reveal="row"><dt>Innovación</dt><dd>Utilizar tecnología e IA para mejorar el aprendizaje y el trabajo financiero.</dd></div>
+              <div class="def" data-reveal="row"><dt>Aplicabilidad</dt><dd>Priorizar conocimientos y herramientas que puedan usarse en situaciones reales.</dd></div>
+              <div class="def" data-reveal="row"><dt>Desarrollo continuo</dt><dd>Mejorar constantemente los productos, contenidos y servicios de la plataforma.</dd></div>
             </dl>
           </div>
         </div>
       </div>
 
       <!-- ── Impacto social · subsección ──────────────────────── -->
-      <div class="wrap ledger impact" id="impacto" role="group" aria-labelledby="impacto-heading">
+      <div class="wrap ledger impact" data-reveal="draw" id="impacto" role="group" aria-labelledby="impacto-heading">
         <header class="concept">
-          <p class="folio">Impacto social</p>
+          <p class="folio" data-reveal>Impacto social</p>
           <h2 class="h2 reveal-type" id="impacto-heading">La educación financiera debe estar al alcance de todos</h2>
-          <p class="lede">FINACORE busca reducir las barreras de acceso al conocimiento financiero, contribuyendo al desarrollo económico y la reducción de desigualdades en México.</p>
+          <p class="lede" data-reveal>FINACORE busca reducir las barreras de acceso al conocimiento financiero, contribuyendo al desarrollo económico y la reducción de desigualdades en México.</p>
         </header>
         <div class="develop">
-          <h3 class="mini">Alineación conceptual con los ODS</h3>
+          <h3 class="mini" data-reveal>Alineación conceptual con los ODS</h3>
           <ul class="sdgs">
-            <li class="sdg">
+            <li class="sdg" data-reveal="row">
               <img src="ods-4.png" alt="ODS 4 – Educación de Calidad" class="sdg-img" width="72" height="72" loading="lazy">
               <div>
                 <h3 class="sdg-name">Educación de calidad</h3>
@@ -717,7 +720,7 @@
                 </details>
               </div>
             </li>
-            <li class="sdg">
+            <li class="sdg" data-reveal="row">
               <img src="ods-8.png" alt="ODS 8 – Trabajo Decente y Crecimiento Económico" class="sdg-img" width="72" height="72" loading="lazy">
               <div>
                 <h3 class="sdg-name">Trabajo decente y crecimiento</h3>
@@ -727,7 +730,7 @@
                 </details>
               </div>
             </li>
-            <li class="sdg">
+            <li class="sdg" data-reveal="row">
               <img src="ods-10.png" alt="ODS 10 – Reducción de las Desigualdades" class="sdg-img" width="72" height="72" loading="lazy">
               <div>
                 <h3 class="sdg-name">Reducción de desigualdades</h3>
@@ -738,24 +741,24 @@
               </div>
             </li>
           </ul>
-          <p class="sdg-note">La alineación con los ODS es de carácter conceptual y no implica aval ni alianza formal con organismos de Naciones Unidas.</p>
+          <p class="sdg-note" data-reveal>La alineación con los ODS es de carácter conceptual y no implica aval ni alianza formal con organismos de Naciones Unidas.</p>
         </div>
       </div>
     </section>
 
     <!-- ═════════ INTELIGENCIA ARTIFICIAL — oculta, en desarrollo ═════════
          Rediseñada y lista. Para mostrarla, quitar los atributos hidden y aria-hidden de esta sección. -->
-    <section id="ia" class="sec" aria-labelledby="ia-heading" hidden aria-hidden="true">
+    <section id="ia" class="sec" data-reveal="draw" aria-labelledby="ia-heading" hidden aria-hidden="true">
       <div class="wrap ledger">
         <header class="concept">
-          <p class="folio">Inteligencia artificial</p>
+          <p class="folio" data-reveal>Inteligencia artificial</p>
           <h2 class="h2 reveal-type" id="ia-heading">Tu aprendizaje, acompañado de inteligencia artificial</h2>
-          <p class="lede">FINACORE integra un tutor de IA orientado a facilitar la comprensión de conceptos, resolver dudas y acompañar al usuario durante su formación financiera.</p>
+          <p class="lede" data-reveal>FINACORE integra un tutor de IA orientado a facilitar la comprensión de conceptos, resolver dudas y acompañar al usuario durante su formación financiera.</p>
           <dl class="defs defs-tight">
-            <div class="def"><dt>Resolución de dudas</dt><dd>Plantea preguntas sobre cualquier concepto financiero o contable y recibe explicaciones claras y comprensibles.</dd></div>
-            <div class="def"><dt>Explicación de conceptos</dt><dd>El tutor adapta las explicaciones al nivel del usuario, desde lo básico hasta lo especializado.</dd></div>
-            <div class="def"><dt>Acompañamiento continuo</dt><dd>Apoyo personalizado durante todo el proceso de aprendizaje para reforzar la comprensión y la retención.</dd></div>
-            <div class="def"><dt>Apoyo al estudio</dt><dd>Una herramienta complementaria que enriquece la experiencia educativa sin reemplazar el criterio profesional.</dd></div>
+            <div class="def" data-reveal="row"><dt>Resolución de dudas</dt><dd>Plantea preguntas sobre cualquier concepto financiero o contable y recibe explicaciones claras y comprensibles.</dd></div>
+            <div class="def" data-reveal="row"><dt>Explicación de conceptos</dt><dd>El tutor adapta las explicaciones al nivel del usuario, desde lo básico hasta lo especializado.</dd></div>
+            <div class="def" data-reveal="row"><dt>Acompañamiento continuo</dt><dd>Apoyo personalizado durante todo el proceso de aprendizaje para reforzar la comprensión y la retención.</dd></div>
+            <div class="def" data-reveal="row"><dt>Apoyo al estudio</dt><dd>Una herramienta complementaria que enriquece la experiencia educativa sin reemplazar el criterio profesional.</dd></div>
           </dl>
         </header>
 
@@ -790,12 +793,12 @@
     </section>
 
     <!-- ═════════ CONTACTO ═════════ -->
-    <section id="contacto" class="sec" aria-labelledby="contacto-heading">
+    <section id="contacto" class="sec" data-reveal="draw" aria-labelledby="contacto-heading">
       <div class="wrap ledger">
         <header class="concept">
-          <p class="folio">Contacto</p>
+          <p class="folio" data-reveal>Contacto</p>
           <h2 class="h2 reveal-type" id="contacto-heading">¿Tienes alguna pregunta?</h2>
-          <p class="lede">El equipo de FINACORE estará disponible próximamente en múltiples canales. Por el momento, puedes acceder directamente a la plataforma educativa.</p>
+          <p class="lede" data-reveal>El equipo de FINACORE estará disponible próximamente en múltiples canales. Por el momento, puedes acceder directamente a la plataforma educativa.</p>
         </header>
 
         <div class="develop">
@@ -805,12 +808,12 @@
           -->
           <h3 class="sr-only">Ver canales de contacto (próximamente)</h3>
           <dl class="channels">
-            <div class="channel"><dt>Correo corporativo</dt><dd>Próximamente disponible</dd></div>
-            <div class="channel"><dt>Redes sociales</dt><dd>En configuración</dd></div>
-            <div class="channel"><dt>Colaboraciones</dt><dd>Próximamente disponible</dd></div>
+            <div class="channel" data-reveal="row"><dt>Correo corporativo</dt><dd>Próximamente disponible</dd></div>
+            <div class="channel" data-reveal="row"><dt>Redes sociales</dt><dd>En configuración</dd></div>
+            <div class="channel" data-reveal="row"><dt>Colaboraciones</dt><dd>Próximamente disponible</dd></div>
           </dl>
 
-          <div class="cta-block">
+          <div class="cta-block" data-reveal>
             <h3 class="cta-title">Accede a la plataforma FINACORE</h3>
             <p>Mientras configuramos nuestros canales de contacto, te invitamos a explorar la academia y descubrir todo lo que FINACORE tiene para ofrecerte.</p>
             <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
@@ -824,22 +827,22 @@
   </main><!-- /main -->
 
   <!-- ── COMING SOON ──────────────────────────────────────────────── -->
-  <section id="coming-soon" class="sec cs" aria-label="Próximamente — Nueva versión de FINACORE">
+  <section id="coming-soon" class="sec cs" data-reveal="draw" aria-label="Próximamente — Nueva versión de FINACORE">
     <div class="wrap">
-      <p class="cs-eyebrow">Nueva versión en desarrollo</p>
-      <div class="fit cs-fit">
+      <p class="cs-eyebrow" data-reveal>Nueva versión en desarrollo</p>
+      <div class="fit cs-fit" data-reveal>
         <h2 class="fit-line cs-headline">COMING SOON</h2>
       </div>
       <div class="cs-grid">
-        <p class="cs-date">
+        <p class="cs-date" data-reveal>
           <svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>
           Fecha de lanzamiento: <strong>Por confirmar</strong>
         </p>
         <ul class="cs-features" aria-label="Próximas funcionalidades">
-          <li><span>App móvil</span><span class="cs-state">Próximamente</span></li>
-          <li><span>Comunidad FINACORE</span><span class="cs-state">Próximamente</span></li>
-          <li><span>Herramientas Pro</span><span class="cs-state">Próximamente</span></li>
-          <li><span>Curso de trading</span><span class="cs-state">Próximamente</span></li>
+          <li data-reveal="row"><span>App móvil</span><span class="cs-state">Próximamente</span></li>
+          <li data-reveal="row"><span>Comunidad FINACORE</span><span class="cs-state">Próximamente</span></li>
+          <li data-reveal="row"><span>Herramientas Pro</span><span class="cs-state">Próximamente</span></li>
+          <li data-reveal="row"><span>Curso de trading</span><span class="cs-state">Próximamente</span></li>
         </ul>
       </div>
     </div>
@@ -857,11 +860,11 @@
       </svg>
 
       <div class="foot-grid">
-        <div class="foot-brand">
+        <div class="foot-brand" data-reveal>
           <img src="logo-fincore.png" alt="FINACORE — Accounting & Finance Academy" width="500" height="112" loading="lazy">
           <p>Democratizando el acceso a la educación financiera en México mediante tecnología, formación académica y herramientas de aplicación real.</p>
         </div>
-        <div class="foot-col">
+        <div class="foot-col" data-reveal>
           <h2 class="foot-h">Empresa</h2>
           <a href="#nosotros">Nosotros</a>
           <a href="#impacto">Impacto social</a>
@@ -869,14 +872,14 @@
           <a href="#planes">Planes</a>
           <a href="#contacto">Contacto</a>
         </div>
-        <div class="foot-col">
+        <div class="foot-col" data-reveal>
           <h2 class="foot-h">Plataforma</h2>
           <a href="#academia">Academia</a>
           <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer">Acceder a FINACORE</a>
         </div>
       </div>
 
-      <div class="foot-bottom">
+      <div class="foot-bottom" data-reveal>
         <p>© <span id="year"></span> FINACORE. Todos los derechos reservados.</p>
         <!-- REVISAR: Aviso de privacidad y Política de cookies pendientes — sustituir estos spans por <a> cuando los documentos estén redactados -->
         <div class="foot-legal">
@@ -889,5 +892,6 @@
   </footer>
 
   <script src="assets/js/app.js" defer></script>
+  <script src="assets/js/motion.js" defer></script>
 </body>
 </html>
