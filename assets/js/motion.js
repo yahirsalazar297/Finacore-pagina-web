@@ -59,16 +59,19 @@
     var els = $$('[data-reveal]');
     var STAGGER = 70;
 
-    function reveal(el, i) {
-      var kind = el.getAttribute('data-reveal');
-      if (kind !== 'draw') el.style.setProperty('--d', Math.min(i, 5) * STAGGER + 'ms');
-      el.classList.add('is-in');
+    // Cada lote revelado se limpia con un único temporizador (una sola invalidación de estilos, no una por elemento)
+    function revealBatch(list) {
+      var life = 0;
+      list.forEach(function (el, i) {
+        var kind = el.getAttribute('data-reveal');
+        if (kind !== 'draw') el.style.setProperty('--d', Math.min(i, 5) * STAGGER + 'ms');
+        el.classList.add('is-in');
+        life = Math.max(life, (el.classList.contains('cover') ? 1500 : (kind === 'draw' ? 1900 : 1000)) + Math.min(i, 5) * STAGGER);
+      });
       // Limpieza: tras la revelación el elemento queda exactamente como si nunca hubiera tenido el marcador
-      var life = el.classList.contains('cover') ? 1500 : (kind === 'draw' ? 1900 : 1000);
       setTimeout(function () {
-        el.removeAttribute('data-reveal');
-        el.style.removeProperty('--d');
-      }, life + Math.min(i, 5) * STAGGER);
+        list.forEach(function (el) { el.removeAttribute('data-reveal'); el.style.removeProperty('--d'); });
+      }, life);
     }
 
     var io = new IntersectionObserver(function (entries) {
@@ -79,7 +82,8 @@
       batch.sort(function (a, b) {
         return (a.boundingClientRect.top - b.boundingClientRect.top) || (a.boundingClientRect.left - b.boundingClientRect.left);
       });
-      batch.forEach(function (e, i) { io.unobserve(e.target); reveal(e.target, i); });
+      batch.forEach(function (e) { io.unobserve(e.target); });
+      if (batch.length) revealBatch(batch.map(function (e) { return e.target; }));
     }, { threshold: [0, 0.12], rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (el) { io.observe(el); });
 
@@ -89,11 +93,12 @@
     function flushAtEnd() {
       endTick = false;
       if (window.innerHeight + window.scrollY < document.documentElement.scrollHeight - 4) return;
-      var i = 0;
-      els.forEach(function (el) {
-        if (el.hasAttribute('data-reveal') && !el.classList.contains('is-in') && el.getClientRects().length &&
-            el.getBoundingClientRect().top < window.innerHeight) { io.unobserve(el); reveal(el, i++); }
+      var rest = els.filter(function (el) {
+        return el.hasAttribute('data-reveal') && !el.classList.contains('is-in') && el.getClientRects().length &&
+               el.getBoundingClientRect().top < window.innerHeight;
       });
+      rest.forEach(function (el) { io.unobserve(el); });
+      if (rest.length) revealBatch(rest);
     }
     window.addEventListener('scroll', function () {
       if (!endTick) { endTick = true; requestAnimationFrame(flushAtEnd); }
