@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yahirsalazar297.github.io/Finacore-pagina-web/sitemap.xml
