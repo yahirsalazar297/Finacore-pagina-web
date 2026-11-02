@@ -87,13 +87,10 @@
 
   /* ── 3. Entrada del hero: el resto de la composición sigue al titular ───────────────────────────── */
   @keyframes ff-rise { from { opacity: 0; transform: translateY(12px); } }
-  .hero-lead    { animation: ff-rise .7s var(--ease-out) both; }
-  .hero-desc    { animation: ff-rise .7s .45s var(--ease-out) both; }
-  .hero-actions { animation: ff-rise .7s .55s var(--ease-out) both; }
-  .hero-benefits{ animation: ff-rise .7s .65s var(--ease-out) both; }
-  .stats .lrow  { animation: ff-rise .7s calc(.7s + var(--i, 0) * 100ms) var(--ease-out) both; }
-  .stats .lrow:nth-child(2) { --i: 1; }
-  .stats .lrow:nth-child(3) { --i: 2; }
+  /* Propuesta de valor y descripción no animan: son el contenido principal (y el LCP) y se leen desde el primer
+     cuadro. La entrada la llevan el sello de marca, la acción y la visualización. */
+  .hero-actions { animation: ff-rise .7s .3s var(--ease-out) both; }
+  .hero-benefits{ animation: ff-rise .7s .4s var(--ease-out) both; }
 
   /* ── 4. Visualización financiera del hero: se construye en orden (barras → línea → marcadores) ── */
   .c-bars rect { transform-box: fill-box; transform-origin: 50% 100%; animation: ff-bar .5s var(--ease-out) both; }
@@ -125,7 +122,9 @@
   /* ── 6. Profundidad y paralaje moderado (plano del hero y titulares): animaciones ligadas al scroll, sin trabajo
         en el hilo principal. Mejora progresiva: donde no existe animation-timeline simplemente no hay paralaje. ── */
   @supports (animation-timeline: scroll()) {
-    @keyframes ff-plane-par { to { translate: 0 -56px; } }
+    @keyframes ff-plane-par { to { translate: 0 var(--plane-par, -56px); } }
+    /* <1024 px el plano va debajo del texto: recorrido corto para no pisar las ventajas al subir */
+    @media (max-width: 1023.98px) { .plane-wrap { --plane-par: -12px; } }
     .plane-wrap {
       animation: ff-float 10s ease-in-out 3s infinite alternate, ff-plane-par linear both;
       animation-timeline: auto, scroll(root block);

@@ -174,13 +174,27 @@
   <main id="main">
 
     <!-- ═════════ HERO ═════════ -->
-    <section id="inicio" class="hero" aria-label="FINACORE — Presentación principal">
+    <section id="inicio" class="hero" aria-labelledby="hero-heading">
       <div class="wrap">
-        <p class="hero-lead"><span class="dot" aria-hidden="true"></span>Educación financiera para México</p>
-
         <div class="hero-stage">
-          <div class="fit hero-heading">
-            <h1 class="fit-title hero-title"><span class="w w1">Aprende.</span> <span class="w w2">Aplica.</span> <span class="w w3">Evoluciona.</span></h1>
+          <div class="hero-copy">
+            <!-- Sello de marca: el eslogan conserva su escalera de anchos y su entrada, en tamaño secundario -->
+            <div class="fit hero-heading">
+              <p class="fit-title hero-title"><span class="w w1">Aprende.</span> <span class="w w2">Aplica.</span> <span class="w w3">Evoluciona.</span></p>
+            </div>
+            <h1 class="hero-value" id="hero-heading">Aprende contabilidad y finanzas. Aplícalas en la vida real.</h1>
+            <p class="hero-desc">Lecciones breves, herramientas e inteligencia artificial para desarrollar tus habilidades financieras, con enfoque en México.</p>
+            <div class="hero-actions">
+              <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                Probar demo
+                <svg class="i" aria-hidden="true"><use href="#i-ext"/></svg>
+              </a>
+              <a href="#nosotros" class="btn btn-quiet">Conocer FINACORE</a>
+            </div>
+            <ul class="hero-benefits">
+              <li>Empieza gratis</li>
+              <li>Sin conocimientos previos</li>
+            </ul>
           </div>
 
           <!-- Visualización financiera ilustrativa y decorativa: no muestra datos ni funciones reales de la plataforma.
@@ -222,7 +236,7 @@
               </div>
             </div>
           </div>
-</div>
+        </div>
 
         <!-- La curva: nace en la flecha del logotipo y recorre la página -->
         <svg class="hero-curve" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
@@ -230,30 +244,14 @@
           <path class="curve-draw" d="M0 112 C 220 108, 380 92, 560 66 S 920 12, 1200 6" vector-effect="non-scaling-stroke"/>
         </svg>
 
+        <!-- Qué ofrece: los tres pilares (antes repartidos entre la descripción, las cifras 12 / 3 / 1 y varios textos
+             sobre "un solo ecosistema"). La cifra "3 planes" se lee en Planes. -->
         <div class="hero-foot">
-          <div class="hero-copy">
-            <p class="hero-desc">Contabilidad, finanzas, herramientas profesionales e inteligencia artificial en un solo ecosistema diseñado para México.</p>
-            <div class="hero-actions">
-              <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                Probar demo
-                <svg class="i" aria-hidden="true"><use href="#i-ext"/></svg>
-              </a>
-              <a href="#nosotros" class="btn btn-quiet">Conocer FINACORE</a>
-            </div>
-            <ul class="hero-benefits">
-              <!-- Chip "12 áreas académicas" comentado: dato repetido en el bloque de cifras -->
-              <li>Lecciones de pocos minutos</li>
-              <li>Empieza gratis</li>
-              <li>Sin conocimientos previos</li>
-            </ul>
-          </div>
-
-          <dl class="stats">
-            <div class="lrow"><dt>Áreas académicas</dt><dd>12</dd></div>
-            <!-- Cifras verificables en esta misma página: 12 áreas (explorador) y 3 planes (Gratis, Plus y Pro).
-                 Se retiró "3+ Herramientas": el sitio solo describe calculadoras e inversión y valuación, no un total. -->
-            <div class="lrow"><dt>Planes</dt><dd>3</dd></div>
-            <div class="lrow"><dt>Ecosistema integrado</dt><dd>1</dd></div>
+          <h2 class="h2 offer-title" id="ofrece">Todo en un solo ecosistema</h2>
+          <dl class="pillars">
+            <div class="pillar" data-reveal="row"><dt>Aprender</dt><dd>Lecciones de pocos minutos y evaluaciones en 12 áreas.</dd></div>
+            <div class="pillar" data-reveal="row"><dt>Practicar</dt><dd>Calculadoras y herramientas para aplicar lo que aprendes; inversión y valuación en Pro.</dd></div>
+            <div class="pillar" data-reveal="row"><dt>Resolver dudas</dt><dd>Un tutor de IA para tus preguntas; las consultas al día dependen de tu plan.</dd></div>
           </dl>
         </div>
       </div>
@@ -264,8 +262,8 @@
       <div class="wrap ledger ledger-wide">
         <header class="concept">
           <h2 class="h2 reveal-type" id="academia-heading">12 áreas de conocimiento especializado</h2>
-          <p class="lede" data-reveal>Desde educación financiera básica hasta formación avanzada en contabilidad, finanzas, tecnología y negocios. Un catálogo diseñado para todos los niveles.</p>
-          <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-reveal>
+          <p class="lede" data-reveal>Para todos los niveles, de lo básico a lo avanzado: contabilidad, finanzas, tecnología y negocios.</p>
+          <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-quiet" data-reveal>
             Acceder a todos los cursos
             <svg class="i" aria-hidden="true"><use href="#i-ext"/></svg>
           </a>
@@ -428,16 +426,22 @@
       <div class="wrap ledger">
         <header class="concept">
           <h2 class="h2 reveal-type" id="para-quien-heading">¿Para quién es FINACORE?</h2>
-          <p class="lede" data-reveal>FINACORE está diseñado para acompañar a personas en distintos momentos de su vida financiera.</p>
+          <p class="lede" data-reveal>Para acompañarte en cualquier momento de tu vida financiera.</p>
         </header>
         <div class="develop">
-          <dl class="defs">
-            <div class="def" data-reveal="row"><dt>Sin conocimientos previos</dt><dd>Comprenden el ahorro, presupuesto, crédito e inversión personal desde cero.</dd></div>
-            <div class="def" data-reveal="row"><dt>Estudiantes</dt><dd>Refuerzan materias académicas y desarrollan habilidades prácticas que complementan su formación.</dd></div>
-            <div class="def" data-reveal="row"><dt>Profesionistas</dt><dd>Actualizan conocimientos, mejoran capacidades y utilizan herramientas de trabajo especializadas.</dd></div>
-            <div class="def" data-reveal="row"><dt>Emprendedores</dt><dd>Comprenden y administran las operaciones financieras y contables de sus negocios con mayor seguridad.</dd></div>
-            <div class="def" data-reveal="row"><dt>Interesados en finanzas</dt><dd>Amplían conocimientos y desarrollan capacidades para tomar decisiones mejor informadas.</dd></div>
-          </dl>
+          <ul class="audiences" data-reveal aria-label="Perfiles">
+            <li>Sin conocimientos previos</li><li>Estudiantes</li><li>Profesionistas</li><li>Emprendedores</li><li>Interesados en finanzas</li>
+          </ul>
+          <details class="more">
+            <summary>Qué obtiene cada perfil</summary>
+            <dl class="defs defs-compact more-body">
+              <div class="def"><dt>Sin conocimientos previos</dt><dd>Comprenden el ahorro, presupuesto, crédito e inversión personal desde cero.</dd></div>
+              <div class="def"><dt>Estudiantes</dt><dd>Refuerzan materias académicas y desarrollan habilidades prácticas que complementan su formación.</dd></div>
+              <div class="def"><dt>Profesionistas</dt><dd>Actualizan conocimientos, mejoran capacidades y utilizan herramientas de trabajo especializadas.</dd></div>
+              <div class="def"><dt>Emprendedores</dt><dd>Comprenden y administran las operaciones financieras y contables de sus negocios con mayor seguridad.</dd></div>
+              <div class="def"><dt>Interesados en finanzas</dt><dd>Amplían conocimientos y desarrollan capacidades para tomar decisiones mejor informadas.</dd></div>
+            </dl>
+          </details>
         </div>
       </div>
     </section>
@@ -448,7 +452,7 @@
         <div class="plans-head">
           <header class="plans-title">
             <h2 class="h2 reveal-type" id="planes-heading">Elige el plan que se adapta a ti</h2>
-            <p class="lede" data-reveal>Desde educación financiera básica hasta el ecosistema completo con herramientas profesionales, IA y las 12 áreas académicas.</p>
+            <p class="lede" data-reveal>Empieza gratis y desbloquea más áreas, herramientas y consultas de IA según tu plan.</p>
           </header>
 
           <div class="billing" data-reveal>
@@ -491,11 +495,9 @@
             <div class="cover" data-reveal aria-hidden="true" style="--cov:15%"><i></i></div>
             <ul class="feats">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">38 de 248</span></li>
-              <li><span class="feat-label">Vidas</span><span class="feat-val">5</span></li>
               <li><span class="feat-label">Calculadoras</span><span class="feat-val">2 básicas</span></li>
               <li><span class="feat-label">Inversión y valuación</span><span class="feat-val locked"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg> Bloqueado</span></li>
               <li><span class="feat-label">Tutor IA</span><span class="feat-val">3 preguntas/día</span></li>
-              <li><span class="feat-label">Evaluaciones</span><span class="feat-val">Quiz por tema</span></li>
             </ul>
             <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-outline plan-cta">Comenzar gratis</a>
           </article>
@@ -514,11 +516,9 @@
             <div class="cover" data-reveal aria-hidden="true" style="--cov:57%"><i></i></div>
             <ul class="feats">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">141 de 248</span></li>
-              <li><span class="feat-label">Vidas</span><span class="feat-val">15</span></li>
               <li><span class="feat-label">Calculadoras</span><span class="feat-val">Todas + ISR/IVA</span></li>
               <li><span class="feat-label">Inversión y valuación</span><span class="feat-val locked"><svg class="i" aria-hidden="true"><use href="#i-lock"/></svg> Bloqueado</span></li>
               <li><span class="feat-label">Tutor IA</span><span class="feat-val">20 preguntas/día</span></li>
-              <li><span class="feat-label">Evaluaciones</span><span class="feat-val">Quiz + examen por área</span></li>
             </ul>
             <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary plan-cta">Obtener Plus</a>
           </article>
@@ -538,11 +538,9 @@
             <div class="cover" data-reveal aria-hidden="true" style="--cov:100%"><i></i></div>
             <ul class="feats">
               <li><span class="feat-label">Temas disponibles</span><span class="feat-val">248 de 248</span></li>
-              <li><span class="feat-label">Vidas</span><span class="feat-val pos">Ilimitadas</span></li>
               <li><span class="feat-label">Calculadoras</span><span class="feat-val">Todas</span></li>
               <li><span class="feat-label">Inversión y valuación</span><span class="feat-val pos">Incluido</span></li>
               <li><span class="feat-label">Tutor IA</span><span class="feat-val pos">Ilimitado</span></li>
-              <li><span class="feat-label">Evaluaciones</span><span class="feat-val">Quiz + examen + simulacro</span></li>
             </ul>
             <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-green plan-cta">Probar Pro gratis 7 días</a>
           </article>
@@ -557,7 +555,7 @@
         <!-- Tabla comparativa (expandible) -->
         <div class="compare" data-reveal>
           <button class="compare-toggle" id="compare-toggle" type="button" aria-expanded="false" aria-controls="compare-table">
-            <span>Ver comparativa completa de planes</span>
+            <span>Ver comparativa completa: áreas, vidas y evaluaciones</span>
             <span id="compare-arrow" aria-hidden="true">▼</span>
           </button>
           <!-- Cobertura "Gratis": "1 tema" en las 10 áreas no completas, como define la especificación del 15-oct y
@@ -614,29 +612,6 @@
           </div>
         </div>
 
-        <!-- REVISAR: App Store y Google Play siguen sin URL real — sustituir el botón por un <a href> cuando existan -->
-        <!-- Botones de tiendas -->
-        <div class="stores" data-reveal role="group" aria-label="Descargar la app de FINACORE">
-          <button type="button" class="store" aria-disabled="true" data-hint="Próximamente" aria-label="Descargar en App Store — próximamente" title="Próximamente en App Store">
-            <svg class="store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M20.16 14.84a5.6 5.6 0 0 1 2.67-4.71 5.74 5.74 0 0 0-4.52-2.44c-1.91-.2-3.75 1.14-4.72 1.14-.99 0-2.49-1.12-4.1-1.09a6.02 6.02 0 0 0-5.07 3.09C2.1 14.64 3.7 20.52 6 23.37c1.16 1.49 2.52 3.16 4.31 3.1 1.74-.07 2.39-1.11 4.49-1.11 2.08 0 2.69 1.11 4.5 1.07 1.87-.03 3.05-1.5 4.18-3.01a12.4 12.4 0 0 0 1.9-3.48 5.41 5.41 0 0 1-3.22-5.1Z" fill="white"/>
-              <path d="M16.96 5.72a5.52 5.52 0 0 0 1.26-3.95 5.62 5.62 0 0 0-3.63 1.88 5.25 5.25 0 0 0-1.3 3.82 4.65 4.65 0 0 0 3.67-1.75Z" fill="white"/></svg>
-            <span class="store-text">
-              <span class="store-sub">Descargar en</span>
-              <span class="store-name" lang="en">App Store</span>
-            </span>
-          </button>
-          <button type="button" class="store" aria-disabled="true" data-hint="Próximamente" aria-label="Disponible en Google Play — próximamente" title="Próximamente en Google Play">
-            <svg class="store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 3.17a1.5 1.5 0 0 0-.5 1.13v19.4c0 .45.17.87.5 1.13l.06.06 10.87-10.87v-.26L4.56 3.11l-.06.06Z" fill="#4FC3F7"/>
-              <path d="M19.06 17.67 15.43 14l-10.87 10.9c.48.51 1.28.57 1.84.14l12.66-7.37Z" fill="#34A853"/>
-              <path d="M19.06 10.33 6.4 2.96c-.56-.43-1.36-.37-1.84.14L15.43 14l3.63-3.67Z" fill="#FBBC04"/>
-              <path d="M19.06 10.33l3.63 3.67c.53.3.53.79 0 1.09l-3.63 2.58-3.63-3.67 3.63-3.67Z" fill="#EA4335"/></svg>
-            <span class="store-text">
-              <span class="store-sub">Disponible en</span>
-              <span class="store-name" lang="en">Google Play</span>
-            </span>
-          </button>
-        </div>
-        <p class="sr-only" id="store-status" role="status" aria-live="polite"></p>
       </div>
     </section>
 
@@ -645,7 +620,7 @@
       <div class="wrap ledger">
         <header class="concept">
           <h2 class="h2 reveal-type" id="nosotros-heading">Conoce a FINACORE</h2>
-          <p class="lede" data-reveal>Una empresa mexicana con la misión de transformar el acceso al conocimiento financiero.</p>
+          <p class="lede" data-reveal>Una empresa mexicana de tecnología educativa.</p>
         </header>
 
         <div class="develop">
@@ -659,13 +634,16 @@
             </details>
           </div>
 
-          <!-- Historia: teaser visible + texto completo colapsado -->
+          <!-- Historia: una frase visible; el relato completo (sin cambios) en el desplegable -->
           <div class="story" data-reveal>
             <h3 class="mini">Nuestra historia</h3>
-            <p class="story-lead">FINACORE nace en México como una iniciativa de tres emprendedores que identificaron una necesidad profunda en el mercado: crear una plataforma para todos los niveles del conocimiento financiero.</p>
+            <p class="story-lead">Nació en México por iniciativa de tres emprendedores.</p>
             <details class="more">
               <summary>Ver historia completa</summary>
-              <p class="more-body">En un contexto de transformación digital y económica en el país, los fundadores concibieron un ecosistema que integrara educación, herramientas de trabajo e inteligencia artificial en un mismo espacio, haciendo accesible el conocimiento financiero tanto para una persona sin conocimientos previos como para un profesionista especializado.</p>
+              <div class="more-body">
+                <p>FINACORE nace en México como una iniciativa de tres emprendedores que identificaron una necesidad profunda en el mercado: crear una plataforma para todos los niveles del conocimiento financiero.</p>
+                <p>En un contexto de transformación digital y económica en el país, los fundadores concibieron un ecosistema que integrara educación, herramientas de trabajo e inteligencia artificial en un mismo espacio, haciendo accesible el conocimiento financiero tanto para una persona sin conocimientos previos como para un profesionista especializado.</p>
+              </div>
             </details>
           </div>
 
@@ -689,17 +667,21 @@
             </div>
           </div>
 
-          <!-- Valores: glosario -->
+          <!-- Valores: los seis nombres a la vista; su definición en el desplegable -->
           <div class="values" data-reveal>
             <h3 class="mini">Valores corporativos</h3>
-            <dl class="gloss">
-              <div class="def" data-reveal="row"><dt>Accesibilidad</dt><dd>Reducir las barreras para acceder a la educación financiera en México.</dd></div>
-              <div class="def" data-reveal="row"><dt>Excelencia académica</dt><dd>Promover contenidos rigurosos, claros y útiles para todos los niveles.</dd></div>
-              <div class="def" data-reveal="row"><dt>Integridad</dt><dd>Fomentar prácticas financieras y contables responsables y transparentes.</dd></div>
-              <div class="def" data-reveal="row"><dt>Innovación</dt><dd>Utilizar tecnología e IA para mejorar el aprendizaje y el trabajo financiero.</dd></div>
-              <div class="def" data-reveal="row"><dt>Aplicabilidad</dt><dd>Priorizar conocimientos y herramientas que puedan usarse en situaciones reales.</dd></div>
-              <div class="def" data-reveal="row"><dt>Desarrollo continuo</dt><dd>Mejorar constantemente los productos, contenidos y servicios de la plataforma.</dd></div>
-            </dl>
+            <ul class="tags values-tags"><li class="tag">Accesibilidad</li><li class="tag">Excelencia académica</li><li class="tag">Integridad</li><li class="tag">Innovación</li><li class="tag">Aplicabilidad</li><li class="tag">Desarrollo continuo</li></ul>
+            <details class="more">
+              <summary>Qué significa cada valor</summary>
+              <dl class="gloss more-body">
+                <div class="def"><dt>Accesibilidad</dt><dd>Reducir las barreras para acceder a la educación financiera en México.</dd></div>
+                <div class="def"><dt>Excelencia académica</dt><dd>Promover contenidos rigurosos, claros y útiles para todos los niveles.</dd></div>
+                <div class="def"><dt>Integridad</dt><dd>Fomentar prácticas financieras y contables responsables y transparentes.</dd></div>
+                <div class="def"><dt>Innovación</dt><dd>Utilizar tecnología e IA para mejorar el aprendizaje y el trabajo financiero.</dd></div>
+                <div class="def"><dt>Aplicabilidad</dt><dd>Priorizar conocimientos y herramientas que puedan usarse en situaciones reales.</dd></div>
+                <div class="def"><dt>Desarrollo continuo</dt><dd>Mejorar constantemente los productos, contenidos y servicios de la plataforma.</dd></div>
+              </dl>
+            </details>
           </div>
         </div>
       </div>
@@ -708,7 +690,7 @@
       <div class="wrap ledger impact" data-reveal="draw" id="impacto" role="group" aria-labelledby="impacto-heading">
         <header class="concept">
           <h2 class="h2 reveal-type" id="impacto-heading">La educación financiera debe estar al alcance de todos</h2>
-          <p class="lede" data-reveal>FINACORE busca reducir las barreras de acceso al conocimiento financiero, contribuyendo al desarrollo económico y la reducción de desigualdades en México.</p>
+          <p class="lede" data-reveal>FINACORE busca reducir las barreras al conocimiento financiero para impulsar el desarrollo económico y reducir la desigualdad en México.</p>
         </header>
         <div class="develop">
           <h3 class="mini" data-reveal>Alineación conceptual con los ODS</h3>
@@ -794,60 +776,70 @@
       </div>
     </section>
 
-    <!-- ═════════ CONTACTO ═════════ -->
+    <!-- ═════════ CONTACTO + PRÓXIMAMENTE (cierre) ═════════
+         La demo es la acción principal. Canales pendientes y nueva versión en desarrollo quedan juntos en un bloque
+         secundario (antes: sección de contacto + sección "COMING SOON" + tiendas en Planes). -->
     <section id="contacto" class="sec" data-reveal="draw" aria-labelledby="contacto-heading">
       <div class="wrap ledger">
         <header class="concept">
-          <h2 class="h2 reveal-type" id="contacto-heading">¿Tienes alguna pregunta?</h2>
-          <p class="lede" data-reveal>El equipo de FINACORE estará disponible próximamente en múltiples canales. Por el momento, puedes acceder directamente a la plataforma educativa.</p>
+          <h2 class="h2 reveal-type" id="contacto-heading">Empieza con la demo</h2>
+          <p class="lede" data-reveal>¿Tienes preguntas? Mientras habilitamos nuestros canales de contacto, explora la academia y todo lo que FINACORE ofrece.</p>
+          <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary" data-reveal>
+            Probar demo
+            <svg class="i" aria-hidden="true"><use href="#i-ext"/></svg>
+          </a>
         </header>
 
-        <div class="develop">
-          <!-- Bloque principal duplicado (mensaje y botón) comentado: se repite en el cierre de esta sección
-          <p>Mientras configuramos nuestros canales de contacto, explora la plataforma educativa de FINACORE directamente.</p>
-          <p>FINACORE está en proceso de configurar sus canales de comunicación corporativa. Próximamente habilitaremos correo, redes sociales y opciones de colaboración institucional.</p>
-          -->
-          <h3 class="sr-only">Ver canales de contacto (próximamente)</h3>
-          <dl class="channels">
-            <div class="channel" data-reveal="row"><dt>Correo corporativo</dt><dd>Próximamente disponible</dd></div>
-            <div class="channel" data-reveal="row"><dt>Redes sociales</dt><dd>En configuración</dd></div>
-            <div class="channel" data-reveal="row"><dt>Colaboraciones</dt><dd>Próximamente disponible</dd></div>
-          </dl>
+        <div class="develop soon">
+          <div class="soon-group" data-reveal>
+            <h3 class="mini">Canales de contacto</h3>
+            <dl class="channels">
+              <div class="channel"><dt>Correo corporativo</dt><dd>Próximamente disponible</dd></div>
+              <div class="channel"><dt>Redes sociales</dt><dd>En configuración</dd></div>
+              <div class="channel"><dt>Colaboraciones</dt><dd>Próximamente disponible</dd></div>
+            </dl>
+          </div>
 
-          <div class="cta-block" data-reveal>
-            <h3 class="cta-title">Accede a la plataforma FINACORE</h3>
-            <p>Mientras configuramos nuestros canales de contacto, te invitamos a explorar la academia y descubrir todo lo que FINACORE tiene para ofrecerte.</p>
-            <a href="https://alejandrocavazos.github.io/Fincore/#/courses" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-              Probar demo
-              <svg class="i" aria-hidden="true"><use href="#i-ext"/></svg>
-            </a>
+          <div class="soon-group cs" id="coming-soon" data-reveal role="group" aria-labelledby="cs-heading">
+            <h3 class="mini" id="cs-heading">Nueva versión en desarrollo</h3>
+            <p class="cs-date">
+              <svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>
+              Fecha de lanzamiento: <strong>Por confirmar</strong>
+            </p>
+            <ul class="cs-features" aria-label="Próximas funcionalidades">
+              <li><span>App móvil</span><span class="cs-state">Próximamente</span></li>
+              <li><span>Comunidad FINACORE</span><span class="cs-state">Próximamente</span></li>
+              <li><span>Herramientas Pro</span><span class="cs-state">Próximamente</span></li>
+              <li><span>Curso de trading</span><span class="cs-state">Próximamente</span></li>
+            </ul>
+            <!-- REVISAR: App Store y Google Play siguen sin URL real — sustituir el botón por un <a href> cuando existan -->
+            <!-- Botones de tiendas -->
+            <div class="stores" data-reveal role="group" aria-label="Descargar la app de FINACORE">
+              <button type="button" class="store" aria-disabled="true" data-hint="Próximamente" aria-label="Descargar en App Store — próximamente" title="Próximamente en App Store">
+                <svg class="store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M20.16 14.84a5.6 5.6 0 0 1 2.67-4.71 5.74 5.74 0 0 0-4.52-2.44c-1.91-.2-3.75 1.14-4.72 1.14-.99 0-2.49-1.12-4.1-1.09a6.02 6.02 0 0 0-5.07 3.09C2.1 14.64 3.7 20.52 6 23.37c1.16 1.49 2.52 3.16 4.31 3.1 1.74-.07 2.39-1.11 4.49-1.11 2.08 0 2.69 1.11 4.5 1.07 1.87-.03 3.05-1.5 4.18-3.01a12.4 12.4 0 0 0 1.9-3.48 5.41 5.41 0 0 1-3.22-5.1Z" fill="white"/>
+                  <path d="M16.96 5.72a5.52 5.52 0 0 0 1.26-3.95 5.62 5.62 0 0 0-3.63 1.88 5.25 5.25 0 0 0-1.3 3.82 4.65 4.65 0 0 0 3.67-1.75Z" fill="white"/></svg>
+                <span class="store-text">
+                  <span class="store-sub">Descargar en</span>
+                  <span class="store-name" lang="en">App Store</span>
+                </span>
+              </button>
+              <button type="button" class="store" aria-disabled="true" data-hint="Próximamente" aria-label="Disponible en Google Play — próximamente" title="Próximamente en Google Play">
+                <svg class="store-icon" viewBox="0 0 28 28" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 3.17a1.5 1.5 0 0 0-.5 1.13v19.4c0 .45.17.87.5 1.13l.06.06 10.87-10.87v-.26L4.56 3.11l-.06.06Z" fill="#4FC3F7"/>
+                  <path d="M19.06 17.67 15.43 14l-10.87 10.9c.48.51 1.28.57 1.84.14l12.66-7.37Z" fill="#34A853"/>
+                  <path d="M19.06 10.33 6.4 2.96c-.56-.43-1.36-.37-1.84.14L15.43 14l3.63-3.67Z" fill="#FBBC04"/>
+                  <path d="M19.06 10.33l3.63 3.67c.53.3.53.79 0 1.09l-3.63 2.58-3.63-3.67 3.63-3.67Z" fill="#EA4335"/></svg>
+                <span class="store-text">
+                  <span class="store-sub">Disponible en</span>
+                  <span class="store-name" lang="en">Google Play</span>
+                </span>
+              </button>
+            </div>
+            <p class="sr-only" id="store-status" role="status" aria-live="polite"></p>
           </div>
         </div>
       </div>
     </section>
   </main><!-- /main -->
-
-  <!-- ── COMING SOON ──────────────────────────────────────────────── -->
-  <section id="coming-soon" class="sec cs" data-reveal="draw" aria-label="Próximamente — Nueva versión de FINACORE">
-    <div class="wrap">
-      <p class="cs-eyebrow" data-reveal>Nueva versión en desarrollo</p>
-      <div class="fit cs-fit" data-reveal>
-        <h2 class="fit-line cs-headline" lang="en">COMING SOON</h2>
-      </div>
-      <div class="cs-grid">
-        <p class="cs-date" data-reveal>
-          <svg class="i" aria-hidden="true"><use href="#i-cal"/></svg>
-          Fecha de lanzamiento: <strong>Por confirmar</strong>
-        </p>
-        <ul class="cs-features" aria-label="Próximas funcionalidades">
-          <li data-reveal="row"><span>App móvil</span><span class="cs-state">Próximamente</span></li>
-          <li data-reveal="row"><span>Comunidad FINACORE</span><span class="cs-state">Próximamente</span></li>
-          <li data-reveal="row"><span>Herramientas Pro</span><span class="cs-state">Próximamente</span></li>
-          <li data-reveal="row"><span>Curso de trading</span><span class="cs-state">Próximamente</span></li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
   <!-- ── FOOTER ──────────────────────────────────────────────────── -->
   <footer role="contentinfo">
@@ -863,7 +855,7 @@
       <div class="foot-grid">
         <div class="foot-brand" data-reveal>
           <img src="logo-fincore.png" alt="FINACORE — Accounting & Finance Academy" width="500" height="112" loading="lazy">
-          <p>Democratizando el acceso a la educación financiera en México mediante tecnología, formación académica y herramientas de aplicación real.</p>
+          <p>Educación financiera, herramientas de aplicación real e IA para México.</p>
         </div>
         <div class="foot-col" data-reveal>
           <h2 class="foot-h">Empresa</h2>
